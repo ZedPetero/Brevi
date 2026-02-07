@@ -29,11 +29,324 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            header = new Panel();
+            hamburger = new PictureBox();
+            label1 = new Label();
+            logo = new PictureBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel2 = new Panel();
+            btnHome = new Button();
+            imageList1 = new ImageList(components);
+            panel3 = new Panel();
+            btnClasses = new Button();
+            panel4 = new Panel();
+            btnRecords = new Button();
+            panel5 = new Panel();
+            btnTeacher = new Button();
+            sidebar = new Panel();
+            panel6 = new Panel();
+            btnLogOut = new Button();
+            sidebarTimer = new System.Windows.Forms.Timer(components);
+            pnlMainContent = new Panel();
+            header.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)hamburger).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            sidebar.SuspendLayout();
+            panel6.SuspendLayout();
+            SuspendLayout();
+            // 
+            // header
+            // 
+            header.BackColor = Color.White;
+            header.Controls.Add(hamburger);
+            header.Controls.Add(label1);
+            header.Controls.Add(logo);
+            header.Dock = DockStyle.Top;
+            header.Location = new Point(0, 0);
+            header.Name = "header";
+            header.Size = new Size(1200, 80);
+            header.TabIndex = 0;
+            // 
+            // hamburger
+            // 
+            hamburger.Image = Properties.Resources.more;
+            hamburger.Location = new Point(14, 26);
+            hamburger.Name = "hamburger";
+            hamburger.Size = new Size(24, 24);
+            hamburger.SizeMode = PictureBoxSizeMode.Zoom;
+            hamburger.TabIndex = 2;
+            hamburger.TabStop = false;
+            hamburger.Click += pictureBox2_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label1.Location = new Point(143, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(187, 45);
+            label1.TabIndex = 1;
+            label1.Text = "AttendEase";
+            // 
+            // logo
+            // 
+            logo.Image = Properties.Resources.calendar;
+            logo.Location = new Point(64, 12);
+            logo.Name = "logo";
+            logo.Size = new Size(73, 50);
+            logo.SizeMode = PictureBoxSizeMode.Zoom;
+            logo.TabIndex = 0;
+            logo.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.BackColor = Color.White;
+            flowLayoutPanel1.Controls.Add(panel2);
+            flowLayoutPanel1.Controls.Add(panel3);
+            flowLayoutPanel1.Controls.Add(panel4);
+            flowLayoutPanel1.Controls.Add(panel5);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(50, 640);
+            flowLayoutPanel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnHome);
+            panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(200, 60);
+            panel2.TabIndex = 2;
+            // 
+            // btnHome
+            // 
+            btnHome.BackColor = Color.Transparent;
+            btnHome.Dock = DockStyle.Fill;
+            btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHome.ImageKey = "home.png";
+            btnHome.ImageList = imageList1;
+            btnHome.Location = new Point(0, 0);
+            btnHome.Name = "btnHome";
+            btnHome.Padding = new Padding(10, 0, 0, 0);
+            btnHome.Size = new Size(200, 60);
+            btnHome.TabIndex = 0;
+            btnHome.Text = "    Home";
+            btnHome.TextAlign = ContentAlignment.MiddleLeft;
+            btnHome.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnHome.UseVisualStyleBackColor = false;
+            btnHome.Click += btnHome_Click;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "right-arrow.png");
+            imageList1.Images.SetKeyName(1, "calendar.png");
+            imageList1.Images.SetKeyName(2, "more.png");
+            imageList1.Images.SetKeyName(3, "home.png");
+            imageList1.Images.SetKeyName(4, "log-out.png");
+            imageList1.Images.SetKeyName(5, "teacher.png");
+            imageList1.Images.SetKeyName(6, "edit.png");
+            imageList1.Images.SetKeyName(7, "people.png");
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(btnClasses);
+            panel3.Location = new Point(0, 60);
+            panel3.Margin = new Padding(0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(200, 60);
+            panel3.TabIndex = 3;
+            // 
+            // btnClasses
+            // 
+            btnClasses.BackColor = Color.Transparent;
+            btnClasses.Dock = DockStyle.Fill;
+            btnClasses.FlatAppearance.BorderSize = 0;
+            btnClasses.FlatStyle = FlatStyle.Flat;
+            btnClasses.ImageAlign = ContentAlignment.MiddleLeft;
+            btnClasses.ImageKey = "people.png";
+            btnClasses.ImageList = imageList1;
+            btnClasses.Location = new Point(0, 0);
+            btnClasses.Name = "btnClasses";
+            btnClasses.Padding = new Padding(12, 0, 0, 0);
+            btnClasses.Size = new Size(200, 60);
+            btnClasses.TabIndex = 0;
+            btnClasses.Text = "    Classes";
+            btnClasses.TextAlign = ContentAlignment.MiddleLeft;
+            btnClasses.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnClasses.UseVisualStyleBackColor = false;
+            btnClasses.Click += btnClasses_Click;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(btnRecords);
+            panel4.Location = new Point(0, 120);
+            panel4.Margin = new Padding(0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(200, 60);
+            panel4.TabIndex = 4;
+            // 
+            // btnRecords
+            // 
+            btnRecords.BackColor = Color.Transparent;
+            btnRecords.Dock = DockStyle.Fill;
+            btnRecords.FlatAppearance.BorderSize = 0;
+            btnRecords.FlatStyle = FlatStyle.Flat;
+            btnRecords.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRecords.ImageKey = "edit.png";
+            btnRecords.ImageList = imageList1;
+            btnRecords.Location = new Point(0, 0);
+            btnRecords.Name = "btnRecords";
+            btnRecords.Padding = new Padding(12, 0, 0, 0);
+            btnRecords.Size = new Size(200, 60);
+            btnRecords.TabIndex = 0;
+            btnRecords.Text = "    Records";
+            btnRecords.TextAlign = ContentAlignment.MiddleLeft;
+            btnRecords.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnRecords.UseVisualStyleBackColor = false;
+            btnRecords.Click += btnRecords_Click;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(btnTeacher);
+            panel5.Location = new Point(0, 180);
+            panel5.Margin = new Padding(0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(200, 60);
+            panel5.TabIndex = 5;
+            // 
+            // btnTeacher
+            // 
+            btnTeacher.BackColor = Color.Transparent;
+            btnTeacher.Dock = DockStyle.Fill;
+            btnTeacher.FlatAppearance.BorderSize = 0;
+            btnTeacher.FlatStyle = FlatStyle.Flat;
+            btnTeacher.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTeacher.ImageKey = "teacher.png";
+            btnTeacher.ImageList = imageList1;
+            btnTeacher.Location = new Point(0, 0);
+            btnTeacher.Name = "btnTeacher";
+            btnTeacher.Padding = new Padding(12, 0, 0, 0);
+            btnTeacher.Size = new Size(200, 60);
+            btnTeacher.TabIndex = 0;
+            btnTeacher.Text = "    Teacher";
+            btnTeacher.TextAlign = ContentAlignment.MiddleLeft;
+            btnTeacher.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnTeacher.UseVisualStyleBackColor = false;
+            btnTeacher.Click += btnTeacher_Click;
+            // 
+            // sidebar
+            // 
+            sidebar.BackColor = Color.White;
+            sidebar.Controls.Add(panel6);
+            sidebar.Controls.Add(flowLayoutPanel1);
+            sidebar.Dock = DockStyle.Left;
+            sidebar.Location = new Point(0, 80);
+            sidebar.Name = "sidebar";
+            sidebar.Size = new Size(50, 640);
+            sidebar.TabIndex = 2;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(btnLogOut);
+            panel6.Dock = DockStyle.Bottom;
+            panel6.Location = new Point(0, 580);
+            panel6.Margin = new Padding(0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(50, 60);
+            panel6.TabIndex = 3;
+            // 
+            // btnLogOut
+            // 
+            btnLogOut.BackColor = Color.Transparent;
+            btnLogOut.FlatAppearance.BorderSize = 0;
+            btnLogOut.FlatStyle = FlatStyle.Flat;
+            btnLogOut.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogOut.ImageKey = "log-out.png";
+            btnLogOut.ImageList = imageList1;
+            btnLogOut.Location = new Point(0, 0);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Padding = new Padding(12, 0, 0, 0);
+            btnLogOut.Size = new Size(200, 60);
+            btnLogOut.TabIndex = 0;
+            btnLogOut.Text = "    Log Out";
+            btnLogOut.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogOut.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLogOut.UseVisualStyleBackColor = false;
+            // 
+            // sidebarTimer
+            // 
+            sidebarTimer.Interval = 10;
+            sidebarTimer.Tick += sidebarTimer_Tick;
+            // 
+            // pnlMainContent
+            // 
+            pnlMainContent.Anchor = AnchorStyles.None;
+            pnlMainContent.BackColor = Color.White;
+            pnlMainContent.Location = new Point(50, 80);
+            pnlMainContent.Margin = new Padding(0);
+            pnlMainContent.Name = "pnlMainContent";
+            pnlMainContent.Size = new Size(1150, 640);
+            pnlMainContent.TabIndex = 3;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Text = "Form1";
+            ClientSize = new Size(1200, 720);
+            ControlBox = false;
+            Controls.Add(pnlMainContent);
+            Controls.Add(sidebar);
+            Controls.Add(header);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            header.ResumeLayout(false);
+            header.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)hamburger).EndInit();
+            ((System.ComponentModel.ISupportInitialize)logo).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            sidebar.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel header;
+        private Label label1;
+        private PictureBox logo;
+        private PictureBox hamburger;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnHome;
+        private Panel panel2;
+        private Panel panel3;
+        private Button btnClasses;
+        private Panel panel4;
+        private Button btnRecords;
+        private Panel panel5;
+        private Button btnTeacher;
+        private ImageList imageList1;
+        private Panel sidebar;
+        private Panel panel6;
+        private Button btnLogOut;
+        private System.Windows.Forms.Timer sidebarTimer;
+        private Panel pnlMainContent;
     }
 }

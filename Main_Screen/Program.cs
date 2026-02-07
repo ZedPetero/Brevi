@@ -19,7 +19,7 @@ namespace Main_Screen;
             {
                 splash.ShowDialog();
             }
-
-            Application.Run(new Form1());
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhLYVJ0WmFZfVhgdVVMZV5bRnZPIiBoS35RcEVhWXpccnFXRGBYVUB0VEFf");
+        Application.Run(new Form1());
         }
     }

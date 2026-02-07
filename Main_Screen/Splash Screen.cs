@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Main_Screen
 {
@@ -13,13 +14,30 @@ namespace Main_Screen
         public splash_screen()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         private void splash_screen_Load(object sender, EventArgs e)
         {
+            ApplyRoundedCorners(30); // adjust radius here
+
             pictureBox2.Size = pictureBox3.Size = pictureBox4.Size = pictureBox5.Size = new Size(0, 0);
             timer1.Start();
         }
+        private void ApplyRoundedCorners(int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            int d = radius * 2;
 
+            path.StartFigure();
+            path.AddArc(0, 0, d, d, 180, 90);
+            path.AddArc(Width - d, 0, d, d, 270, 90);
+            path.AddArc(Width - d, Height - d, d, d, 0, 90);
+            path.AddArc(0, Height - d, d, d, 90, 90);
+            path.CloseFigure();
+
+            this.Region = new Region(path);
+        }
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void timer1_Tick(object sender, EventArgs e)
         { 
