@@ -146,6 +146,7 @@
             btnHome.Text = "    Home";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
             btnHome.UseVisualStyleBackColor = false;
+            btnHome.Click += btnHome_Click;
             // 
             // imageList1
             // 
@@ -190,6 +191,7 @@
             btnClasses.Text = "    Classes";
             btnClasses.TextAlign = ContentAlignment.MiddleLeft;
             btnClasses.UseVisualStyleBackColor = false;
+            btnClasses.Click += btnClasses_Click;
             // 
             // panel4
             // 
@@ -220,6 +222,7 @@
             btnRecords.Text = "    Records";
             btnRecords.TextAlign = ContentAlignment.MiddleLeft;
             btnRecords.UseVisualStyleBackColor = false;
+            btnRecords.Click += btnRecords_Click;
             // 
             // panel5
             // 
@@ -250,6 +253,7 @@
             btnTeacher.Text = "    Teacher";
             btnTeacher.TextAlign = ContentAlignment.MiddleLeft;
             btnTeacher.UseVisualStyleBackColor = false;
+            btnTeacher.Click += btnTeacher_Click;
             // 
             // sidebar
             // 
