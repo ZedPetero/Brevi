@@ -21,6 +21,10 @@ namespace AE.Application
             UIHelper.RoundControl(this, 100);
             UIHelper.RoundControl(btnExit, 50);
             UIHelper.RoundControl(sfButton1, 20);
+            UIHelper.RoundControl(txtUsername, 10);
+            UIHelper.RoundControl(txtPassword, 10);
+            autoLabel4.Text = "";
+            autoLabel5.Text = "";
         }
 
         private void PrepareControlsForAnimation()
@@ -55,12 +59,8 @@ namespace AE.Application
             }
             else
             {
-                MessageBox.Show(
-                    "Invalid username or password.",
-                    "Login Failed",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                autoLabel4.Text = "Invalid password";
+                autoLabel5.Text = "Invalid username";
             }
         }
 

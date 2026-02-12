@@ -39,6 +39,8 @@
             btnExit = new Syncfusion.WinForms.Controls.SfButton();
             autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             linkLabel2 = new LinkLabel();
+            autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtUsername).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtPassword).BeginInit();
@@ -66,6 +68,7 @@
             // autoLabel1
             // 
             autoLabel1.Font = new Font("Segoe UI", 16F);
+            autoLabel1.ForeColor = Color.White;
             autoLabel1.Location = new Point(268, 152);
             autoLabel1.Name = "autoLabel1";
             autoLabel1.Size = new Size(116, 30);
@@ -75,6 +78,7 @@
             // autoLabel2
             // 
             autoLabel2.Font = new Font("Segoe UI", 16F);
+            autoLabel2.ForeColor = Color.White;
             autoLabel2.Location = new Point(268, 246);
             autoLabel2.Name = "autoLabel2";
             autoLabel2.Size = new Size(108, 30);
@@ -122,6 +126,7 @@
             // autoLabel3
             // 
             autoLabel3.Font = new Font("Segoe UI", 16F);
+            autoLabel3.ForeColor = Color.White;
             autoLabel3.Location = new Point(230, 410);
             autoLabel3.Name = "autoLabel3";
             autoLabel3.Size = new Size(237, 30);
@@ -142,6 +147,26 @@
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Click Here";
             // 
+            // autoLabel4
+            // 
+            autoLabel4.Font = new Font("Segoe UI", 12F);
+            autoLabel4.ForeColor = Color.Red;
+            autoLabel4.Location = new Point(268, 317);
+            autoLabel4.Name = "autoLabel4";
+            autoLabel4.Size = new Size(126, 21);
+            autoLabel4.TabIndex = 11;
+            autoLabel4.Text = "Invalid Password";
+            // 
+            // autoLabel5
+            // 
+            autoLabel5.Font = new Font("Segoe UI", 12F);
+            autoLabel5.ForeColor = Color.Red;
+            autoLabel5.Location = new Point(268, 223);
+            autoLabel5.Name = "autoLabel5";
+            autoLabel5.Size = new Size(131, 21);
+            autoLabel5.TabIndex = 12;
+            autoLabel5.Text = "Invalid Username";
+            // 
             // Login_Screen_Form
             // 
             AcceptButton = sfButton1;
@@ -149,6 +174,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 164, 153);
             ClientSize = new Size(800, 500);
+            Controls.Add(autoLabel5);
+            Controls.Add(autoLabel4);
             Controls.Add(linkLabel2);
             Controls.Add(autoLabel3);
             Controls.Add(btnExit);
@@ -182,5 +209,7 @@
         private Syncfusion.WinForms.Controls.SfButton btnExit;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private LinkLabel linkLabel2;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
     }
 }
