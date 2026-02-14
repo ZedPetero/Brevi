@@ -61,10 +61,8 @@ namespace AE.Application
             {
                 AddSectionForm form = new AddSectionForm();
 
-                // Show the form as a dialog
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    // If they clicked "Save", reload the table immediately!
                     LoadSections();
                 }
             }
