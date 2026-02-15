@@ -7,6 +7,7 @@ namespace AE.Domain.Models
     public class Section
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]

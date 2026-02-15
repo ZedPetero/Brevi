@@ -135,6 +135,7 @@
             // layoutStudents
             // 
             layoutStudents.AutoSize = true;
+            layoutStudents.FlowDirection = FlowDirection.TopDown;
             layoutStudents.Location = new Point(109, 445);
             layoutStudents.Name = "layoutStudents";
             layoutStudents.Size = new Size(887, 195);
@@ -200,6 +201,7 @@
             Controls.Add(lblSectionName);
             Name = "UC_Attendance";
             Size = new Size(1150, 640);
+            Load += UC_Attendance_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

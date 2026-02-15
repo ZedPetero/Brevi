@@ -11,6 +11,8 @@ namespace AE.Application
 {
     public partial class Form_AddStudent : Form
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int CurrentSectionId { get; set; }
         public Form_AddStudent()
         {
             InitializeComponent();
@@ -27,14 +29,24 @@ namespace AE.Application
                 }
                 using (var _context = new AppDbContext())
                 {
+                    bool sectionExists = _context.Sections.Any(s => s.Id == this.CurrentSectionId);
+
+                    if (!sectionExists)
+                    {
+                        MessageBox.Show($"Error: Cannot add student. Section ID {this.CurrentSectionId} does not exist in the database.");
+                        return; 
+                    }
                     var student = new Student
                     {
                         FirstName = txtFirstName.Text,
                         LastName = txtLastName.Text,
+                        SectionId = this.CurrentSectionId
                     };
                     _context.Students.Add(student);
                     _context.SaveChanges();
                 }
+                MessageBox.Show("Student added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception ex)
             {

@@ -77,11 +77,17 @@ namespace AE.Application
         {
             if (e.Column.MappingName == "teacherId")
             {
-                dynamic rowData = e.Record;
-                int sectionId = rowData.Id;
-                string sectionName = rowData.Section;
-                UC_Attendance attendanceScreen = new UC_Attendance();
-                attendanceScreen.CurrentSectionId = sectionId;
+                var rowContainer = e.Record as Syncfusion.WinForms.DataGrid.DataRow;
+                if (rowContainer != null)
+                    {
+                        dynamic rowData = rowContainer.RowData;
+                        int sectionId = rowData.Id;
+                        string sectionName = rowData.Section;
+                        Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
+                        UC_Attendance attendanceScreen = new UC_Attendance();
+                        attendanceScreen.CurrentSectionId = sectionId;
+                        mainForm.loadForm(attendanceScreen);
+                    }
             }
         }
 

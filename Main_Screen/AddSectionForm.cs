@@ -45,7 +45,7 @@ namespace AE.Application
                     SectionName = txtName.Text,
                     Subject = txtSubject.Text,
                     TimeSchedule = txtTime.Text,
-                    TeacherId = UserSession.CurrentTeacherId
+                    TeacherId = UserSession.CurrentTeacherId,
                 };
 
                 db.Sections.Add(section);

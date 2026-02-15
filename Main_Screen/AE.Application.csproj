@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AE.Infrastructure\AE.Infrastructure.csproj" />
+    <ProjectReference Include="..\IE.Services\AE.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

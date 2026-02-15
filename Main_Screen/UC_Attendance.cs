@@ -18,6 +18,7 @@ namespace AE.Application
         public UC_Attendance()
         {
             InitializeComponent();
+            LoadStudents();
         }
         private void label2_Click(object sender, EventArgs e)
         {
@@ -28,18 +29,10 @@ namespace AE.Application
         {
             using (Form_AddStudent popup = new Form_AddStudent())
             {
+                popup.CurrentSectionId = CurrentSectionId;
                 var result = popup.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    LoadStudents();
-                }
+                LoadStudents();
             }
-        }
-
-        private void UC_Attendance_Load(object sender, EventArgs e)
-        {
-            LoadStudents();
         }
 
         private void LoadStudents()
@@ -47,17 +40,28 @@ namespace AE.Application
             layoutStudents.Controls.Clear();
             using (var _context = new AppDbContext())
             {
-                var students = _context.Students.ToList();
-                for (int i = 0; i < students.Count; i++)
+                var students = _context.Students
+                    .Where(s => s.SectionId == this.CurrentSectionId)
+                    .ToList();
+
+                int count = 1;
+                foreach (var student in students)
                 {
-                    var student = students[i];
                     UC_StudentRow studentRow = new UC_StudentRow();
+
                     studentRow.StudentName = $"{student.FirstName} {student.LastName}";
-                    studentRow.StudentNumber = (i + 1).ToString();
-                    studentRow.StudentStatus = student.status.ToString();
+                    studentRow.StudentNumber = count.ToString();
+                    studentRow.StudentStatus = student.status.ToString() ?? "Present";
+
                     layoutStudents.Controls.Add(studentRow);
+                    count++;
                 }
             }
+        }
+
+        private void UC_Attendance_Load(object sender, EventArgs e)
+        {
+            LoadStudents();
         }
     }
 }
