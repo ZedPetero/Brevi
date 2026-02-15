@@ -30,15 +30,15 @@
         {
             lblSectionName = new Label();
             panel1 = new Panel();
+            lblDateNow = new Label();
+            btnNextDate = new Syncfusion.WinForms.Controls.SfButton();
+            btnPreviousDate = new Syncfusion.WinForms.Controls.SfButton();
             lblSubjectName = new Label();
             btnExport = new Syncfusion.WinForms.Controls.SfButton();
             btnAddStudent = new Syncfusion.WinForms.Controls.SfButton();
             lblClassRoster = new Label();
             layoutStudents = new FlowLayoutPanel();
             lblBackToClass = new Label();
-            btnPreviousDate = new Syncfusion.WinForms.Controls.SfButton();
-            btnNextDate = new Syncfusion.WinForms.Controls.SfButton();
-            lblDateNow = new Label();
             btnMarkAllPresent = new Syncfusion.WinForms.Controls.SfButton();
             btnReset = new Syncfusion.WinForms.Controls.SfButton();
             lblNumberofStudents = new Label();
@@ -64,6 +64,34 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(887, 62);
             panel1.TabIndex = 2;
+            // 
+            // lblDateNow
+            // 
+            lblDateNow.AutoSize = true;
+            lblDateNow.Font = new Font("Segoe UI", 16F);
+            lblDateNow.Location = new Point(301, 16);
+            lblDateNow.Name = "lblDateNow";
+            lblDateNow.Size = new Size(284, 30);
+            lblDateNow.TabIndex = 12;
+            lblDateNow.Text = "Saturday, February 14, 2026";
+            // 
+            // btnNextDate
+            // 
+            btnNextDate.Font = new Font("Segoe UI Semibold", 12F);
+            btnNextDate.Location = new Point(837, 13);
+            btnNextDate.Name = "btnNextDate";
+            btnNextDate.Size = new Size(36, 36);
+            btnNextDate.TabIndex = 13;
+            btnNextDate.Text = ">";
+            // 
+            // btnPreviousDate
+            // 
+            btnPreviousDate.Font = new Font("Segoe UI Semibold", 12F);
+            btnPreviousDate.Location = new Point(13, 13);
+            btnPreviousDate.Name = "btnPreviousDate";
+            btnPreviousDate.Size = new Size(36, 36);
+            btnPreviousDate.TabIndex = 12;
+            btnPreviousDate.Text = "<";
             // 
             // lblSubjectName
             // 
@@ -92,6 +120,7 @@
             btnAddStudent.Size = new Size(113, 28);
             btnAddStudent.TabIndex = 6;
             btnAddStudent.Text = "+ Add Student";
+            btnAddStudent.Click += btnAddStudent_Click;
             // 
             // lblClassRoster
             // 
@@ -121,34 +150,6 @@
             lblBackToClass.Size = new Size(115, 21);
             lblBackToClass.TabIndex = 11;
             lblBackToClass.Text = "< Back to Class";
-            // 
-            // btnPreviousDate
-            // 
-            btnPreviousDate.Font = new Font("Segoe UI Semibold", 12F);
-            btnPreviousDate.Location = new Point(13, 13);
-            btnPreviousDate.Name = "btnPreviousDate";
-            btnPreviousDate.Size = new Size(36, 36);
-            btnPreviousDate.TabIndex = 12;
-            btnPreviousDate.Text = "<";
-            // 
-            // btnNextDate
-            // 
-            btnNextDate.Font = new Font("Segoe UI Semibold", 12F);
-            btnNextDate.Location = new Point(837, 13);
-            btnNextDate.Name = "btnNextDate";
-            btnNextDate.Size = new Size(36, 36);
-            btnNextDate.TabIndex = 13;
-            btnNextDate.Text = ">";
-            // 
-            // lblDateNow
-            // 
-            lblDateNow.AutoSize = true;
-            lblDateNow.Font = new Font("Segoe UI", 16F);
-            lblDateNow.Location = new Point(301, 16);
-            lblDateNow.Name = "lblDateNow";
-            lblDateNow.Size = new Size(284, 30);
-            lblDateNow.TabIndex = 12;
-            lblDateNow.Text = "Saturday, February 14, 2026";
             // 
             // btnMarkAllPresent
             // 

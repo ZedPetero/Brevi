@@ -1,5 +1,6 @@
 ﻿using AE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Syncfusion.Grouping;
 using System;
 using System.Collections.Generic;
@@ -76,7 +77,11 @@ namespace AE.Application
         {
             if (e.Column.MappingName == "teacherId")
             {
-                MessageBox.Show("Opening attendance for: ");
+                dynamic rowData = e.Record;
+                int sectionId = rowData.Id;
+                string sectionName = rowData.Section;
+                UC_Attendance attendanceScreen = new UC_Attendance();
+                attendanceScreen.CurrentSectionId = sectionId;
             }
         }
 
