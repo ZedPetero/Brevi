@@ -19,6 +19,9 @@ namespace AE.Application
         }
         private void Splash_Screen_Form_Load(object sender, EventArgs e)
         {
+            // Apply app theme if already enabled
+            ThemeManager.ApplyThemeToForm(this);
+
             ApplyRoundedCorners(30); // adjust radius here
 
             pictureBox2.Size = pictureBox3.Size = pictureBox4.Size = pictureBox5.Size = new Size(0, 0);

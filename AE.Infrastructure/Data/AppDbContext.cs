@@ -28,5 +28,6 @@ namespace AE.Infrastructure.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Attendance> AttendanceRecords { get; set; }
+        public DbSet<AppSetting> AppSettings { get; set; }
     }
 }

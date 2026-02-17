@@ -7,6 +7,9 @@ namespace AE.Application
         public Main_Screen_Form()
         {
             InitializeComponent();
+            // Apply theme if previously set
+            ThemeManager.ApplyThemeToForm(this);
+
             UC_Home myHome = new UC_Home();
             loadForm(myHome);
             btnHome.ImageSize = new Size(24, 24);
@@ -58,6 +61,9 @@ namespace AE.Application
             pnlMainContent.Controls.Add(customizedControl);
 
             pnlMainContent.SendToBack();
+            // Apply theme to the newly loaded user control
+            if (ThemeManager.IsDarkMode)
+                ThemeManager.ApplyThemeRecursively(customizedControl, true);
         }
 
         private void btnClasses_Click(object sender, EventArgs e)
@@ -68,7 +74,7 @@ namespace AE.Application
 
         private void btnRecords_Click(object sender, EventArgs e)
         {
-            UC_Records myRecords = new UC_Records();
+            UC_Settings myRecords = new UC_Settings();
             loadForm(myRecords);
         }
 
