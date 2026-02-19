@@ -73,6 +73,7 @@
             // 
             // timerSlide
             // 
+            timerSlide.Interval = 25;
             timerSlide.Tick += timerSlide_Tick;
             // 
             // Register_Screen_Form

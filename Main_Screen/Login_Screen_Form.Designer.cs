@@ -48,7 +48,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.logo__not_final_;
+            pictureBox1.Image = Properties.Resources.logo;
             pictureBox1.Location = new Point(168, -55);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(465, 288);
@@ -59,6 +59,8 @@
             // txtUsername
             // 
             txtUsername.BeforeTouchSize = new Size(265, 35);
+            txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
+            txtUsername.BorderColor = Color.DimGray;
             txtUsername.Font = new Font("Segoe UI", 15.75F);
             txtUsername.Location = new Point(268, 185);
             txtUsername.Name = "txtUsername";
@@ -67,9 +69,10 @@
             // 
             // autoLabel1
             // 
+            autoLabel1.BackColor = Color.Transparent;
             autoLabel1.Font = new Font("Segoe UI", 16F);
-            autoLabel1.ForeColor = Color.White;
-            autoLabel1.Location = new Point(268, 152);
+            autoLabel1.ForeColor = Color.FromArgb(40, 164, 153);
+            autoLabel1.Location = new Point(268, 151);
             autoLabel1.Name = "autoLabel1";
             autoLabel1.Size = new Size(116, 30);
             autoLabel1.TabIndex = 3;
@@ -77,9 +80,10 @@
             // 
             // autoLabel2
             // 
+            autoLabel2.BackColor = Color.Transparent;
             autoLabel2.Font = new Font("Segoe UI", 16F);
-            autoLabel2.ForeColor = Color.White;
-            autoLabel2.Location = new Point(268, 246);
+            autoLabel2.ForeColor = Color.FromArgb(40, 164, 153);
+            autoLabel2.Location = new Point(268, 245);
             autoLabel2.Name = "autoLabel2";
             autoLabel2.Size = new Size(108, 30);
             autoLabel2.TabIndex = 5;
@@ -88,6 +92,8 @@
             // txtPassword
             // 
             txtPassword.BeforeTouchSize = new Size(265, 35);
+            txtPassword.Border3DStyle = Border3DStyle.RaisedOuter;
+            txtPassword.BorderColor = Color.DimGray;
             txtPassword.Font = new Font("Segoe UI", 15.75F);
             txtPassword.Location = new Point(268, 279);
             txtPassword.Name = "txtPassword";
@@ -96,12 +102,14 @@
             // 
             // sfButton1
             // 
-            sfButton1.BackColor = Color.White;
+            sfButton1.BackColor = Color.FromArgb(40, 164, 153);
             sfButton1.Font = new Font("Segoe UI Semibold", 16F);
-            sfButton1.Location = new Point(350, 351);
+            sfButton1.ForeColor = Color.White;
+            sfButton1.Location = new Point(268, 351);
             sfButton1.Name = "sfButton1";
-            sfButton1.Size = new Size(100, 40);
-            sfButton1.Style.BackColor = Color.White;
+            sfButton1.Size = new Size(265, 40);
+            sfButton1.Style.BackColor = Color.FromArgb(40, 164, 153);
+            sfButton1.Style.ForeColor = Color.White;
             sfButton1.TabIndex = 6;
             sfButton1.Text = "Login";
             sfButton1.UseVisualStyleBackColor = false;
@@ -114,7 +122,7 @@
             // 
             // btnExit
             // 
-            btnExit.BackgroundImage = Properties.Resources.reject;
+            btnExit.BackgroundImage = Properties.Resources.reject__2_;
             btnExit.BackgroundImageLayout = ImageLayout.Zoom;
             btnExit.Font = new Font("Segoe UI Semibold", 9F);
             btnExit.Location = new Point(728, 22);
@@ -125,8 +133,9 @@
             // 
             // autoLabel3
             // 
+            autoLabel3.BackColor = Color.Transparent;
             autoLabel3.Font = new Font("Segoe UI", 16F);
-            autoLabel3.ForeColor = Color.White;
+            autoLabel3.ForeColor = Color.FromArgb(40, 164, 153);
             autoLabel3.Location = new Point(230, 410);
             autoLabel3.Name = "autoLabel3";
             autoLabel3.Size = new Size(237, 30);
@@ -137,9 +146,11 @@
             // 
             linkLabel2.ActiveLinkColor = Color.Gainsboro;
             linkLabel2.AutoSize = true;
+            linkLabel2.BackColor = Color.Transparent;
             linkLabel2.Cursor = Cursors.Hand;
             linkLabel2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabel2.LinkColor = Color.White;
+            linkLabel2.ForeColor = Color.White;
+            linkLabel2.LinkColor = Color.FromArgb(40, 164, 153);
             linkLabel2.Location = new Point(463, 410);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(112, 30);
@@ -173,7 +184,7 @@
             AcceptButton = sfButton1;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(40, 164, 153);
+            BackColor = Color.White;
             ClientSize = new Size(800, 500);
             Controls.Add(autoLabel5);
             Controls.Add(autoLabel4);

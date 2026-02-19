@@ -20,9 +20,9 @@ namespace AE.Application
             PrepareControlsForAnimation();
             UIHelper.RoundControl(this, 100);
             UIHelper.RoundControl(btnExit, 50);
-            UIHelper.RoundControl(sfButton1, 20);
-            UIHelper.RoundControl(txtUsername, 10);
-            UIHelper.RoundControl(txtPassword, 10);
+            UIHelper.RoundControl(sfButton1, 30);
+            UIHelper.RoundControl(txtUsername, 30);
+            UIHelper.RoundControl(txtPassword, 30);
             autoLabel4.Text = "";
             autoLabel5.Text = "";
         }
@@ -94,8 +94,15 @@ namespace AE.Application
             }
             else
             {
-                autoLabel4.Text = "Invalid password";
-                autoLabel5.Text = "Invalid username";
+                if (string.IsNullOrEmpty(username)) 
+                    autoLabel5.Text = "Username cannot be empty"; 
+                else 
+                    autoLabel5.Text = "Invalid username";
+
+                if (string.IsNullOrEmpty(password)) 
+                    autoLabel4.Text = "Password cannot be empty";
+                else 
+                    autoLabel4.Text = "Invalid password";
             }
         }
 
