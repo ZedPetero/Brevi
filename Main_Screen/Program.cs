@@ -21,15 +21,19 @@ using System;
         // Register Syncfusion license before creating any Syncfusion controls (Login uses Syncfusion).
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdENjW35acHJRRWNbVkR0VkleYQ==");
 
-        var services = new ServiceCollection();
+        using (var dbContext = new AppDbContext())
+        {
+            dbContext.Database.Migrate();
+        }
+        //var services = new ServiceCollection();
 
-        services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlite("Data Source=AttendEase.db"));
+        //services.AddDbContext<AppDbContext>(options =>
+        //    options.UseSqlite("Data Source=AttendEase.db"));
 
-        services.AddIdentityCore<Teacher>()
-            .AddEntityFrameworkStores<AppDbContext>();
+        //services.AddIdentityCore<Teacher>()
+        //    .AddEntityFrameworkStores<AppDbContext>();
 
-        var serviceProvider = services.BuildServiceProvider();
+        //var serviceProvider = services.BuildServiceProvider();
 
         using (var splash = new Splash_Screen_Form())
         {

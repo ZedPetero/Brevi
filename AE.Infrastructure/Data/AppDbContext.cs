@@ -20,10 +20,8 @@ namespace AE.Infrastructure.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string dbPath = System.IO.Path.Combine(
-                    AppContext.BaseDirectory,
-                    "AttendEase.db");
-
+                var baseDir = AppContext.BaseDirectory;
+                var dbPath = Path.Combine(baseDir, "AttendEase.db");
                 optionsBuilder.UseSqlite($"Data Source={dbPath}");
             }
         }

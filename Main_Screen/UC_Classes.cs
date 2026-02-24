@@ -18,19 +18,13 @@ namespace AE.Application
         {
             InitializeComponent();
         }
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            // Now we load the data, because the screen size is finally correct.
-            LoadSections();
-        }
         public void LoadSections()
         {
             try
             {
                 using (var db = new AppDbContext())
                 {
+                    MessageBox.Show($"I am looking for the database at: {db.Database.GetDbConnection().DataSource}");
                     // 1. GET DATA: Filter strictly by the Logged In Teacher
                     var mySections = db.Sections
                         .Where(s => s.TeacherId == UserSession.CurrentTeacherId)
