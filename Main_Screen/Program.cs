@@ -14,6 +14,8 @@ internal static class Program
     [STAThread]
     static void Main()
     {
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdENjW35acHJRRWNbVkR0VkleYQ==");
 
         var services = new ServiceCollection();
@@ -28,7 +30,7 @@ internal static class Program
 
         using (var scope = serviceProvider.CreateScope())
         {
-            var dbContext = Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<AppDbContext>(scope.ServiceProvider);
+            var dbContext = scope.ServiceProvider.GetService(typeof(AppDbContext)) as AppDbContext;
             dbContext.Database.Migrate();
         }
 
@@ -39,8 +41,8 @@ internal static class Program
 
         while (true)
         {
-            using (var login = new Login_Screen_Form(
-                Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<UserManager<Teacher>>(serviceProvider)))
+            var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
+            using (var login = new Login_Screen_Form(userManager))
             {
                 if (login.ShowDialog() != DialogResult.OK)
                     return;
