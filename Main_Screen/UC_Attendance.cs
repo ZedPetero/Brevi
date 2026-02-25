@@ -205,16 +205,20 @@ namespace AE.Application
                 {
                     UC_StudentRow studentRow = new UC_StudentRow();
 
+                    studentRow.StudentId = student.Id;
+                    studentRow.SectionId = this.CurrentSectionId;
+                    studentRow.AttendanceDate = _selectedDate;
+
                     studentRow.StudentName = $"{student.FirstName} {student.LastName}";
                     studentRow.StudentNumber = count.ToString();
 
                     if (attendanceForDay.TryGetValue(student.Id, out var status))
                     {
-                        studentRow.StudentStatus = status.ToString();
+                        studentRow.SetSelectedStatus(status);
                     }
                     else
                     {
-                        studentRow.StudentStatus = "No Record";
+                        studentRow.SetSelectedStatus(null);
                     }
 
                     layoutStudents.Controls.Add(studentRow);
