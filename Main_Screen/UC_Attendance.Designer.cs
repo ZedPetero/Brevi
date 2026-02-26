@@ -34,7 +34,7 @@
             btnNextDate = new Syncfusion.WinForms.Controls.SfButton();
             btnPreviousDate = new Syncfusion.WinForms.Controls.SfButton();
             lblSubjectName = new Label();
-            btnExport = new Syncfusion.WinForms.Controls.SfButton();
+            btnExportSummary = new Syncfusion.WinForms.Controls.SfButton();
             btnAddStudent = new Syncfusion.WinForms.Controls.SfButton();
             lblClassRoster = new Label();
             layoutStudents = new FlowLayoutPanel();
@@ -112,14 +112,15 @@
             lblSubjectName.TabIndex = 4;
             lblSubjectName.Text = "Mathematics";
             // 
-            // btnExport
+            // btnExportSummary
             // 
-            btnExport.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            btnExport.Location = new Point(727, 107);
-            btnExport.Name = "btnExport";
-            btnExport.Size = new Size(121, 28);
-            btnExport.TabIndex = 5;
-            btnExport.Text = "Export Summary";
+            btnExportSummary.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnExportSummary.Location = new Point(727, 107);
+            btnExportSummary.Name = "btnExportSummary";
+            btnExportSummary.Size = new Size(121, 28);
+            btnExportSummary.TabIndex = 5;
+            btnExportSummary.Text = "Export Summary";
+            btnExportSummary.Click += btnExportSummary_Click;
             // 
             // btnAddStudent
             // 
@@ -247,7 +248,7 @@
             Controls.Add(layoutStudents);
             Controls.Add(lblClassRoster);
             Controls.Add(btnAddStudent);
-            Controls.Add(btnExport);
+            Controls.Add(btnExportSummary);
             Controls.Add(lblSubjectName);
             Controls.Add(panelCalendar);
             Controls.Add(lblSectionName);
@@ -264,7 +265,7 @@
         private Label lblSectionName;
         private Panel panelCalendar;
         private Label lblSubjectName;
-        private Syncfusion.WinForms.Controls.SfButton btnExport;
+        private Syncfusion.WinForms.Controls.SfButton btnExportSummary;
         private Syncfusion.WinForms.Controls.SfButton btnAddStudent;
         private Label lblClassRoster;
         private FlowLayoutPanel layoutStudents;

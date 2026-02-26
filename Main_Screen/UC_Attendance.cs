@@ -393,16 +393,28 @@ namespace AE.Application
                 Debug.WriteLine("[UC_Attendance] btnReset error: " + ex);
             }
 
-            // refresh UI
             LoadStudentsForDate();
             SetSummaryCards();
         }
 
-        // Public refresh entry point you can call from other code after updating attendance
         public void RefreshSummaryAndRoster()
         {
             LoadStudentsForDate();
             SetSummaryCards();
+        }
+
+        private void btnExportSummary_Click(object sender, EventArgs e)
+        {
+            if (CurrentSectionId == 0)
+            {
+                MessageBox.Show("No section selected to export.", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (Form_AttendanceSummary summaryForm = new Form_AttendanceSummary(CurrentSectionId))
+            {
+                summaryForm.ShowDialog();
+            }
         }
     }
 }
