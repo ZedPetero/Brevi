@@ -14,5 +14,10 @@ namespace AE.Application
         {
             InitializeComponent();
         }
+
+        private void UC_Teacher_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
