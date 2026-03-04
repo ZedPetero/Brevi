@@ -1,14 +1,16 @@
 
+using Krypton.Toolkit;
 using System.Drawing.Drawing2D;
 namespace AE.Application
 {
-    public partial class Main_Screen_Form : Form
+    public partial class Main_Screen_Form : KryptonForm
     {
         public Main_Screen_Form()
         {
             InitializeComponent();
             UC_Home myHome = new UC_Home();
             loadForm(myHome);
+            btnHome.Checked = true;
         }
         bool sidebarExpand = false;
         private void btnHome_Click(object sender, EventArgs e)
@@ -19,7 +21,7 @@ namespace AE.Application
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
         {
-            int minWidth = 50;
+            int minWidth = 55;
             int maxWidth = 200;
 
             if (sidebarExpand == false)
@@ -44,7 +46,7 @@ namespace AE.Application
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void btnMenu_Click(object sender, EventArgs e)
         {
             sidebarTimer.Start();
         }
