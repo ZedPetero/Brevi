@@ -110,5 +110,10 @@ namespace AE.Application
         {
 
         }
+
+        private void UC_Records_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

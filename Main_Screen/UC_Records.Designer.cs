@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             archivedclasspanel = new Panel();
-            currentclasspanel = new Panel();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            currentclasseslistbox = new ListBox();
-            archivedclasseslistbox = new ListBox();
-            archivebutton = new Button();
             restorebutton = new Button();
+            archivedclasseslistbox = new ListBox();
+            label3 = new Label();
+            currentclasspanel = new Panel();
+            archivebutton = new Button();
+            currentclasseslistbox = new ListBox();
+            label2 = new Label();
+            label1 = new Label();
             archivedclasspanel.SuspendLayout();
             currentclasspanel.SuspendLayout();
             SuspendLayout();
@@ -52,6 +52,34 @@
             archivedclasspanel.Size = new Size(587, 146);
             archivedclasspanel.TabIndex = 3;
             // 
+            // restorebutton
+            // 
+            restorebutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            restorebutton.Location = new Point(484, 7);
+            restorebutton.Name = "restorebutton";
+            restorebutton.Size = new Size(84, 38);
+            restorebutton.TabIndex = 3;
+            restorebutton.Text = "Restore";
+            restorebutton.UseVisualStyleBackColor = true;
+            // 
+            // archivedclasseslistbox
+            // 
+            archivedclasseslistbox.FormattingEnabled = true;
+            archivedclasseslistbox.Location = new Point(13, 51);
+            archivedclasseslistbox.Name = "archivedclasseslistbox";
+            archivedclasseslistbox.Size = new Size(555, 64);
+            archivedclasseslistbox.TabIndex = 2;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(12, 18);
+            label3.Name = "label3";
+            label3.Size = new Size(170, 30);
+            label3.TabIndex = 1;
+            label3.Text = "Archived Classes";
+            // 
             // currentclasspanel
             // 
             currentclasspanel.Controls.Add(archivebutton);
@@ -62,6 +90,34 @@
             currentclasspanel.Size = new Size(587, 129);
             currentclasspanel.TabIndex = 4;
             currentclasspanel.Paint += currentclasspanel_Paint;
+            // 
+            // archivebutton
+            // 
+            archivebutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            archivebutton.Location = new Point(484, 6);
+            archivebutton.Name = "archivebutton";
+            archivebutton.Size = new Size(84, 38);
+            archivebutton.TabIndex = 2;
+            archivebutton.Text = "Archive";
+            archivebutton.UseVisualStyleBackColor = true;
+            // 
+            // currentclasseslistbox
+            // 
+            currentclasseslistbox.FormattingEnabled = true;
+            currentclasseslistbox.Location = new Point(13, 48);
+            currentclasseslistbox.Name = "currentclasseslistbox";
+            currentclasseslistbox.Size = new Size(555, 64);
+            currentclasseslistbox.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(158, 30);
+            label2.TabIndex = 0;
+            label2.Text = "Current Classes";
             // 
             // label1
             // 
@@ -74,62 +130,6 @@
             label1.TabIndex = 5;
             label1.Text = "Records";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 14);
-            label2.Name = "label2";
-            label2.Size = new Size(158, 30);
-            label2.TabIndex = 0;
-            label2.Text = "Current Classes";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(12, 18);
-            label3.Name = "label3";
-            label3.Size = new Size(170, 30);
-            label3.TabIndex = 1;
-            label3.Text = "Archived Classes";
-            // 
-            // currentclasseslistbox
-            // 
-            currentclasseslistbox.FormattingEnabled = true;
-            currentclasseslistbox.Location = new Point(13, 48);
-            currentclasseslistbox.Name = "currentclasseslistbox";
-            currentclasseslistbox.Size = new Size(555, 64);
-            currentclasseslistbox.TabIndex = 1;
-            // 
-            // archivedclasseslistbox
-            // 
-            archivedclasseslistbox.FormattingEnabled = true;
-            archivedclasseslistbox.Location = new Point(13, 51);
-            archivedclasseslistbox.Name = "archivedclasseslistbox";
-            archivedclasseslistbox.Size = new Size(555, 64);
-            archivedclasseslistbox.TabIndex = 2;
-            // 
-            // archivebutton
-            // 
-            archivebutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            archivebutton.Location = new Point(484, 6);
-            archivebutton.Name = "archivebutton";
-            archivebutton.Size = new Size(84, 38);
-            archivebutton.TabIndex = 2;
-            archivebutton.Text = "Archive";
-            archivebutton.UseVisualStyleBackColor = true;
-            // 
-            // restorebutton
-            // 
-            restorebutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            restorebutton.Location = new Point(484, 7);
-            restorebutton.Name = "restorebutton";
-            restorebutton.Size = new Size(84, 38);
-            restorebutton.TabIndex = 3;
-            restorebutton.Text = "Restore";
-            restorebutton.UseVisualStyleBackColor = true;
-            // 
             // UC_Records
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -140,6 +140,7 @@
             Controls.Add(archivedclasspanel);
             Name = "UC_Records";
             Size = new Size(1150, 640);
+            Load += UC_Records_Load;
             archivedclasspanel.ResumeLayout(false);
             archivedclasspanel.PerformLayout();
             currentclasspanel.ResumeLayout(false);
