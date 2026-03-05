@@ -29,30 +29,18 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-<<<<<<< HEAD
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             flowLayoutPanelCards = new FlowLayoutPanel();
             label2 = new Label();
             lblTeacher = new Label();
-=======
-            btnAddClass = new Syncfusion.WinForms.Controls.SfButton();
-            label2 = new Label();
-            label1 = new Label();
-            sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
->>>>>>> features2/balansag/settings
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-<<<<<<< HEAD
             panel1.BackColor = Color.FromArgb(249, 250, 251);
             panel1.Controls.Add(kryptonButton1);
             panel1.Controls.Add(flowLayoutPanelCards);
-=======
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(btnAddClass);
->>>>>>> features2/balansag/settings
             panel1.Controls.Add(label2);
             panel1.Controls.Add(lblTeacher);
             panel1.Dock = DockStyle.Left;
@@ -94,18 +82,6 @@
             // 
             // btnAddClass
             // 
-            btnAddClass.BackColor = Color.FromArgb(39, 165, 153);
-            btnAddClass.Font = new Font("Segoe UI Semibold", 9F);
-            btnAddClass.ForeColor = Color.White;
-            btnAddClass.Location = new Point(457, 103);
-            btnAddClass.Name = "btnAddClass";
-            btnAddClass.Size = new Size(96, 28);
-            btnAddClass.Style.BackColor = Color.FromArgb(39, 165, 153);
-            btnAddClass.Style.ForeColor = Color.White;
-            btnAddClass.TabIndex = 3;
-            btnAddClass.Text = "Add Class+";
-            btnAddClass.UseVisualStyleBackColor = false;
-            btnAddClass.Click += btnAddClass_Click;
             // 
             // label2
             // 
@@ -120,7 +96,6 @@
             // 
             // lblTeacher
             // 
-<<<<<<< HEAD
             lblTeacher.AutoSize = true;
             lblTeacher.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             lblTeacher.Location = new Point(36, 38);
@@ -128,51 +103,6 @@
             lblTeacher.Size = new Size(242, 45);
             lblTeacher.TabIndex = 0;
             lblTeacher.Text = "Hello, Teacher!";
-=======
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(29, 37, 48);
-            label1.Location = new Point(36, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(242, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Hello, Teacher!";
-            // 
-            // sfDataGrid1
-            // 
-            sfDataGrid1.AccessibleName = "Table";
-            sfDataGrid1.AutoGenerateColumns = false;
-            sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn1.HeaderText = "Name";
-            gridTextColumn1.MappingName = "Section";
-            gridTextColumn2.HeaderText = "Subject";
-            gridTextColumn2.MappingName = "Subject";
-            gridTextColumn3.HeaderText = "Time";
-            gridTextColumn3.MappingName = "Time";
-            gridButtonColumn1.AllowDefaultButtonText = true;
-            gridButtonColumn1.ButtonSize = new Size(0, 0);
-            gridButtonColumn1.DefaultButtonText = "Check";
-            gridButtonColumn1.HeaderText = "Attendance";
-            gridButtonColumn1.ImageSize = new Size(0, 0);
-            gridButtonColumn1.MappingName = "teacherId";
-            sfDataGrid1.Columns.Add(gridTextColumn1);
-            sfDataGrid1.Columns.Add(gridTextColumn2);
-            sfDataGrid1.Columns.Add(gridTextColumn3);
-            sfDataGrid1.Columns.Add(gridButtonColumn1);
-            sfDataGrid1.ForeColor = Color.FromArgb(29, 37, 48);
-            sfDataGrid1.Location = new Point(36, 155);
-            sfDataGrid1.Name = "sfDataGrid1";
-            sfDataGrid1.RowHeight = 50;
-            sfDataGrid1.SelectionMode = Syncfusion.WinForms.DataGrid.Enums.GridSelectionMode.None;
-            sfDataGrid1.Size = new Size(517, 453);
-            sfDataGrid1.Style.BorderColor = Color.FromArgb(100, 100, 100);
-            sfDataGrid1.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
-            sfDataGrid1.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
-            sfDataGrid1.TabIndex = 2;
-            sfDataGrid1.Text = "sfDataGrid1";
-            sfDataGrid1.CellButtonClick += sfDataGrid1_CellButtonClick;
-            sfDataGrid1.Click += sfDataGrid1_Click;
->>>>>>> features2/balansag/settings
             // 
             // UC_Classes
             // 
