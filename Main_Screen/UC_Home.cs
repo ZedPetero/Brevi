@@ -13,7 +13,6 @@ namespace AE.Application
         public UC_Home()
         {
             InitializeComponent();
-            UIHelper.RoundControl(this.btnGetStarted, 20);
             UIHelper.RoundControl(this.kryptonPanel1, 20);
             UIHelper.RoundControl(this.kryptonPanel2, 20);
             UIHelper.RoundControl(this.kryptonPanel3, 20);

@@ -31,12 +31,12 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
             panel1 = new Panel();
-            btnGetStarted = new Syncfusion.WinForms.Controls.SfButton();
-            imageList1 = new ImageList(components);
+            btnGetStarted = new Krypton.Toolkit.KryptonButton();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            imageList1 = new ImageList(components);
             panel2 = new Panel();
             kryptonPanel4 = new Krypton.Toolkit.KryptonPanel();
             kryptonLabel9 = new Krypton.Toolkit.KryptonLabel();
@@ -100,6 +100,10 @@
             kryptonBorderEdge19 = new Krypton.Toolkit.KryptonBorderEdge();
             label5 = new Label();
             BorderPalette = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
+            label6 = new Label();
+            label7 = new Label();
+            btnViewClasses = new Krypton.Toolkit.KryptonButton();
+            kryptonLabel17 = new Krypton.Toolkit.KryptonLabel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).BeginInit();
@@ -137,23 +141,74 @@
             // 
             // btnGetStarted
             // 
-            btnGetStarted.BackColor = Color.FromArgb(40, 164, 153);
-            btnGetStarted.FlatStyle = FlatStyle.Flat;
-            btnGetStarted.Font = new Font("Segoe UI Semibold", 18F);
-            btnGetStarted.ForeColor = Color.White;
-            btnGetStarted.ImageKey = "right-arrow (2).png";
-            btnGetStarted.ImageList = imageList1;
-            btnGetStarted.Location = new Point(489, 324);
+            btnGetStarted.Cursor = Cursors.Hand;
+            btnGetStarted.Location = new Point(489, 335);
             btnGetStarted.Name = "btnGetStarted";
-            btnGetStarted.Padding = new Padding(2, 2, 4, 2);
             btnGetStarted.Size = new Size(173, 48);
-            btnGetStarted.Style.BackColor = Color.FromArgb(40, 164, 153);
-            btnGetStarted.Style.ForeColor = Color.White;
-            btnGetStarted.TabIndex = 5;
-            btnGetStarted.Text = "Get Started";
-            btnGetStarted.TextImageRelation = TextImageRelation.TextBeforeImage;
-            btnGetStarted.UseVisualStyleBackColor = false;
+            btnGetStarted.StateCommon.Back.Color1 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.StateCommon.Back.Color2 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.StateCommon.Border.Color1 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnGetStarted.StateCommon.Border.Rounding = 8F;
+            btnGetStarted.StateCommon.Content.LongText.Color1 = Color.White;
+            btnGetStarted.StateCommon.Content.LongText.Font = new Font("Material Symbols Outlined", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGetStarted.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            btnGetStarted.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            btnGetStarted.StateCommon.Content.ShortText.Color1 = Color.White;
+            btnGetStarted.StateCommon.Content.ShortText.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGetStarted.StateTracking.Back.Color1 = Color.FromArgb(59, 174, 162);
+            btnGetStarted.StateTracking.Back.Color2 = Color.FromArgb(59, 174, 162);
+            btnGetStarted.StateTracking.Border.Color1 = Color.FromArgb(59, 174, 162);
+            btnGetStarted.StateTracking.Border.Color2 = Color.FromArgb(59, 174, 162);
+            btnGetStarted.TabIndex = 24;
+            btnGetStarted.Values.DropDownArrowColor = Color.Empty;
+            btnGetStarted.Values.ExtraText = "";
+            btnGetStarted.Values.Text = "Get Started";
             btnGetStarted.Click += btnGetStarted_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Inter", 18F);
+            label4.ForeColor = Color.FromArgb(107, 124, 143);
+            label4.Location = new Point(179, 262);
+            label4.Name = "label4";
+            label4.Size = new Size(789, 35);
+            label4.TabIndex = 3;
+            label4.Text = "present, late, and absent students with automatic score calculations";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Inter", 18F);
+            label3.ForeColor = Color.FromArgb(107, 124, 143);
+            label3.Location = new Point(144, 226);
+            label3.Name = "label3";
+            label3.Size = new Size(862, 35);
+            label3.TabIndex = 2;
+            label3.Text = "A powerful yet simple attendance management system for teachers. Track";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Inter", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(40, 164, 153);
+            label2.Location = new Point(231, 121);
+            label2.Name = "label2";
+            label2.Size = new Size(689, 92);
+            label2.TabIndex = 1;
+            label2.Text = "Attendance Tracking";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Inter", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(28, 35, 46);
+            label1.Location = new Point(340, 36);
+            label1.Name = "label1";
+            label1.Size = new Size(454, 92);
+            label1.TabIndex = 0;
+            label1.Text = "Simplify Your";
             // 
             // imageList1
             // 
@@ -161,50 +216,6 @@
             imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
             imageList1.TransparentColor = Color.Transparent;
             imageList1.Images.SetKeyName(0, "right-arrow (2).png");
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 18F);
-            label4.ForeColor = Color.FromArgb(107, 124, 143);
-            label4.Location = new Point(209, 262);
-            label4.Name = "label4";
-            label4.Size = new Size(732, 32);
-            label4.TabIndex = 3;
-            label4.Text = "present, late, and absent students with automatic score calculations";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F);
-            label3.ForeColor = Color.FromArgb(107, 124, 143);
-            label3.Location = new Point(174, 226);
-            label3.Name = "label3";
-            label3.Size = new Size(802, 32);
-            label3.TabIndex = 2;
-            label3.Text = "A powerful yet simple attendance management system for teachers. Track";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(40, 164, 153);
-            label2.Location = new Point(246, 121);
-            label2.Name = "label2";
-            label2.Size = new Size(658, 86);
-            label2.TabIndex = 1;
-            label2.Text = "Attendance Tracking";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(28, 35, 46);
-            label1.Location = new Point(355, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(440, 86);
-            label1.TabIndex = 0;
-            label1.Text = "Simplify Your";
             // 
             // panel2
             // 
@@ -975,11 +986,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(28, 35, 46);
-            label5.Location = new Point(450, 28);
+            label5.Location = new Point(447, 28);
             label5.Name = "label5";
-            label5.Size = new Size(250, 32);
+            label5.Size = new Size(257, 35);
             label5.TabIndex = 6;
             label5.Text = "Everything you need";
             // 
@@ -987,15 +998,84 @@
             // 
             BorderPalette.UseThemeFormChromeBorderWidth = Krypton.Toolkit.InheritBool.True;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.FromArgb(28, 35, 46);
+            label6.Location = new Point(345, 859);
+            label6.Name = "label6";
+            label6.Size = new Size(461, 35);
+            label6.TabIndex = 21;
+            label6.Text = "Ready to streamline your attendance?";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Inter SemiBold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.FromArgb(108, 124, 137);
+            label7.Location = new Point(300, 905);
+            label7.Name = "label7";
+            label7.Size = new Size(550, 30);
+            label7.TabIndex = 22;
+            label7.Text = "Start by creating your first class and adding students.";
+            // 
+            // btnViewClasses
+            // 
+            btnViewClasses.Cursor = Cursors.Hand;
+            btnViewClasses.Location = new Point(499, 955);
+            btnViewClasses.Name = "btnViewClasses";
+            btnViewClasses.Size = new Size(152, 40);
+            btnViewClasses.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnViewClasses.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnViewClasses.StateCommon.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnViewClasses.StateCommon.Border.Color2 = Color.FromArgb(224, 230, 235);
+            btnViewClasses.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnViewClasses.StateCommon.Border.Rounding = 8F;
+            btnViewClasses.StateCommon.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            btnViewClasses.StateCommon.Content.LongText.Font = new Font("Material Symbols Outlined SemiB", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnViewClasses.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnViewClasses.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            btnViewClasses.StateCommon.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            btnViewClasses.StateCommon.Content.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnViewClasses.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnViewClasses.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            btnViewClasses.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnViewClasses.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnViewClasses.StateTracking.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnViewClasses.StateTracking.Border.Color2 = Color.FromArgb(224, 230, 235);
+            btnViewClasses.StateTracking.Content.LongText.Color1 = Color.FromArgb(63, 174, 163);
+            btnViewClasses.StateTracking.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnViewClasses.TabIndex = 25;
+            btnViewClasses.Values.DropDownArrowColor = Color.Empty;
+            btnViewClasses.Values.ExtraText = "";
+            btnViewClasses.Values.Text = "View Classes";
+            btnViewClasses.Click += btnGetStarted_Click;
+            // 
+            // kryptonLabel17
+            // 
+            kryptonLabel17.Location = new Point(459, 1026);
+            kryptonLabel17.Name = "kryptonLabel17";
+            kryptonLabel17.Size = new Size(228, 26);
+            kryptonLabel17.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
+            kryptonLabel17.StateCommon.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonLabel17.TabIndex = 18;
+            kryptonLabel17.Values.Text = "";
+            // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
+            BackColor = Color.FromArgb(249, 250, 251);
+            Controls.Add(kryptonLabel17);
+            Controls.Add(btnViewClasses);
+            Controls.Add(label7);
+            Controls.Add(label6);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "UC_Home";
-            Size = new Size(1150, 1000);
+            Size = new Size(1150, 1100);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -1021,6 +1101,7 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel5).EndInit();
             kryptonPanel5.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1032,7 +1113,6 @@
         private Label label3;
         private Label label4;
         private ImageList imageList1;
-        private Syncfusion.WinForms.Controls.SfButton btnGetStarted;
         private Label label5;
         private Krypton.Toolkit.KryptonCustomPaletteBase BorderPalette;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
@@ -1095,5 +1175,10 @@
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge25;
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge26;
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge27;
+        private Label label6;
+        private Label label7;
+        private Krypton.Toolkit.KryptonButton btnGetStarted;
+        private Krypton.Toolkit.KryptonButton btnViewClasses;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel17;
     }
 }
