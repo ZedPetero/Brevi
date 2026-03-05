@@ -115,5 +115,10 @@ namespace AE.Application
         {
 
         }
+
+        private void PasswordChangetxtbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
