@@ -18,18 +18,47 @@ namespace AE.Application
             InitializeComponent();
         }
 
-        private /*async*/ void UCTeacherProfile_Load(object sender, EventArgs e)
+        private async void UCTeacherProfile_Load(object sender, EventArgs e)
         {
-            //using (var context = new AppDbContext())
-            //{
-            //    var teacher = await context.Teachers.FirstOrDefaultAsync(t => t.Email == );
-            //    if (teacher != null)
-            //    {
-            //        lblTeacherName.Text = $"{teacher.FirstName} {teacher.LastName}";
-            //        lblEmail.Text = teacher.Email;
-            //        lblPhoneNum.Text = teacher.PhoneNumber;
-            //    }
-            //}
+            using (var context = new AppDbContext())
+            {
+                var teacher = await context.Teachers.FindAsync(UserSession.CurrentTeacherId);
+                if (teacher != null)
+                {
+                    lblTeacherTitle.Text = $"{teacher.FirstName} {teacher.LastName}";
+                    lblTeacherName.Text = $"{teacher.FirstName} {teacher.LastName}";
+                    lblEmail.Text = teacher.Email;
+                    lblPhoneNum.Text = teacher.PhoneNumber;
+
+                    if (teacher.Subject != null) 
+                    {
+                        lblSubject.Text = teacher.Subject.ToString();
+                        lblSubjectTitle.Text = teacher.Subject.ToString();
+                    }
+                    else
+                    {
+                        lblSubject.Text = "N/A";
+                        lblSubjectTitle.Text = "N/A";
+                    }
+
+                    if (teacher.Birthday.HasValue)
+                    {
+                        lblBirthdate.Text = teacher.Birthday.Value.ToString("MMMM dd, yyyy");
+                    }
+                    else
+                    {
+                        lblBirthdate.Text = "N/A";
+                    }
+                    if (!string.IsNullOrEmpty(teacher.Bio))
+                    {
+                        lblWrapBio.Text = teacher.Bio;
+                    }
+                    else
+                    {
+                        lblWrapBio.Text = "N/A";
+                    }
+                }
+            }
         }
     }
 }
