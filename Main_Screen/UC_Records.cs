@@ -110,5 +110,15 @@ namespace AE.Application
         {
 
         }
+
+        private void UC_Records_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PasswordChangetxtbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
