@@ -13,6 +13,7 @@ namespace AE.Application
         public UC_Teacher()
         {
             InitializeComponent();
+            UIHelper.RoundControl(kryptonPanel1, 20);
         }
 
         private void UC_Teacher_Load(object sender, EventArgs e)

@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Teacher));
             imageList1 = new ImageList(components);
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
-            lblTeacherName = new Krypton.Toolkit.KryptonLabel();
+            lblContactNum = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
             lblEmail = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
+            lblTeacherName = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
             SuspendLayout();
@@ -50,20 +49,12 @@
             // imageList1
             // 
             imageList1.ColorDepth = ColorDepth.Depth32Bit;
-            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.ImageSize = new Size(16, 16);
             imageList1.TransparentColor = Color.Transparent;
-            imageList1.Images.SetKeyName(0, "right-arrow.png");
-            imageList1.Images.SetKeyName(1, "calendar.png");
-            imageList1.Images.SetKeyName(2, "more.png");
-            imageList1.Images.SetKeyName(3, "home.png");
-            imageList1.Images.SetKeyName(4, "log-out.png");
-            imageList1.Images.SetKeyName(5, "teacher.png");
-            imageList1.Images.SetKeyName(6, "edit.png");
-            imageList1.Images.SetKeyName(7, "people.png");
             // 
             // kryptonButton1
             // 
-            kryptonButton1.Location = new Point(750, 67);
+            kryptonButton1.Location = new Point(750, 62);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.Size = new Size(100, 50);
             kryptonButton1.StateCommon.Back.Color1 = Color.FromArgb(40, 164, 153);
@@ -96,7 +87,7 @@
             // 
             // kryptonPanel1
             // 
-            kryptonPanel1.Controls.Add(kryptonLabel5);
+            kryptonPanel1.Controls.Add(lblContactNum);
             kryptonPanel1.Controls.Add(kryptonLabel7);
             kryptonPanel1.Controls.Add(lblEmail);
             kryptonPanel1.Controls.Add(kryptonLabel6);
@@ -105,76 +96,34 @@
             kryptonPanel1.Controls.Add(kryptonLabel3);
             kryptonPanel1.Controls.Add(kryptonLabel2);
             kryptonPanel1.Controls.Add(kryptonButton2);
-            kryptonPanel1.Location = new Point(300, 123);
+            kryptonPanel1.Location = new Point(300, 129);
             kryptonPanel1.Name = "kryptonPanel1";
             kryptonPanel1.Size = new Size(550, 450);
             kryptonPanel1.TabIndex = 4;
             // 
-            // kryptonButton2
+            // lblContactNum
             // 
-            kryptonButton2.Location = new Point(22, 26);
-            kryptonButton2.Margin = new Padding(0);
-            kryptonButton2.Name = "kryptonButton2";
-            kryptonButton2.Size = new Size(95, 95);
-            kryptonButton2.StateCommon.Border.Rounding = 50F;
-            kryptonButton2.StateCommon.Content.Padding = new Padding(-1, 6, -1, -1);
-            kryptonButton2.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 32F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonButton2.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonButton2.TabIndex = 0;
-            kryptonButton2.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton2.Values.Text = "";
+            lblContactNum.Location = new Point(62, 358);
+            lblContactNum.Name = "lblContactNum";
+            lblContactNum.Size = new Size(140, 25);
+            lblContactNum.StateCommon.ShortText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblContactNum.TabIndex = 14;
+            lblContactNum.Values.Text = "lblContactNum";
             // 
-            // kryptonLabel1
+            // kryptonLabel7
             // 
-            kryptonLabel1.Location = new Point(300, 67);
-            kryptonLabel1.Name = "kryptonLabel1";
-            kryptonLabel1.Size = new Size(240, 50);
-            kryptonLabel1.StateCommon.ShortText.Font = new Font("Inter", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            kryptonLabel1.TabIndex = 5;
-            kryptonLabel1.Values.Text = "Teacher Profile";
-            // 
-            // kryptonLabel2
-            // 
-            kryptonLabel2.Location = new Point(130, 26);
-            kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(226, 35);
-            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            kryptonLabel2.TabIndex = 6;
-            kryptonLabel2.Values.Text = "Name Of Teacher";
-            // 
-            // kryptonLabel3
-            // 
-            kryptonLabel3.Location = new Point(130, 65);
-            kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(226, 27);
-            kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
-            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            kryptonLabel3.TabIndex = 7;
-            kryptonLabel3.Values.Text = "Subject";
-            // 
-            // kryptonLabel4
-            // 
-            kryptonLabel4.Location = new Point(22, 134);
-            kryptonLabel4.Name = "kryptonLabel4";
-            kryptonLabel4.Size = new Size(128, 38);
-            kryptonLabel4.StateCommon.LongText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel4.StateCommon.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel4.StateCommon.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel4.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel4.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel4.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel4.TabIndex = 8;
-            kryptonLabel4.Values.ExtraText = "Full Name";
-            kryptonLabel4.Values.Text = "";
-            // 
-            // lblTeacherName
-            // 
-            lblTeacherName.Location = new Point(62, 178);
-            lblTeacherName.Name = "lblTeacherName";
-            lblTeacherName.Size = new Size(140, 25);
-            lblTeacherName.StateCommon.ShortText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTeacherName.TabIndex = 10;
-            lblTeacherName.Values.Text = "lblTeacherName";
+            kryptonLabel7.Location = new Point(22, 314);
+            kryptonLabel7.Name = "kryptonLabel7";
+            kryptonLabel7.Size = new Size(178, 38);
+            kryptonLabel7.StateCommon.LongText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel7.StateCommon.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel7.StateCommon.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel7.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel7.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel7.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel7.TabIndex = 13;
+            kryptonLabel7.Values.ExtraText = "Contact Number";
+            kryptonLabel7.Values.Text = "";
             // 
             // lblEmail
             // 
@@ -200,29 +149,71 @@
             kryptonLabel6.Values.ExtraText = "Email";
             kryptonLabel6.Values.Text = "";
             // 
-            // kryptonLabel5
+            // lblTeacherName
             // 
-            kryptonLabel5.Location = new Point(62, 358);
-            kryptonLabel5.Name = "kryptonLabel5";
-            kryptonLabel5.Size = new Size(140, 25);
-            kryptonLabel5.StateCommon.ShortText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel5.TabIndex = 14;
-            kryptonLabel5.Values.Text = "kryptonLabel5";
+            lblTeacherName.Location = new Point(62, 178);
+            lblTeacherName.Name = "lblTeacherName";
+            lblTeacherName.Size = new Size(140, 25);
+            lblTeacherName.StateCommon.ShortText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTeacherName.TabIndex = 10;
+            lblTeacherName.Values.Text = "lblTeacherName";
             // 
-            // kryptonLabel7
+            // kryptonLabel4
             // 
-            kryptonLabel7.Location = new Point(22, 314);
-            kryptonLabel7.Name = "kryptonLabel7";
-            kryptonLabel7.Size = new Size(91, 38);
-            kryptonLabel7.StateCommon.LongText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel7.StateCommon.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel7.StateCommon.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel7.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel7.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel7.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonLabel7.TabIndex = 13;
-            kryptonLabel7.Values.ExtraText = "Email";
-            kryptonLabel7.Values.Text = "";
+            kryptonLabel4.Location = new Point(22, 134);
+            kryptonLabel4.Name = "kryptonLabel4";
+            kryptonLabel4.Size = new Size(128, 38);
+            kryptonLabel4.StateCommon.LongText.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel4.StateCommon.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel4.StateCommon.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel4.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel4.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel4.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel4.TabIndex = 8;
+            kryptonLabel4.Values.ExtraText = "Full Name";
+            kryptonLabel4.Values.Text = "";
+            // 
+            // kryptonLabel3
+            // 
+            kryptonLabel3.Location = new Point(130, 65);
+            kryptonLabel3.Name = "kryptonLabel3";
+            kryptonLabel3.Size = new Size(226, 27);
+            kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
+            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonLabel3.TabIndex = 7;
+            kryptonLabel3.Values.Text = "Subject";
+            // 
+            // kryptonLabel2
+            // 
+            kryptonLabel2.Location = new Point(130, 26);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(226, 35);
+            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonLabel2.TabIndex = 6;
+            kryptonLabel2.Values.Text = "Name Of Teacher";
+            // 
+            // kryptonButton2
+            // 
+            kryptonButton2.Location = new Point(22, 26);
+            kryptonButton2.Margin = new Padding(0);
+            kryptonButton2.Name = "kryptonButton2";
+            kryptonButton2.Size = new Size(95, 95);
+            kryptonButton2.StateCommon.Border.Rounding = 50F;
+            kryptonButton2.StateCommon.Content.Padding = new Padding(-1, 6, -1, -1);
+            kryptonButton2.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 32F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonButton2.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonButton2.TabIndex = 0;
+            kryptonButton2.Values.DropDownArrowColor = Color.Empty;
+            kryptonButton2.Values.Text = "";
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new Point(300, 62);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(240, 50);
+            kryptonLabel1.StateCommon.ShortText.Font = new Font("Inter", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonLabel1.TabIndex = 5;
+            kryptonLabel1.Values.Text = "Teacher Profile";
             // 
             // UC_Teacher
             // 
@@ -239,6 +230,7 @@
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -251,7 +243,7 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonLabel lblTeacherName;
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel5;
+        private Krypton.Toolkit.KryptonLabel lblContactNum;
         private Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private Krypton.Toolkit.KryptonLabel lblEmail;
         private Krypton.Toolkit.KryptonLabel kryptonLabel6;
