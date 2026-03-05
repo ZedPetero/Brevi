@@ -71,6 +71,7 @@
             kryptonButton1.TabIndex = 5;
             kryptonButton1.Values.DropDownArrowColor = Color.Empty;
             kryptonButton1.Values.Text = "+  Add Class ";
+            kryptonButton1.Click += btnAddClass_Click;
             // 
             // flowLayoutPanelCards
             // 
@@ -79,9 +80,6 @@
             flowLayoutPanelCards.Name = "flowLayoutPanelCards";
             flowLayoutPanelCards.Size = new Size(1096, 463);
             flowLayoutPanelCards.TabIndex = 4;
-            // 
-            // btnAddClass
-            // 
             // 
             // label2
             // 
