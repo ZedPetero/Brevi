@@ -48,6 +48,10 @@
             kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             kryptonButton8 = new Krypton.Toolkit.KryptonButton();
+            btnExportSummary = new Krypton.Toolkit.KryptonButton();
+            btnAddStudent = new Krypton.Toolkit.KryptonButton();
+            btnMarkAllPresent = new Krypton.Toolkit.KryptonButton();
+            btnReset = new Krypton.Toolkit.KryptonButton();
             panelCalendar.SuspendLayout();
             SuspendLayout();
             // 
