@@ -37,13 +37,16 @@
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            txtFullName = new Krypton.Toolkit.KryptonTextBox();
-            kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
-            lblBirthdate = new Krypton.Toolkit.KryptonTextBox();
+            txtFirstName = new Krypton.Toolkit.KryptonTextBox();
+            txtBio = new Krypton.Toolkit.KryptonRichTextBox();
             txtEmail = new Krypton.Toolkit.KryptonTextBox();
             txtPhoneNum = new Krypton.Toolkit.KryptonTextBox();
-            cmbSubject = new Krypton.Toolkit.KryptonComboBox();
             vScrollBar1 = new VScrollBar();
+            txtMiddleName = new Krypton.Toolkit.KryptonTextBox();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            txtLastName = new Krypton.Toolkit.KryptonTextBox();
+            kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
+            cmbSubject = new Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)cmbSubject).BeginInit();
             SuspendLayout();
             // 
@@ -79,7 +82,7 @@
             // 
             // kryptonLabel8
             // 
-            kryptonLabel8.Location = new Point(273, 118);
+            kryptonLabel8.Location = new Point(288, 199);
             kryptonLabel8.Name = "kryptonLabel8";
             kryptonLabel8.Size = new Size(128, 38);
             kryptonLabel8.StateCommon.LongText.Color1 = Color.FromArgb(108, 124, 137);
@@ -98,7 +101,7 @@
             // 
             // kryptonLabel7
             // 
-            kryptonLabel7.Location = new Point(273, 199);
+            kryptonLabel7.Location = new Point(288, 280);
             kryptonLabel7.Name = "kryptonLabel7";
             kryptonLabel7.Size = new Size(99, 38);
             kryptonLabel7.StateCommon.LongText.Color1 = Color.FromArgb(108, 124, 137);
@@ -136,9 +139,9 @@
             // 
             // kryptonLabel4
             // 
-            kryptonLabel4.Location = new Point(21, 118);
+            kryptonLabel4.Location = new Point(27, 118);
             kryptonLabel4.Name = "kryptonLabel4";
-            kryptonLabel4.Size = new Size(128, 38);
+            kryptonLabel4.Size = new Size(81, 38);
             kryptonLabel4.StateCommon.LongText.Color1 = Color.FromArgb(108, 124, 137);
             kryptonLabel4.StateCommon.LongText.Color2 = Color.FromArgb(108, 124, 137);
             kryptonLabel4.StateCommon.LongText.Font = new Font("Inter", 10F);
@@ -150,8 +153,8 @@
             kryptonLabel4.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             kryptonLabel4.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonLabel4.TabIndex = 24;
-            kryptonLabel4.Values.ExtraText = "Full Name";
-            kryptonLabel4.Values.Text = "";
+            kryptonLabel4.Values.ExtraText = "First Name";
+            kryptonLabel4.Values.Text = "";
             // 
             // kryptonLabel3
             // 
@@ -210,33 +213,24 @@
             kryptonButton2.Values.DropDownArrowColor = Color.Empty;
             kryptonButton2.Values.Text = "";
             // 
-            // txtFullName
+            // txtFirstName
             // 
-            txtFullName.Location = new Point(30, 162);
-            txtFullName.Name = "txtFullName";
-            txtFullName.Size = new Size(214, 30);
-            txtFullName.StateCommon.Border.Rounding = 10F;
-            txtFullName.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtFullName.TabIndex = 35;
+            txtFirstName.Location = new Point(27, 162);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(155, 30);
+            txtFirstName.StateCommon.Border.Rounding = 10F;
+            txtFirstName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtFirstName.TabIndex = 35;
             // 
-            // kryptonRichTextBox1
+            // txtBio
             // 
-            kryptonRichTextBox1.Location = new Point(27, 397);
-            kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            kryptonRichTextBox1.Size = new Size(495, 96);
-            kryptonRichTextBox1.StateCommon.Border.Rounding = 10F;
-            kryptonRichTextBox1.StateCommon.Content.Font = new Font("Inter", 10F);
-            kryptonRichTextBox1.TabIndex = 37;
-            kryptonRichTextBox1.Text = "kryptonRichTextBox1";
-            // 
-            // lblBirthdate
-            // 
-            lblBirthdate.Location = new Point(273, 162);
-            lblBirthdate.Name = "lblBirthdate";
-            lblBirthdate.Size = new Size(214, 30);
-            lblBirthdate.StateCommon.Border.Rounding = 10F;
-            lblBirthdate.StateCommon.Content.Font = new Font("Inter", 10F);
-            lblBirthdate.TabIndex = 38;
+            txtBio.Location = new Point(27, 397);
+            txtBio.Name = "txtBio";
+            txtBio.Size = new Size(495, 96);
+            txtBio.StateCommon.Border.Rounding = 10F;
+            txtBio.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtBio.TabIndex = 37;
+            txtBio.Text = "";
             // 
             // txtEmail
             // 
@@ -249,22 +243,12 @@
             // 
             // txtPhoneNum
             // 
-            txtPhoneNum.Location = new Point(273, 243);
+            txtPhoneNum.Location = new Point(288, 324);
             txtPhoneNum.Name = "txtPhoneNum";
             txtPhoneNum.Size = new Size(214, 30);
             txtPhoneNum.StateCommon.Border.Rounding = 10F;
             txtPhoneNum.StateCommon.Content.Font = new Font("Inter", 10F);
             txtPhoneNum.TabIndex = 40;
-            // 
-            // cmbSubject
-            // 
-            cmbSubject.DropDownWidth = 207;
-            cmbSubject.Location = new Point(37, 327);
-            cmbSubject.Name = "cmbSubject";
-            cmbSubject.Size = new Size(207, 22);
-            cmbSubject.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            cmbSubject.TabIndex = 41;
-            cmbSubject.Text = "kryptonComboBox1";
             // 
             // vScrollBar1
             // 
@@ -273,18 +257,86 @@
             vScrollBar1.Size = new Size(8, 8);
             vScrollBar1.TabIndex = 42;
             // 
+            // txtMiddleName
+            // 
+            txtMiddleName.Location = new Point(197, 162);
+            txtMiddleName.Name = "txtMiddleName";
+            txtMiddleName.Size = new Size(155, 30);
+            txtMiddleName.StateCommon.Border.Rounding = 10F;
+            txtMiddleName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtMiddleName.TabIndex = 45;
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new Point(197, 118);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(110, 38);
+            kryptonLabel1.StateCommon.LongText.Color1 = Color.FromArgb(108, 124, 137);
+            kryptonLabel1.StateCommon.LongText.Color2 = Color.FromArgb(108, 124, 137);
+            kryptonLabel1.StateCommon.LongText.Font = new Font("Inter", 10F);
+            kryptonLabel1.StateCommon.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            kryptonLabel1.StateCommon.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel1.StateCommon.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            kryptonLabel1.StateCommon.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            kryptonLabel1.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel1.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            kryptonLabel1.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel1.TabIndex = 44;
+            kryptonLabel1.Values.ExtraText = "Middle Name";
+            kryptonLabel1.Values.Text = "";
+            // 
+            // txtLastName
+            // 
+            txtLastName.Location = new Point(367, 162);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(155, 30);
+            txtLastName.StateCommon.Border.Rounding = 10F;
+            txtLastName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtLastName.TabIndex = 47;
+            // 
+            // kryptonLabel10
+            // 
+            kryptonLabel10.Location = new Point(367, 118);
+            kryptonLabel10.Name = "kryptonLabel10";
+            kryptonLabel10.Size = new Size(110, 38);
+            kryptonLabel10.StateCommon.LongText.Color1 = Color.FromArgb(108, 124, 137);
+            kryptonLabel10.StateCommon.LongText.Color2 = Color.FromArgb(108, 124, 137);
+            kryptonLabel10.StateCommon.LongText.Font = new Font("Inter", 10F);
+            kryptonLabel10.StateCommon.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            kryptonLabel10.StateCommon.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel10.StateCommon.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            kryptonLabel10.StateCommon.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            kryptonLabel10.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel10.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            kryptonLabel10.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel10.TabIndex = 46;
+            kryptonLabel10.Values.ExtraText = "Last Name";
+            kryptonLabel10.Values.Text = "";
+            // 
+            // cmbSubject
+            // 
+            cmbSubject.DropDownWidth = 214;
+            cmbSubject.Location = new Point(30, 327);
+            cmbSubject.Name = "cmbSubject";
+            cmbSubject.Size = new Size(214, 22);
+            cmbSubject.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            cmbSubject.TabIndex = 48;
+            // 
             // UCEditTeacher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(vScrollBar1);
             Controls.Add(cmbSubject);
+            Controls.Add(txtLastName);
+            Controls.Add(kryptonLabel10);
+            Controls.Add(txtMiddleName);
+            Controls.Add(kryptonLabel1);
+            Controls.Add(vScrollBar1);
             Controls.Add(txtPhoneNum);
             Controls.Add(txtEmail);
-            Controls.Add(lblBirthdate);
-            Controls.Add(kryptonRichTextBox1);
-            Controls.Add(txtFullName);
+            Controls.Add(txtBio);
+            Controls.Add(txtFirstName);
             Controls.Add(kryptonLabel5);
             Controls.Add(kryptonLabel9);
             Controls.Add(kryptonLabel8);
@@ -312,12 +364,15 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonButton kryptonButton2;
-        private Krypton.Toolkit.KryptonTextBox txtFullName;
-        private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
-        private Krypton.Toolkit.KryptonTextBox lblBirthdate;
+        private Krypton.Toolkit.KryptonTextBox txtFirstName;
+        private Krypton.Toolkit.KryptonRichTextBox txtBio;
         private Krypton.Toolkit.KryptonTextBox txtEmail;
         private Krypton.Toolkit.KryptonTextBox txtPhoneNum;
-        private Krypton.Toolkit.KryptonComboBox cmbSubject;
         private VScrollBar vScrollBar1;
+        private Krypton.Toolkit.KryptonTextBox txtMiddleName;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonTextBox txtLastName;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel10;
+        private Krypton.Toolkit.KryptonComboBox cmbSubject;
     }
 }

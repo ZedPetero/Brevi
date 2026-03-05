@@ -54,7 +54,7 @@
             lblWrapBio.Size = new Size(480, 23);
             lblWrapBio.StateCommon.Font = new Font("Inter", 10F);
             lblWrapBio.StateCommon.TextColor = Color.FromArgb(29, 37, 48);
-            lblWrapBio.Text = "kryptonWrapLabel1";
+            lblWrapBio.Text = "N/A";
             // 
             // kryptonLabel5
             // 
@@ -76,7 +76,7 @@
             lblSubject.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             lblSubject.StateCommon.ShortText.Font = new Font("Inter", 10F);
             lblSubject.TabIndex = 33;
-            lblSubject.Values.Text = "lblSubject";
+            lblSubject.Values.Text = "N/A";
             // 
             // kryptonLabel9
             // 
@@ -106,7 +106,7 @@
             lblBirthdate.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             lblBirthdate.StateCommon.ShortText.Font = new Font("Inter", 10F);
             lblBirthdate.TabIndex = 31;
-            lblBirthdate.Values.Text = "lblBirthdate";
+            lblBirthdate.Values.Text = "N/A";
             // 
             // kryptonLabel8
             // 
@@ -136,7 +136,7 @@
             lblPhoneNum.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             lblPhoneNum.StateCommon.ShortText.Font = new Font("Inter", 10F);
             lblPhoneNum.TabIndex = 29;
-            lblPhoneNum.Values.Text = "lblPhoneNum";
+            lblPhoneNum.Values.Text = "N/A";
             // 
             // kryptonLabel7
             // 
@@ -166,7 +166,7 @@
             lblEmail.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             lblEmail.StateCommon.ShortText.Font = new Font("Inter", 10F);
             lblEmail.TabIndex = 27;
-            lblEmail.Values.Text = "lblEmail";
+            lblEmail.Values.Text = "N/A";
             // 
             // kryptonLabel6
             // 
@@ -196,7 +196,7 @@
             lblTeacherName.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             lblTeacherName.StateCommon.ShortText.Font = new Font("Inter", 10F);
             lblTeacherName.TabIndex = 25;
-            lblTeacherName.Values.Text = "lblTeacherName";
+            lblTeacherName.Values.Text = "N/A";
             // 
             // kryptonLabel4
             // 

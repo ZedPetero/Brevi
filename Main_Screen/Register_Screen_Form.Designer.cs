@@ -31,24 +31,24 @@
             components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
             loginLink = new LinkLabel();
-            autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             timerSlide = new System.Windows.Forms.Timer(components);
-            autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtLastName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtMiddleName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             btnExit = new Syncfusion.WinForms.Controls.SfButton();
-            autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtPhoneNum = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtUsername = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtPassword = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             btnRegister = new Syncfusion.WinForms.Controls.SfButton();
-            autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtFirstName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel8 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtLastName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtMiddleName).BeginInit();
@@ -74,42 +74,21 @@
             loginLink.ActiveLinkColor = Color.Gainsboro;
             loginLink.AutoSize = true;
             loginLink.Cursor = Cursors.Hand;
-            loginLink.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            loginLink.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             loginLink.LinkColor = Color.FromArgb(40, 164, 153);
-            loginLink.Location = new Point(472, 594);
+            loginLink.Location = new Point(481, 595);
             loginLink.Name = "loginLink";
-            loginLink.Size = new Size(112, 30);
-            loginLink.TabIndex = 12;
+            loginLink.Size = new Size(121, 30);
+            loginLink.TabIndex = 10;
             loginLink.TabStop = true;
             loginLink.Text = "Click Here";
             loginLink.VisitedLinkColor = Color.FromArgb(25, 149, 138);
             loginLink.LinkClicked += loginLink_LinkClicked;
             // 
-            // autoLabel3
-            // 
-            autoLabel3.Font = new Font("Segoe UI", 16F);
-            autoLabel3.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel3.Location = new Point(217, 594);
-            autoLabel3.Name = "autoLabel3";
-            autoLabel3.Size = new Size(259, 30);
-            autoLabel3.TabIndex = 11;
-            autoLabel3.Text = "Already have an account?";
-            // 
             // timerSlide
             // 
             timerSlide.Interval = 25;
             timerSlide.Tick += timerSlide_Tick;
-            // 
-            // autoLabel2
-            // 
-            autoLabel2.BackColor = Color.Transparent;
-            autoLabel2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel2.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel2.Location = new Point(390, 154);
-            autoLabel2.Name = "autoLabel2";
-            autoLabel2.Size = new Size(108, 25);
-            autoLabel2.TabIndex = 16;
-            autoLabel2.Text = "Last Name:";
             // 
             // txtLastName
             // 
@@ -118,24 +97,13 @@
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
             txtLastName.CornerRadius = 15;
             txtLastName.Font = new Font("Segoe UI", 16F);
-            txtLastName.Location = new Point(390, 187);
+            txtLastName.Location = new Point(390, 186);
             txtLastName.MaximumSize = new Size(9999, 36);
             txtLastName.MinimumSize = new Size(34, 30);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(319, 36);
-            txtLastName.TabIndex = 15;
+            txtLastName.TabIndex = 3;
             txtLastName.Tag = "";
-            // 
-            // autoLabel1
-            // 
-            autoLabel1.BackColor = Color.Transparent;
-            autoLabel1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel1.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel1.Location = new Point(554, 82);
-            autoLabel1.Name = "autoLabel1";
-            autoLabel1.Size = new Size(134, 25);
-            autoLabel1.TabIndex = 14;
-            autoLabel1.Text = "Middle Name:";
             // 
             // txtMiddleName
             // 
@@ -145,12 +113,12 @@
             txtMiddleName.BorderStyle = BorderStyle.FixedSingle;
             txtMiddleName.CornerRadius = 15;
             txtMiddleName.Font = new Font("Segoe UI", 16F);
-            txtMiddleName.Location = new Point(554, 115);
+            txtMiddleName.Location = new Point(554, 114);
             txtMiddleName.MaximumSize = new Size(265, 36);
             txtMiddleName.MinimumSize = new Size(34, 30);
             txtMiddleName.Name = "txtMiddleName";
             txtMiddleName.Size = new Size(155, 36);
-            txtMiddleName.TabIndex = 13;
+            txtMiddleName.TabIndex = 2;
             // 
             // btnExit
             // 
@@ -160,19 +128,8 @@
             btnExit.Location = new Point(728, 22);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(50, 50);
-            btnExit.TabIndex = 17;
+            btnExit.TabIndex = 9;
             btnExit.Click += btnExit_Click;
-            // 
-            // autoLabel4
-            // 
-            autoLabel4.BackColor = Color.Transparent;
-            autoLabel4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel4.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel4.Location = new Point(390, 226);
-            autoLabel4.Name = "autoLabel4";
-            autoLabel4.Size = new Size(64, 25);
-            autoLabel4.TabIndex = 19;
-            autoLabel4.Text = "Email:";
             // 
             // txtEmail
             // 
@@ -182,23 +139,12 @@
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.CornerRadius = 15;
             txtEmail.Font = new Font("Segoe UI", 16F);
-            txtEmail.Location = new Point(390, 259);
+            txtEmail.Location = new Point(390, 258);
             txtEmail.MaximumSize = new Size(9999, 9999);
             txtEmail.MinimumSize = new Size(34, 30);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(319, 36);
-            txtEmail.TabIndex = 18;
-            // 
-            // autoLabel5
-            // 
-            autoLabel5.BackColor = Color.Transparent;
-            autoLabel5.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel5.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel5.Location = new Point(390, 298);
-            autoLabel5.Name = "autoLabel5";
-            autoLabel5.Size = new Size(148, 25);
-            autoLabel5.TabIndex = 21;
-            autoLabel5.Text = "Phone Number:";
+            txtEmail.TabIndex = 4;
             // 
             // txtPhoneNum
             // 
@@ -208,23 +154,12 @@
             txtPhoneNum.BorderStyle = BorderStyle.FixedSingle;
             txtPhoneNum.CornerRadius = 15;
             txtPhoneNum.Font = new Font("Segoe UI", 16F);
-            txtPhoneNum.Location = new Point(390, 331);
+            txtPhoneNum.Location = new Point(390, 330);
             txtPhoneNum.MaximumSize = new Size(9999, 9999);
             txtPhoneNum.MinimumSize = new Size(34, 30);
             txtPhoneNum.Name = "txtPhoneNum";
             txtPhoneNum.Size = new Size(319, 36);
-            txtPhoneNum.TabIndex = 20;
-            // 
-            // autoLabel6
-            // 
-            autoLabel6.BackColor = Color.Transparent;
-            autoLabel6.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel6.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel6.Location = new Point(390, 370);
-            autoLabel6.Name = "autoLabel6";
-            autoLabel6.Size = new Size(103, 25);
-            autoLabel6.TabIndex = 23;
-            autoLabel6.Text = "Username:";
+            txtPhoneNum.TabIndex = 5;
             // 
             // txtUsername
             // 
@@ -234,23 +169,12 @@
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
             txtUsername.CornerRadius = 15;
             txtUsername.Font = new Font("Segoe UI", 16F);
-            txtUsername.Location = new Point(390, 403);
+            txtUsername.Location = new Point(390, 402);
             txtUsername.MaximumSize = new Size(9999, 9999);
             txtUsername.MinimumSize = new Size(34, 30);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(319, 36);
-            txtUsername.TabIndex = 22;
-            // 
-            // autoLabel7
-            // 
-            autoLabel7.BackColor = Color.Transparent;
-            autoLabel7.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel7.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel7.Location = new Point(390, 442);
-            autoLabel7.Name = "autoLabel7";
-            autoLabel7.Size = new Size(96, 25);
-            autoLabel7.TabIndex = 25;
-            autoLabel7.Text = "Password:";
+            txtUsername.TabIndex = 6;
             // 
             // txtPassword
             // 
@@ -260,38 +184,27 @@
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 15;
             txtPassword.Font = new Font("Segoe UI", 16F);
-            txtPassword.Location = new Point(390, 475);
+            txtPassword.Location = new Point(390, 474);
             txtPassword.MaximumSize = new Size(9999, 9999);
             txtPassword.MinimumSize = new Size(34, 30);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(319, 36);
-            txtPassword.TabIndex = 24;
+            txtPassword.TabIndex = 7;
             // 
             // btnRegister
             // 
             btnRegister.BackColor = Color.FromArgb(40, 164, 153);
-            btnRegister.Font = new Font("Segoe UI Semibold", 16F);
+            btnRegister.Font = new Font("Inter", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(390, 529);
+            btnRegister.Location = new Point(390, 528);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(319, 40);
             btnRegister.Style.BackColor = Color.FromArgb(40, 164, 153);
             btnRegister.Style.ForeColor = Color.White;
-            btnRegister.TabIndex = 26;
+            btnRegister.TabIndex = 8;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = false;
             btnRegister.Click += btnRegister_Click;
-            // 
-            // autoLabel8
-            // 
-            autoLabel8.BackColor = Color.Transparent;
-            autoLabel8.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel8.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel8.Location = new Point(390, 82);
-            autoLabel8.Name = "autoLabel8";
-            autoLabel8.Size = new Size(111, 25);
-            autoLabel8.TabIndex = 28;
-            autoLabel8.Text = "First Name:";
             // 
             // txtFirstName
             // 
@@ -301,37 +214,135 @@
             txtFirstName.BorderStyle = BorderStyle.FixedSingle;
             txtFirstName.CornerRadius = 15;
             txtFirstName.Font = new Font("Segoe UI", 16F);
-            txtFirstName.Location = new Point(390, 115);
+            txtFirstName.Location = new Point(390, 114);
             txtFirstName.MaximumSize = new Size(265, 36);
             txtFirstName.MinimumSize = new Size(34, 30);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(155, 36);
-            txtFirstName.TabIndex = 27;
+            txtFirstName.TabIndex = 1;
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new Point(390, 83);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(101, 25);
+            kryptonLabel1.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel1.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel1.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel1.TabIndex = 28;
+            kryptonLabel1.TabStop = false;
+            kryptonLabel1.Values.Text = "First Name:";
+            // 
+            // kryptonLabel2
+            // 
+            kryptonLabel2.Location = new Point(554, 83);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(115, 25);
+            kryptonLabel2.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel2.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel2.TabIndex = 29;
+            kryptonLabel2.TabStop = false;
+            kryptonLabel2.Values.Text = "Middle Name";
+            // 
+            // kryptonLabel3
+            // 
+            kryptonLabel3.Location = new Point(390, 156);
+            kryptonLabel3.Name = "kryptonLabel3";
+            kryptonLabel3.Size = new Size(100, 25);
+            kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel3.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel3.TabIndex = 30;
+            kryptonLabel3.TabStop = false;
+            kryptonLabel3.Values.Text = "Last Name:";
+            // 
+            // kryptonLabel4
+            // 
+            kryptonLabel4.Location = new Point(390, 227);
+            kryptonLabel4.Name = "kryptonLabel4";
+            kryptonLabel4.Size = new Size(90, 25);
+            kryptonLabel4.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel4.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel4.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel4.TabIndex = 31;
+            kryptonLabel4.TabStop = false;
+            kryptonLabel4.Values.Text = "Email:";
+            // 
+            // kryptonLabel5
+            // 
+            kryptonLabel5.Location = new Point(390, 300);
+            kryptonLabel5.Name = "kryptonLabel5";
+            kryptonLabel5.Size = new Size(133, 25);
+            kryptonLabel5.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel5.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel5.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel5.TabIndex = 32;
+            kryptonLabel5.TabStop = false;
+            kryptonLabel5.Values.Text = "Phone Number:";
+            // 
+            // kryptonLabel6
+            // 
+            kryptonLabel6.Location = new Point(390, 371);
+            kryptonLabel6.Name = "kryptonLabel6";
+            kryptonLabel6.Size = new Size(96, 25);
+            kryptonLabel6.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel6.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel6.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel6.TabIndex = 33;
+            kryptonLabel6.TabStop = false;
+            kryptonLabel6.Values.Text = "Username:";
+            // 
+            // kryptonLabel7
+            // 
+            kryptonLabel7.Location = new Point(390, 444);
+            kryptonLabel7.Name = "kryptonLabel7";
+            kryptonLabel7.Size = new Size(93, 25);
+            kryptonLabel7.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel7.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel7.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel7.TabIndex = 34;
+            kryptonLabel7.TabStop = false;
+            kryptonLabel7.Values.Text = "Password:";
+            // 
+            // kryptonLabel8
+            // 
+            kryptonLabel8.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            kryptonLabel8.Location = new Point(207, 594);
+            kryptonLabel8.Name = "kryptonLabel8";
+            kryptonLabel8.Size = new Size(278, 31);
+            kryptonLabel8.StateCommon.ShortText.Color1 = Color.FromArgb(40, 164, 153);
+            kryptonLabel8.StateCommon.ShortText.Color2 = Color.FromArgb(40, 164, 153);
+            kryptonLabel8.StateCommon.ShortText.Font = new Font("Inter", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel8.TabIndex = 35;
+            kryptonLabel8.TabStop = false;
+            kryptonLabel8.Values.Text = "Already have an account?";
             // 
             // Register_Screen_Form
             // 
+            AcceptButton = btnRegister;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 650);
-            Controls.Add(autoLabel8);
+            Controls.Add(kryptonLabel8);
+            Controls.Add(kryptonLabel7);
+            Controls.Add(kryptonLabel6);
+            Controls.Add(kryptonLabel5);
+            Controls.Add(kryptonLabel4);
+            Controls.Add(kryptonLabel3);
+            Controls.Add(kryptonLabel2);
+            Controls.Add(kryptonLabel1);
             Controls.Add(txtFirstName);
             Controls.Add(btnRegister);
-            Controls.Add(autoLabel7);
             Controls.Add(txtPassword);
-            Controls.Add(autoLabel6);
             Controls.Add(txtUsername);
-            Controls.Add(autoLabel5);
             Controls.Add(txtPhoneNum);
-            Controls.Add(autoLabel4);
             Controls.Add(txtEmail);
             Controls.Add(btnExit);
-            Controls.Add(autoLabel2);
             Controls.Add(txtLastName);
-            Controls.Add(autoLabel1);
             Controls.Add(txtMiddleName);
             Controls.Add(loginLink);
-            Controls.Add(autoLabel3);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Register_Screen_Form";
@@ -354,23 +365,23 @@
 
         private PictureBox pictureBox1;
         private LinkLabel loginLink;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private System.Windows.Forms.Timer timerSlide;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtLastName;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtMiddleName;
         private Syncfusion.WinForms.Controls.SfButton btnExit;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtEmail;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPhoneNum;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtUsername;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPassword;
         private Syncfusion.WinForms.Controls.SfButton btnRegister;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel8;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtFirstName;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel4;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel5;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel6;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel7;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel8;
     }
 }

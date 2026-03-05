@@ -10,14 +10,11 @@ namespace AE.Application
 {
     public partial class UC_Teacher : UserControl
     {
-        bool isEditing;
-
         public UC_Teacher()
         {
             InitializeComponent();
             UCTeacherProfile teacherProfile = new UCTeacherProfile();
             LoadForm(teacherProfile);
-            isEditing = false;
         }
 
         public void LoadForm(UserControl customizedControl)
@@ -28,21 +25,20 @@ namespace AE.Application
             panelTeacherProfile.SendToBack();
         }
 
+        public void ToTeacherProfile()
+        {
+            UCTeacherProfile teacherProfile = new UCTeacherProfile();
+            LoadForm(teacherProfile);
+        }
+
+        public void ToEditTeacher()
+        {
+            UCEditTeacher editTeacher = new UCEditTeacher();
+            LoadForm(editTeacher);
+        }
+
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            if (isEditing)
-            {
-                UCEditTeacher editTeacher = new UCEditTeacher();
-                btnEditProfile.Text = "\e161";
-                btnEditProfile.Values.ExtraText = "Save";
-                LoadForm(editTeacher);
-            } else
-            {
-                UCTeacherProfile teacherProfile = new UCTeacherProfile();
-                btnEditProfile.Text = "\e3c9";
-                btnEditProfile.Values.ExtraText = "Edit";
-                LoadForm(teacherProfile);
-            }
         }
     }
 }
