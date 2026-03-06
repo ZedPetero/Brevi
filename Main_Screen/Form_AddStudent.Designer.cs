@@ -33,7 +33,7 @@
             txtFirstName = new TextBox();
             txtMiddleName = new TextBox();
             label2 = new Label();
-            textLastName = new TextBox();
+            txtLastName = new TextBox();
             label3 = new Label();
             SuspendLayout();
             // 
@@ -80,12 +80,12 @@
             label2.Text = "Last Name:";
             label2.Click += label2_Click;
             // 
-            // textLastName
+            // txtLastName
             // 
-            textLastName.Location = new Point(147, 144);
-            textLastName.Name = "textLastName";
-            textLastName.Size = new Size(159, 23);
-            textLastName.TabIndex = 5;
+            txtLastName.Location = new Point(147, 144);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(159, 23);
+            txtLastName.TabIndex = 5;
             // 
             // label3
             // 
@@ -101,15 +101,25 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 240);
+            CloseBox = false;
+            ControlBox = false;
             Controls.Add(label3);
-            Controls.Add(textLastName);
+            Controls.Add(txtLastName);
             Controls.Add(txtMiddleName);
             Controls.Add(label2);
             Controls.Add(txtFirstName);
             Controls.Add(btnSave);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Form_AddStudent";
+            PaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
             StartPosition = FormStartPosition.CenterScreen;
+            StateActive.Back.Color1 = Color.FromArgb(249, 250, 251);
+            StateActive.Back.Color2 = Color.FromArgb(249, 250, 251);
+            StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
+            StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
             Text = "Add Student";
             ResumeLayout(false);
             PerformLayout();
@@ -122,7 +132,7 @@
         private TextBox txtFirstName;
         private TextBox txtMiddleName;
         private Label label2;
-        private TextBox textLastName;
+        private TextBox txtLastName;
         private Label label3;
     }
 }

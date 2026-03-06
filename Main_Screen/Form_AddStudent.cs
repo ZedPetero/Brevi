@@ -7,9 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using AE.Domain.Models;
 using AE.Infrastructure.Data;
+using Krypton.Toolkit;
 namespace AE.Application
 {
-    public partial class Form_AddStudent : Form
+    public partial class Form_AddStudent : KryptonForm
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentSectionId { get; set; }
@@ -40,7 +41,7 @@ namespace AE.Application
                     {
                         FirstName = txtFirstName.Text,
                         MiddleName = txtMiddleName.Text,
-                        LastName = txtMiddleName.Text,
+                        LastName = txtLastName.Text,
                         SectionId = this.CurrentSectionId
                     };
                     _context.Students.Add(student);

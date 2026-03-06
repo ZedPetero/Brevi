@@ -318,7 +318,7 @@
             // cmbSubject
             // 
             cmbSubject.DropDownWidth = 214;
-            cmbSubject.Items.AddRange(new object[] { "Math", "Science", "History", "Literature", "Ar", "Music", "PhysicalEducation", "ComputerScience" });
+            cmbSubject.Items.AddRange(new object[] { "Math", "Science", "History", "Literature", "Art", "Music", "PhysicalEducation", "ComputerScience" });
             cmbSubject.Location = new Point(30, 327);
             cmbSubject.Name = "cmbSubject";
             cmbSubject.Size = new Size(214, 22);
