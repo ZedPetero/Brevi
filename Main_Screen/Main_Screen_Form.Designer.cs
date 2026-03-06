@@ -47,8 +47,6 @@
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             btnMenu = new Krypton.Toolkit.KryptonButton();
-            pictureBox1 = new PictureBox();
-            label2 = new Label();
             kryptonCheckSet1 = new Krypton.Toolkit.KryptonCheckSet(components);
             ((System.ComponentModel.ISupportInitialize)kryptonCheckSet1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sidebar).BeginInit();
@@ -56,7 +54,6 @@
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // kryptonCheckSet1
@@ -279,8 +276,6 @@
             // 
             kryptonPanel1.Controls.Add(kryptonBorderEdge1);
             kryptonPanel1.Controls.Add(btnMenu);
-            kryptonPanel1.Controls.Add(pictureBox1);
-            kryptonPanel1.Controls.Add(label2);
             kryptonPanel1.Dock = DockStyle.Top;
             kryptonPanel1.Location = new Point(0, 0);
             kryptonPanel1.Name = "kryptonPanel1";
@@ -312,28 +307,6 @@
             btnMenu.Values.Text = "";
             btnMenu.Click += btnMenu_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.calendar;
-            pictureBox1.Location = new Point(61, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(73, 50);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            label2.Location = new Point(140, 12);
-            label2.Name = "label2";
-            label2.Size = new Size(139, 45);
-            label2.TabIndex = 3;
-            label2.Text = "KORUM";
-            // 
             // Main_Screen_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -356,7 +329,6 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -373,8 +345,6 @@
         private Krypton.Toolkit.KryptonCustomPaletteBase ButtonPalette;
         private Krypton.Toolkit.KryptonCheckSet kryptonCheckSet1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private PictureBox pictureBox1;
-        private Label label2;
         private Krypton.Toolkit.KryptonButton btnMenu;
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge2;

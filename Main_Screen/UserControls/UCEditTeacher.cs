@@ -39,11 +39,14 @@ namespace AE.Application
                     cmbSubject.SelectedItem = teacher.Subject.ToString();
                     txtPhoneNum.Text = teacher.PhoneNumber;
                     txtBio.Text = teacher.Bio;
-                    var ms = new System.IO.MemoryStream(teacher.ProfilePicture);
-                    Image profilePic = Image.FromStream(ms);
-                    btnUploadPicture.StateCommon.Back.Image = profilePic;
-                    btnUploadPicture.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
-                    btnUploadPicture.Values.Text = "";
+                    if (teacher.ProfilePicture != null && teacher.ProfilePicture.Length > 0)
+                    {
+                        var ms = new System.IO.MemoryStream(teacher.ProfilePicture);
+                        Image profilePic = Image.FromStream(ms);
+                        btnUploadPicture.StateCommon.Back.Image = profilePic;
+                        btnUploadPicture.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
+                        btnUploadPicture.Values.Text = "";
+                    }
                 }
             }
         }
