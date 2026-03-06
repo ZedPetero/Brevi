@@ -11,7 +11,6 @@ namespace AE.Application
 {
     public partial class UC_StudentRow : UserControl
     {
-        // Identifiers / context - set by UC_Attendance when creating the row
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         public int StudentId { get; set; }
@@ -24,7 +23,6 @@ namespace AE.Application
         [Browsable(false)]
         public DateTime AttendanceDate { get; set; } = DateTime.Today;
 
-        // internal selected status for this row
         private AttendanceStatus? _selectedStatus;
 
         public UC_StudentRow()
@@ -69,11 +67,8 @@ namespace AE.Application
             }
         }
 
-        // --- Keep selection logic per-row but do not change UI colors programmatically ---
-        // Use Tag on buttons if you want a designer-driven visual for "selected".
         public void SetSelectedStatus(AttendanceStatus? status)
         {
-            // store selected status for this row
             _selectedStatus = status;
 
             if (status == null)
@@ -85,15 +80,12 @@ namespace AE.Application
                 StudentStatus = status.ToString();
             }
 
-            // Mark tags so the designer can reflect visual state if desired.
-            // Only affects this row's buttons.
             btnCheck.Tag = (status == AttendanceStatus.Present);
             btnLate.Tag = (status == AttendanceStatus.Late);
             btnExcused.Tag = (status == AttendanceStatus.Excused);
             btnAbsent.Tag = (status == AttendanceStatus.Absent);
         }
 
-        // --- Button handlers that persist attendance and update UI ---
 
         private void BtnCheck_Click(object? sender, EventArgs e)
         {
@@ -115,7 +107,6 @@ namespace AE.Application
             SaveStatusAndRefresh(AttendanceStatus.Absent);
         }
 
-        // Delete student permanently
         private void BtnDeleteStudent_Click(object? sender, EventArgs e)
         {
             if (StudentId == 0)
@@ -133,7 +124,6 @@ namespace AE.Application
                 var student = db.Students.SingleOrDefault(s => s.Id == StudentId);
                 if (student != null)
                 {
-                    // Delete related attendance records first (FK) then student
                     var attendance = db.AttendanceRecords.Where(a => a.StudentId == StudentId).ToList();
                     if (attendance.Any())
                         db.AttendanceRecords.RemoveRange(attendance);
@@ -142,7 +132,6 @@ namespace AE.Application
                     db.SaveChanges();
                 }
 
-                // Refresh parent UI
                 parentAttendance?.RefreshSummaryAndRoster();
             }
             catch (Exception ex)
@@ -152,7 +141,6 @@ namespace AE.Application
             }
         }
 
-        // Persist or update attendance record for this Student / Section / AttendanceDate
         private void SaveStatusAndRefresh(AttendanceStatus status)
         {
             if (StudentId == 0 || SectionId == 0)
@@ -190,10 +178,8 @@ namespace AE.Application
 
                 db.SaveChanges();
 
-                // Update this row's state (no UI color change here)
                 SetSelectedStatus(status);
 
-                // Find parent attendance control and refresh summary/roster
                 var parentAttendance = FindParentAttendance();
                 parentAttendance?.RefreshSummaryAndRoster();
             }
@@ -204,7 +190,6 @@ namespace AE.Application
             }
         }
 
-        // Walk parent chain to find UC_Attendance instance so we can call refresh methods.
         private UC_Attendance FindParentAttendance()
         {
             Control c = this.Parent;

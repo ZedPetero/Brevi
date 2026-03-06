@@ -111,6 +111,7 @@
             lblTeacher.Size = new Size(242, 45);
             lblTeacher.TabIndex = 0;
             lblTeacher.Text = "Hello, Teacher!";
+            lblTeacher.Click += lblTeacher_Click;
             // 
             // UC_Classes
             // 

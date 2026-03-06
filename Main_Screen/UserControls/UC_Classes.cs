@@ -25,7 +25,6 @@ namespace AE.Application
         {
             base.OnLoad(e);
 
-            // Now we load the data, because the screen size is finally correct.
             LoadSections();
         }
         public void LoadSections()
@@ -97,6 +96,11 @@ namespace AE.Application
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lblTeacher_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
