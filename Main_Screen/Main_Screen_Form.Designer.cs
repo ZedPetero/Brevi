@@ -47,6 +47,7 @@
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             btnMenu = new Krypton.Toolkit.KryptonButton();
+            pictureBox1 = new PictureBox();
             kryptonCheckSet1 = new Krypton.Toolkit.KryptonCheckSet(components);
             ((System.ComponentModel.ISupportInitialize)kryptonCheckSet1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sidebar).BeginInit();
@@ -54,6 +55,7 @@
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // kryptonCheckSet1
@@ -274,6 +276,7 @@
             // 
             // kryptonPanel1
             // 
+            kryptonPanel1.Controls.Add(pictureBox1);
             kryptonPanel1.Controls.Add(kryptonBorderEdge1);
             kryptonPanel1.Controls.Add(btnMenu);
             kryptonPanel1.Dock = DockStyle.Top;
@@ -307,6 +310,17 @@
             btnMenu.Values.Text = "";
             btnMenu.Click += btnMenu_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.logo___text;
+            pictureBox1.Location = new Point(56, 7);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(193, 65);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
             // Main_Screen_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -329,6 +343,7 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -350,5 +365,6 @@
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge2;
         private Krypton.Toolkit.KryptonCheckButton btnTeacher;
         private Krypton.Toolkit.KryptonCheckButton btnSettings;
+        private PictureBox pictureBox1;
     }
 }

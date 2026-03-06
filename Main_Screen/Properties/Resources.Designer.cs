@@ -143,6 +143,16 @@ namespace AE.Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo___text {
+            get {
+                object obj = ResourceManager.GetObject("logo - text", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo__not_final_ {
             get {
                 object obj = ResourceManager.GetObject("logo (not final)", resourceCulture);
