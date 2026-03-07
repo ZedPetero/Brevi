@@ -215,6 +215,5 @@
         private Krypton.Toolkit.KryptonButton btnSave;
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonButton btnCancel;
-        private Krypton.Toolkit.KryptonButton btnClose;
     }
 }
