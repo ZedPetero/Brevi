@@ -29,6 +29,8 @@ namespace AE.Application
         {
             InitializeComponent();
             UpdateDateDisplay();
+            SetSection(CurrentSectionId);
+            UIHelper.RoundControl(panelCalendar, 20);
         }
 
         public void SetSection(int sectionId)
@@ -36,7 +38,7 @@ namespace AE.Application
             CurrentSectionId = sectionId;
             LoadSectionInfo();
             LoadStudentsForDate();
-            SetSummaryCards(); 
+            SetSummaryCards();
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
@@ -56,25 +58,50 @@ namespace AE.Application
             {
                 if (CurrentSectionId == 0)
                 {
+                    UIHelper.RoundControl(pnlTotalStudents, 20);
                     pnlTotalStudents.Title = "Total Students";
+                    pnlTotalStudents.TitleColor = "77, 180, 170";
                     pnlTotalStudents.Integer = 0;
+                    pnlTotalStudents.IntegerColor = "39, 165, 173";
                     pnlTotalStudents.Percentage = string.Empty;
+                    pnlTotalStudents.PercentageColor = "77, 180, 170";
+                    pnlTotalStudents.BorderColors = "190, 226, 223";
 
+                    UIHelper.RoundControl(pnlPresent, 20);
                     pnlPresent.Title = "Present";
+                    pnlPresent.TitleColor = "72, 205, 121";
                     pnlPresent.Integer = 0;
+                    pnlPresent.IntegerColor = "34, 195, 93";
                     pnlPresent.Percentage = "0.0%";
+                    pnlPresent.PercentageColor = "72, 205, 121";
+                    pnlPresent.BorderColors = "188, 234, 206";
 
+                    UIHelper.RoundControl(pnlLate, 20);
                     pnlLate.Title = "Late";
+                    pnlLate.TitleColor = "246, 175, 53";
                     pnlLate.Integer = 0;
+                    pnlLate.IntegerColor = "245, 159, 10";
                     pnlLate.Percentage = "0.0%";
+                    pnlLate.PercentageColor = "246, 175, 53";
+                    pnlLate.BorderColors = "247, 224, 183";
 
+                    UIHelper.RoundControl(pnlAbsent, 20);
                     pnlAbsent.Title = "Absent";
+                    pnlAbsent.TitleColor = "230, 110, 110";
                     pnlAbsent.Integer = 0;
+                    pnlAbsent.IntegerColor = "223, 58, 58";
                     pnlAbsent.Percentage = "0.0%";
+                    pnlAbsent.PercentageColor = "230, 110, 110";
+                    pnlAbsent.BorderColors = "242, 196, 197";
 
+                    UIHelper.RoundControl(pnlExcused, 20);
                     pnlExcused.Title = "Excused";
+                    pnlExcused.TitleColor = "55, 178, 235";
                     pnlExcused.Integer = 0;
+                    pnlExcused.IntegerColor = "13, 162, 231";
                     pnlExcused.Percentage = "0.0%";
+                    pnlExcused.PercentageColor = "55, 178, 235";
+                    pnlExcused.BorderColors = "183, 224, 244";
                     return;
                 }
 
@@ -102,7 +129,7 @@ namespace AE.Application
 
                 pnlTotalStudents.Title = "Total Students";
                 pnlTotalStudents.Integer = total;
-                pnlTotalStudents.Percentage = string.Empty; 
+                pnlTotalStudents.Percentage = string.Empty;
 
                 pnlPresent.Title = "Present";
                 pnlPresent.Integer = present;
@@ -306,7 +333,7 @@ namespace AE.Application
                 SelectionEnd = _selectedDate,
                 ShowTodayCircle = false,
                 ShowWeekNumbers = false,
-                Location = new Point(5, 35) 
+                Location = new Point(5, 35)
             };
 
             cal.StateCommon.Back.Color1 = Color.White;
@@ -331,7 +358,7 @@ namespace AE.Application
             var dropDown = new ToolStripDropDown { Padding = new Padding(1), BackColor = Color.FromArgb(224, 230, 235) };
             dropDown.Items.Add(host);
 
-            bool isNavigating = false; 
+            bool isNavigating = false;
 
             cbMonth.SelectedIndexChanged += (s, e) =>
             {
@@ -358,7 +385,7 @@ namespace AE.Application
             };
 
             int offsetX = (lblDateNow.Width - container.Width) / 2;
-            int offsetY = lblDateNow.Height + 4; 
+            int offsetY = lblDateNow.Height + 4;
 
             dropDown.Show(lblDateNow, new Point(offsetX, offsetY));
         }
@@ -462,6 +489,16 @@ namespace AE.Application
         }
 
         private void kryptonCustomPaletteBase1_PalettePaint(object sender, Krypton.Toolkit.PaletteLayoutEventArgs e)
+        {
+
+        }
+
+        private void panelCalendar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlPresent_Load(object sender, EventArgs e)
         {
 
         }

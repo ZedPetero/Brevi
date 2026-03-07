@@ -31,6 +31,10 @@
             components = new System.ComponentModel.Container();
             lblSectionName = new Label();
             panelCalendar = new Panel();
+            kryptonBorderEdge4 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge3 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge2 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             lblDateNow = new Krypton.Toolkit.KryptonButton();
             kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             kryptonButton6 = new Krypton.Toolkit.KryptonButton();
@@ -65,13 +69,59 @@
             // panelCalendar
             // 
             panelCalendar.BackColor = Color.White;
+            panelCalendar.Controls.Add(kryptonBorderEdge4);
+            panelCalendar.Controls.Add(kryptonBorderEdge3);
+            panelCalendar.Controls.Add(kryptonBorderEdge2);
+            panelCalendar.Controls.Add(kryptonBorderEdge1);
             panelCalendar.Controls.Add(lblDateNow);
             panelCalendar.Controls.Add(kryptonButton2);
             panelCalendar.Controls.Add(kryptonButton6);
+            panelCalendar.ForeColor = SystemColors.ActiveCaptionText;
             panelCalendar.Location = new Point(109, 157);
             panelCalendar.Name = "panelCalendar";
             panelCalendar.Size = new Size(887, 62);
             panelCalendar.TabIndex = 2;
+            panelCalendar.Paint += panelCalendar_Paint;
+            // 
+            // kryptonBorderEdge4
+            // 
+            kryptonBorderEdge4.AutoSize = false;
+            kryptonBorderEdge4.Dock = DockStyle.Top;
+            kryptonBorderEdge4.Location = new Point(2, 0);
+            kryptonBorderEdge4.Name = "kryptonBorderEdge4";
+            kryptonBorderEdge4.Size = new Size(883, 2);
+            kryptonBorderEdge4.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge4.Text = "kryptonBorderEdge4";
+            // 
+            // kryptonBorderEdge3
+            // 
+            kryptonBorderEdge3.AutoSize = false;
+            kryptonBorderEdge3.Dock = DockStyle.Right;
+            kryptonBorderEdge3.Location = new Point(885, 0);
+            kryptonBorderEdge3.Name = "kryptonBorderEdge3";
+            kryptonBorderEdge3.Size = new Size(2, 60);
+            kryptonBorderEdge3.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge3.Text = "kryptonBorderEdge3";
+            // 
+            // kryptonBorderEdge2
+            // 
+            kryptonBorderEdge2.AutoSize = false;
+            kryptonBorderEdge2.Dock = DockStyle.Bottom;
+            kryptonBorderEdge2.Location = new Point(2, 60);
+            kryptonBorderEdge2.Name = "kryptonBorderEdge2";
+            kryptonBorderEdge2.Size = new Size(885, 2);
+            kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge2.Text = "kryptonBorderEdge2";
+            // 
+            // kryptonBorderEdge1
+            // 
+            kryptonBorderEdge1.AutoSize = false;
+            kryptonBorderEdge1.Dock = DockStyle.Left;
+            kryptonBorderEdge1.Location = new Point(0, 0);
+            kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            kryptonBorderEdge1.Size = new Size(2, 62);
+            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // lblDateNow
             // 
@@ -177,6 +227,7 @@
             // 
             layoutStudents.AutoSize = true;
             layoutStudents.FlowDirection = FlowDirection.TopDown;
+            layoutStudents.ForeColor = SystemColors.ActiveCaption;
             layoutStudents.Location = new Point(109, 517);
             layoutStudents.Name = "layoutStudents";
             layoutStudents.Size = new Size(887, 195);
@@ -196,42 +247,48 @@
             // 
             // pnlTotalStudents
             // 
+            pnlTotalStudents.BackColor = Color.FromArgb(228, 242, 240);
             pnlTotalStudents.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlTotalStudents.Location = new Point(109, 301);
+            pnlTotalStudents.Location = new Point(109, 313);
             pnlTotalStudents.Name = "pnlTotalStudents";
-            pnlTotalStudents.Size = new Size(158, 136);
+            pnlTotalStudents.Size = new Size(158, 120);
             pnlTotalStudents.TabIndex = 15;
             // 
             // pnlPresent
             // 
+            pnlPresent.BackColor = Color.FromArgb(227, 245, 234);
             pnlPresent.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlPresent.Location = new Point(291, 301);
+            pnlPresent.Location = new Point(291, 313);
             pnlPresent.Name = "pnlPresent";
-            pnlPresent.Size = new Size(158, 136);
+            pnlPresent.Size = new Size(158, 120);
             pnlPresent.TabIndex = 16;
+            pnlPresent.Load += pnlPresent_Load;
             // 
             // pnlAbsent
             // 
+            pnlAbsent.BackColor = Color.FromArgb(246, 231, 231);
             pnlAbsent.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlAbsent.Location = new Point(655, 301);
+            pnlAbsent.Location = new Point(655, 313);
             pnlAbsent.Name = "pnlAbsent";
-            pnlAbsent.Size = new Size(158, 136);
+            pnlAbsent.Size = new Size(158, 120);
             pnlAbsent.TabIndex = 18;
             // 
             // pnlLate
             // 
+            pnlLate.BackColor = Color.FromArgb(248, 241, 226);
             pnlLate.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlLate.Location = new Point(473, 301);
+            pnlLate.Location = new Point(473, 313);
             pnlLate.Name = "pnlLate";
-            pnlLate.Size = new Size(158, 136);
+            pnlLate.Size = new Size(158, 120);
             pnlLate.TabIndex = 17;
             // 
             // pnlExcused
             // 
+            pnlExcused.BackColor = Color.FromArgb(225, 241, 248);
             pnlExcused.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlExcused.Location = new Point(837, 301);
+            pnlExcused.Location = new Point(837, 313);
             pnlExcused.Name = "pnlExcused";
-            pnlExcused.Size = new Size(158, 136);
+            pnlExcused.Size = new Size(158, 120);
             pnlExcused.TabIndex = 19;
             // 
             // kryptonCustomPaletteBase1
@@ -441,5 +498,9 @@
         private Krypton.Toolkit.KryptonButton btnAddStudent;
         private Krypton.Toolkit.KryptonButton btnReset;
         private Krypton.Toolkit.KryptonButton kryptonButton2;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge4;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge3;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge2;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
     }
 }

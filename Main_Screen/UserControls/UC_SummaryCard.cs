@@ -33,7 +33,6 @@ namespace AE.Application
             set => lblInteger.Text = value.ToString();
         }
 
-        // Setting empty string will hide the percentage label (per your requirement for total).
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Percentage
         {
@@ -42,6 +41,106 @@ namespace AE.Application
             {
                 lblPercentage.Text = value ?? string.Empty;
                 lblPercentage.Visible = !string.IsNullOrEmpty(lblPercentage.Text);
+            }
+        }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string TitleColor
+        {
+            get => lblTitle.ForeColor.ToString();
+            set
+            {
+                try
+                {
+                    string[] rgbValues = value.Split(',');
+
+                    if (rgbValues.Length == 3)
+                    {
+                        int r = Convert.ToInt32(rgbValues[0].Trim());
+                        int g = Convert.ToInt32(rgbValues[1].Trim());
+                        int b = Convert.ToInt32(rgbValues[2].Trim());
+
+                        lblTitle.ForeColor = Color.FromArgb(r, g, b);
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string IntegerColor
+        {
+            get => lblInteger.ForeColor.ToString();
+            set
+            {
+                try
+                {
+                    string[] rgbValues = value.Split(',');
+
+                    if (rgbValues.Length == 3)
+                    {
+                        int r = Convert.ToInt32(rgbValues[0].Trim());
+                        int g = Convert.ToInt32(rgbValues[1].Trim());
+                        int b = Convert.ToInt32(rgbValues[2].Trim());
+
+                        lblInteger.ForeColor = Color.FromArgb(r, g, b);
+                    }
+                }
+                catch
+                {
+                }
+            }
+        }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string PercentageColor
+        {
+            get => lblPercentage.ForeColor.ToString();
+            set
+            {
+                try
+                {
+                    string[] rgbValues = value.Split(',');
+
+                    if (rgbValues.Length == 3)
+                    {
+                        int r = Convert.ToInt32(rgbValues[0].Trim());
+                        int g = Convert.ToInt32(rgbValues[1].Trim());
+                        int b = Convert.ToInt32(rgbValues[2].Trim());
+
+                        lblPercentage.ForeColor = Color.FromArgb(r, g, b);
+                    }
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string BorderColors
+        {
+            get => $"{pnlBorderTop.BackColor.R},{pnlBorderTop.BackColor.G},{pnlBorderTop.BackColor.B}";
+            set
+            {
+                try
+                {
+                    string[] rgbValues = value.Split(',');
+                    if (rgbValues.Length == 3)
+                    {
+                        int r = Convert.ToInt32(rgbValues[0].Trim());
+                        int g = Convert.ToInt32(rgbValues[1].Trim());
+                        int b = Convert.ToInt32(rgbValues[2].Trim());
+                        Color borderColor = Color.FromArgb(r, g, b);
+                        pnlBorderTop.StateCommon.Color1 = borderColor;
+                        pnlBorderBottom.StateCommon.Color1 = borderColor;
+                        pnlBorderLeft.StateCommon.Color1 = borderColor;
+                        pnlBorderRight.StateCommon.Color1 = borderColor;
+                    }
+                }
+                catch
+                {
+                }
             }
         }
     }
