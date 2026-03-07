@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using AE.Application;
+using ComponentFactory.Krypton.Toolkit;
 namespace AE.Application
 {
     public partial class UC_Home : UserControl
@@ -28,8 +29,7 @@ namespace AE.Application
             Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
             if (mainForm != null) 
             {
-                UC_Classes myClasses = new UC_Classes();
-                mainForm.loadForm(myClasses);
+                mainForm.NavigateToClasses();
             }
         }
 

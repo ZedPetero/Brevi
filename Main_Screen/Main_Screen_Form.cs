@@ -66,35 +66,41 @@ namespace AE.Application
             pnlMainContent.Controls.Add(customizedControl);
 
             pnlMainContent.SendToBack();
+            customizedControl.Focus();
         }
 
-        private void btnClasses_Click(object sender, EventArgs e)
+        public void btnClasses_Click(object sender, EventArgs e)
         {
             UC_Classes myClasses = new UC_Classes();
             loadForm(myClasses);
         }
 
-        private void btnRecords_Click(object sender, EventArgs e)
+        public void btnRecords_Click(object sender, EventArgs e)
         {
             UC_Records myRecords = new UC_Records();
             loadForm(myRecords);
         }
 
-        private void btnTeacher_Click(object sender, EventArgs e)
+        public void btnTeacher_Click(object sender, EventArgs e)
         {
             UC_Teacher myTeacher = new UC_Teacher();
             loadForm(myTeacher);
         }
 
-        private void btnLogOut_Click(object sender, EventArgs e)
+        public void btnLogOut_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
+        public void btnSettings_Click(object sender, EventArgs e)
         {
             UC_Settings mySettings = new UC_Settings();
             loadForm(mySettings);
+        }
+        public void NavigateToClasses()
+        {
+            btnClasses.Checked = true;
+            loadForm(new UC_Classes());
         }
     }
 }

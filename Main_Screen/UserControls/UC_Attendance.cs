@@ -198,13 +198,16 @@ namespace AE.Application
 
         private void LoadStudentsForDate()
         {
-            layoutStudents.Controls.Clear();
-
             if (CurrentSectionId == 0)
             {
                 lblNumberofStudents.Text = "0 Students";
                 return;
             }
+
+            Point scrollPos = layoutStudents.AutoScrollPosition;
+
+            layoutStudents.SuspendLayout();
+            layoutStudents.Controls.Clear();
 
             using (var _context = new AppDbContext())
             {
@@ -250,6 +253,10 @@ namespace AE.Application
 
                 lblNumberofStudents.Text = $"{students.Count} Students";
             }
+
+            layoutStudents.ResumeLayout();
+
+            layoutStudents.AutoScrollPosition = new Point(Math.Abs(scrollPos.X), Math.Abs(scrollPos.Y));
 
             SetSummaryCards();
         }
@@ -435,7 +442,13 @@ namespace AE.Application
                 Debug.WriteLine("[UC_Attendance] btnMarkAllPresent error: " + ex);
             }
 
-            LoadStudentsForDate();
+            foreach (Control control in layoutStudents.Controls)
+            {
+                if (control is UC_StudentRow studentRow)
+                {
+                    studentRow.SetSelectedStatus(AttendanceStatus.Present);
+                }
+            }
             SetSummaryCards();
         }
 
@@ -465,13 +478,18 @@ namespace AE.Application
                 Debug.WriteLine("[UC_Attendance] btnReset error: " + ex);
             }
 
-            LoadStudentsForDate();
+            foreach (Control control in layoutStudents.Controls)
+            {
+                if (control is UC_StudentRow studentRow)
+                {
+                    studentRow.SetSelectedStatus(null);
+                }
+            }
             SetSummaryCards();
         }
 
         public void RefreshSummaryAndRoster()
         {
-            LoadStudentsForDate();
             SetSummaryCards();
         }
 

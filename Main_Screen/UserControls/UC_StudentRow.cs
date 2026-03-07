@@ -28,6 +28,8 @@ namespace AE.Application
         public UC_StudentRow()
         {
             InitializeComponent();
+            UIHelper.RoundControl(this, 20);
+            UIHelper.RoundControl(pnlContent, 20);
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -74,20 +76,32 @@ namespace AE.Application
             if (status == null)
             {
                 StudentStatus = "No Record";
+                kryptonCheckSet1.CheckedButton = null;
             }
             else
             {
                 StudentStatus = status.ToString();
-            }
 
-            btnCheck.Tag = (status == AttendanceStatus.Present);
-            btnLate.Tag = (status == AttendanceStatus.Late);
-            btnExcused.Tag = (status == AttendanceStatus.Excused);
-            btnAbsent.Tag = (status == AttendanceStatus.Absent);
+                switch (status)
+                {
+                    case AttendanceStatus.Present:
+                        btnPresent.Checked = true;
+                        break;
+                    case AttendanceStatus.Late:
+                        btnLate.Checked = true;
+                        break;
+                    case AttendanceStatus.Excused:
+                        btnExcused.Checked = true;
+                        break;
+                    case AttendanceStatus.Absent:
+                        btnAbsent.Checked = true;
+                        break;
+                }
+            }
         }
 
 
-        private void BtnCheck_Click(object? sender, EventArgs e)
+        private void BtnPresent_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Present);
         }

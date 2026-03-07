@@ -187,6 +187,7 @@
             layoutStudents.FlowDirection = FlowDirection.TopDown;
             layoutStudents.ForeColor = SystemColors.ActiveCaption;
             layoutStudents.Location = new Point(109, 517);
+            layoutStudents.Margin = new Padding(3, 3, 3, 20);
             layoutStudents.Name = "layoutStudents";
             layoutStudents.Size = new Size(887, 195);
             layoutStudents.TabIndex = 10;
@@ -482,7 +483,7 @@
             Controls.Add(panelCalendarBorder);
             Controls.Add(lblSectionName);
             Name = "UC_Attendance";
-            Size = new Size(1150, 713);
+            Size = new Size(1150, 761);
             Load += UC_Attendance_Load;
             panelCalendar.ResumeLayout(false);
             ResumeLayout(false);
