@@ -2,6 +2,8 @@ namespace AE.Application;
 
 using AE.Domain.Models;
 using AE.Infrastructure.Data;
+using AE.Domain.Repositories;
+using AE.Domain.Repositories.IRepositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +28,9 @@ internal static class Program
 
         services.AddIdentityCore<Teacher>()
             .AddEntityFrameworkStores<AppDbContext>();
+
+        // Register generic repository so application code can depend on IRepository<T>
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         var serviceProvider = services.BuildServiceProvider();
 

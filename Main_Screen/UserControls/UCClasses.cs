@@ -1,5 +1,6 @@
 ﻿using AE.Application.UserControls;
 using AE.Domain.Models;
+using AE.Domain.Repositories.IRepositories;
 using AE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -17,9 +18,12 @@ namespace AE.Application
 {
     public partial class UCClasses : UserControl
     {
-        public UCClasses()
+        private readonly ISectionService _sectionService;
+
+        public UCClasses(ISectionService sectionService)
         {
             InitializeComponent();
+            _sectionService = sectionService;
             lblTeacher.Text = $"Welcome, {UserSession.CurrentTeacherName}!";
         }
         protected override void OnLoad(EventArgs e)
@@ -28,44 +32,39 @@ namespace AE.Application
 
             LoadSections();
         }
-        public void LoadSections()
+        public async void LoadSections()
         {
             try
             {
                 flowLayoutPanelCards.Controls.Clear();
 
-                using (var db = new AppDbContext())
+                var sections = await _sectionService
+                    .GetTeacherSectionsAsync(UserSession.CurrentTeacherId);
+
+                foreach (var section in sections)
                 {
-                    var mySections = db.Sections
-                        .Where(s => s.TeacherId == UserSession.CurrentTeacherId 
-                                && s.IsArchived == false)
-                        .Select(s => new
-                        {
-                            s.Id,
-                            s.SectionName,
-                            SubjectName = s.Subject.ToString(),
-                            StudentCount = s.Students.Count,
-                            s.StartTimeSchedule,
-                            s.EndTimeSchedule,
-                            s.IsArchived
-                        })
-                        .ToList()
-                        .OrderBy(s => s.StartTimeSchedule)
-                        .ToList();
-                    foreach (var section in mySections)
+                    string timeString =
+                        DateTime.Today.Add(section.StartTime).ToString("hh:mm tt")
+                        + " - " +
+                        DateTime.Today.Add(section.EndTime).ToString("hh:mm tt");
+
+                    UCSectionCard card = new UCSectionCard();
+
+                    card.SetData(
+                        section.Id,
+                        section.SectionName,
+                        section.SubjectName,
+                        section.StudentCount,
+                        timeString);
+
+                    card.TakeAttendanceClicked += Card_TakeAttendanceClicked;
+
+                    card.SectionDeleted += (s, sectionId) =>
                     {
-                        string timeString = DateTime.Today.Add(section.StartTimeSchedule).ToString("hh:mm tt") +
-                                    " - " +
-                                    DateTime.Today.Add(section.EndTimeSchedule).ToString("hh:mm tt");
-                        UCSectionCard card = new UCSectionCard();
-                        card.SetData(section.Id, section.SectionName, section.SubjectName, section.StudentCount, timeString);
-                        card.TakeAttendanceClicked += Card_TakeAttendanceClicked;
-                        card.SectionDeleted += (s, sectionId) =>
-                        {
-                            LoadSections();
-                        };
-                        flowLayoutPanelCards.Controls.Add(card);
-                    }
+                        LoadSections();
+                    };
+
+                    flowLayoutPanelCards.Controls.Add(card);
                 }
             }
             catch (Exception ex)
@@ -105,11 +104,6 @@ namespace AE.Application
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void lblTeacher_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

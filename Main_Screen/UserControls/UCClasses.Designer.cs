@@ -114,15 +114,14 @@
             lblTeacher.Size = new Size(242, 45);
             lblTeacher.TabIndex = 0;
             lblTeacher.Text = "Hello, Teacher!";
-            lblTeacher.Click += lblTeacher_Click;
             // 
-            // UC_Classes
+            // UCClasses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(249, 250, 251);
             Controls.Add(panel1);
-            Name = "UC_Classes";
+            Name = "UCClasses";
             Size = new Size(1150, 640);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

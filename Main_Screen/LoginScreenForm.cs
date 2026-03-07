@@ -39,7 +39,6 @@ namespace AE.Application
 
                 originalPositions[ctrl] = ctrl.Location;
 
-                // Move controls down before showing the form
                 ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y + 40);
             }
         }
@@ -61,19 +60,17 @@ namespace AE.Application
                 Control ctrl = pair.Key;
                 Point target = pair.Value;
 
-                int newY = ctrl.Location.Y - 4; // speed
+                int newY = ctrl.Location.Y - 4;
                 if (newY < target.Y)
                     newY = target.Y;
 
                 ctrl.Location = new Point(ctrl.Location.X, newY);
             }
 
-            // Stop animation
             if (animationStep >= 15)
             {
                 timerSlide.Stop();
 
-                // Snap to exact positions
                 foreach (var pair in originalPositions)
                     pair.Key.Location = pair.Value;
             }
@@ -142,14 +139,12 @@ namespace AE.Application
         {
             if (isDarkMode)
             {
-                // Switch to light mode
                 isDarkMode = false;
                 this.BackColor = Color.White;
                 btnDarkMode.BackColor = Color.FromArgb(240, 240, 240);
             }
             else
             {
-                // Switch to dark mode
                 isDarkMode = true;
                 this.BackColor = Color.FromArgb(100, 100, 100);
                 btnDarkMode.BackColor = Color.FromArgb(80, 80, 80);
