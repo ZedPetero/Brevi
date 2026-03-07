@@ -1,15 +1,16 @@
-﻿using System;
+﻿using AE.Domain.Models;
+using AE.Domain.Repositories.IRepositories;
+using AE.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using AE.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Diagnostics;
-using AE.Domain.Models;
 
 namespace AE.Application
 {
@@ -24,6 +25,8 @@ namespace AE.Application
         public UserControl CallerControl { get; set; }
 
         private DateTime _selectedDate = DateTime.Today;
+
+        private readonly ISectionService _sectionService;
 
         public UCAttendance()
         {
@@ -287,7 +290,7 @@ namespace AE.Application
             }
             else
             {
-                mainForm.loadForm(new UCClasses());
+                mainForm.loadForm(new UCClasses(_sectionService));
             }
         }
 

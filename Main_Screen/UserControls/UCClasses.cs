@@ -19,7 +19,6 @@ namespace AE.Application
     public partial class UCClasses : UserControl
     {
         private readonly ISectionService _sectionService;
-
         public UCClasses(ISectionService sectionService)
         {
             InitializeComponent();

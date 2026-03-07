@@ -1,4 +1,6 @@
 
+using AE.Domain.Repositories.IRepositories;
+using AE.Infrastructure.Data;
 using Krypton.Toolkit;
 using System.Drawing.Drawing2D;
 namespace AE.Application
@@ -7,10 +9,15 @@ namespace AE.Application
     {
         bool sidebarExpand = false;
         private Form backgroundOverlay;
+        private readonly ISectionService _sectionService;
 
         public MainScreenForm()
         {
             InitializeComponent();
+
+            var db = new AppDbContext();
+            _sectionService = new SectionService(db);
+
             UCHome myHome = new UCHome();
             loadForm(myHome);
             btnHome.Checked = true;
@@ -74,7 +81,7 @@ namespace AE.Application
 
         public void btnClasses_Click(object sender, EventArgs e)
         {
-            UCClasses myClasses = new UCClasses();
+            UCClasses myClasses = new UCClasses(_sectionService);
             loadForm(myClasses);
         }
 
@@ -128,7 +135,7 @@ namespace AE.Application
         public void NavigateToClasses()
         {
             btnClasses.Checked = true;
-            loadForm(new UCClasses());
+            loadForm(new UCClasses(_sectionService));
         }
     }
 }

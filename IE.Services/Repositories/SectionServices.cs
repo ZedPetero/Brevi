@@ -18,9 +18,8 @@ public class SectionService : ISectionService
 
     public async Task<List<SectionDto>> GetTeacherSectionsAsync(int teacherId)
     {
-        return await _context.Sections
+        var sections = await _context.Sections
             .Where(s => s.TeacherId == teacherId && !s.IsArchived)
-            .OrderBy(s => s.StartTimeSchedule)
             .Select(s => new SectionDto
             {
                 Id = s.Id,
@@ -31,5 +30,9 @@ public class SectionService : ISectionService
                 EndTime = s.EndTimeSchedule
             })
             .ToListAsync();
+
+        return sections
+            .OrderBy(s => s.StartTime)
+            .ToList();
     }
 }

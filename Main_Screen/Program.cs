@@ -29,8 +29,6 @@ internal static class Program
         services.AddIdentityCore<Teacher>()
             .AddEntityFrameworkStores<AppDbContext>();
 
-        // Register generic repository so application code can depend on IRepository<T>
-        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         var serviceProvider = services.BuildServiceProvider();
 
