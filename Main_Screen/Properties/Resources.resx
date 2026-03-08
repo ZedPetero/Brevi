@@ -181,6 +181,12 @@
   <data name="MaterialSymbolsSharp[FILL,GRAD,opsz,wght]" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MaterialSymbolsSharp[FILL,GRAD,opsz,wght].ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="InterRegular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Inter-VariableFont_opsz,wght.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="logo - text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo - text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
