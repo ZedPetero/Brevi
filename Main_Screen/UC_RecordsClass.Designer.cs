@@ -35,7 +35,7 @@
             // 
             // Archivebutton
             // 
-            Archivebutton.Location = new Point(376, 12);
+            Archivebutton.Location = new Point(430, 12);
             Archivebutton.Name = "Archivebutton";
             Archivebutton.Size = new Size(90, 36);
             Archivebutton.StateCommon.Border.Rounding = 20F;
@@ -58,7 +58,7 @@
             // 
             // kryptonButton1
             // 
-            kryptonButton1.Location = new Point(504, 18);
+            kryptonButton1.Location = new Point(526, 18);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.Size = new Size(34, 25);
             kryptonButton1.StateCommon.Border.Rounding = 5F;
@@ -78,8 +78,7 @@
             Controls.Add(kryptonLabel1);
             Controls.Add(Archivebutton);
             Name = "UC_RecordsClass";
-            Size = new Size(550, 62);
-            Load += this.UC_RecordsClass_Load;
+            Size = new Size(573, 63);
             ResumeLayout(false);
             PerformLayout();
         }

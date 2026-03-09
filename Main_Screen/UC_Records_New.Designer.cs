@@ -30,15 +30,13 @@
         {
             label1 = new Label();
             CurrentClassespanel = new Krypton.Toolkit.KryptonPanel();
-            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             label2 = new Label();
+            ArchivedClassespanel = new Krypton.Toolkit.KryptonPanel();
             label3 = new Label();
-            Restorebutton = new Krypton.Toolkit.KryptonButton();
-            Archivebutton = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).BeginInit();
             CurrentClassespanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
-            kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ArchivedClassespanel).BeginInit();
+            ArchivedClassespanel.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -54,26 +52,15 @@
             // 
             // CurrentClassespanel
             // 
-            CurrentClassespanel.Controls.Add(Archivebutton);
+            CurrentClassespanel.AutoScroll = true;
             CurrentClassespanel.Controls.Add(label2);
             CurrentClassespanel.Location = new Point(41, 87);
             CurrentClassespanel.Name = "CurrentClassespanel";
-            CurrentClassespanel.Size = new Size(573, 142);
+            CurrentClassespanel.Size = new Size(573, 63);
             CurrentClassespanel.StateCommon.Color1 = Color.White;
             CurrentClassespanel.StateCommon.Color2 = Color.White;
             CurrentClassespanel.TabIndex = 7;
             CurrentClassespanel.Paint += kryptonPanel1_Paint;
-            // 
-            // kryptonPanel1
-            // 
-            kryptonPanel1.Controls.Add(Restorebutton);
-            kryptonPanel1.Controls.Add(label3);
-            kryptonPanel1.Location = new Point(41, 261);
-            kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(573, 142);
-            kryptonPanel1.StateCommon.Color1 = Color.White;
-            kryptonPanel1.StateCommon.Color2 = Color.White;
-            kryptonPanel1.TabIndex = 8;
             // 
             // label2
             // 
@@ -87,6 +74,18 @@
             label2.TabIndex = 9;
             label2.Text = "Current Classes";
             // 
+            // ArchivedClassespanel
+            // 
+            ArchivedClassespanel.AutoScroll = true;
+            ArchivedClassespanel.Controls.Add(label3);
+            ArchivedClassespanel.Location = new Point(41, 261);
+            ArchivedClassespanel.Name = "ArchivedClassespanel";
+            ArchivedClassespanel.Size = new Size(573, 63);
+            ArchivedClassespanel.StateCommon.Color1 = Color.White;
+            ArchivedClassespanel.StateCommon.Color2 = Color.White;
+            ArchivedClassespanel.TabIndex = 8;
+            ArchivedClassespanel.Paint += kryptonPanel1_Paint_1;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -99,40 +98,12 @@
             label3.TabIndex = 10;
             label3.Text = "Archived Classes";
             // 
-            // Restorebutton
-            // 
-            Restorebutton.Location = new Point(480, 10);
-            Restorebutton.Name = "Restorebutton";
-            Restorebutton.Size = new Size(90, 36);
-            Restorebutton.StateCommon.Border.Rounding = 20F;
-            Restorebutton.StateCommon.Content.ShortText.Color1 = Color.White;
-            Restorebutton.StateCommon.Content.ShortText.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Restorebutton.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
-            Restorebutton.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
-            Restorebutton.TabIndex = 11;
-            Restorebutton.Values.DropDownArrowColor = Color.Empty;
-            Restorebutton.Values.Text = "Restore";
-            // 
-            // Archivebutton
-            // 
-            Archivebutton.Location = new Point(480, 14);
-            Archivebutton.Name = "Archivebutton";
-            Archivebutton.Size = new Size(90, 36);
-            Archivebutton.StateCommon.Border.Rounding = 20F;
-            Archivebutton.StateCommon.Content.ShortText.Color1 = Color.White;
-            Archivebutton.StateCommon.Content.ShortText.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Archivebutton.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
-            Archivebutton.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
-            Archivebutton.TabIndex = 12;
-            Archivebutton.Values.DropDownArrowColor = Color.Empty;
-            Archivebutton.Values.Text = "Archive";
-            // 
             // UC_Records_New
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(249, 250, 251);
-            Controls.Add(kryptonPanel1);
+            Controls.Add(ArchivedClassespanel);
             Controls.Add(CurrentClassespanel);
             Controls.Add(label1);
             Name = "UC_Records_New";
@@ -140,9 +111,9 @@
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).EndInit();
             CurrentClassespanel.ResumeLayout(false);
             CurrentClassespanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
-            kryptonPanel1.ResumeLayout(false);
-            kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ArchivedClassespanel).EndInit();
+            ArchivedClassespanel.ResumeLayout(false);
+            ArchivedClassespanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,9 +123,7 @@
         private Label label1;
         private Krypton.Toolkit.KryptonPanel CurrentClassespanel;
         private Label label2;
-        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private Krypton.Toolkit.KryptonButton Restorebutton;
+        private Krypton.Toolkit.KryptonPanel ArchivedClassespanel;
         private Label label3;
-        private Krypton.Toolkit.KryptonButton Archivebutton;
     }
 }

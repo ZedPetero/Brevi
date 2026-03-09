@@ -19,5 +19,10 @@ namespace AE.Application
         {
             UIHelper.RoundControl(CurrentClassespanel, 20);
         }
+
+        private void kryptonPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+            UIHelper.RoundControl(ArchivedClassespanel, 20);
+        }
     }
 }
