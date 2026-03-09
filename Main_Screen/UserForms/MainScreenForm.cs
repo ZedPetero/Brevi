@@ -1,11 +1,9 @@
-
 using AE.Domain.Repositories.IRepositories;
 using AE.Infrastructure.Data;
-using Krypton.Toolkit;
 using System.Drawing.Drawing2D;
 namespace AE.Application
 {
-    public partial class MainScreenForm : KryptonForm
+    public partial class MainScreenForm : Form
     {
         bool sidebarExpand = false;
         private Form backgroundOverlay;
@@ -136,6 +134,30 @@ namespace AE.Application
         {
             btnClasses.Checked = true;
             loadForm(new UCClasses(_sectionService));
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.MaximumSize = Screen.FromControl(this).WorkingArea.Size;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.MaximumSize = new Size(0, 0);
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
