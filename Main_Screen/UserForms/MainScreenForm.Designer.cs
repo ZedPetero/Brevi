@@ -136,7 +136,7 @@ namespace AE.Application
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.Padding = new Padding(0);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Color1 = Color.FromArgb(63, 63, 70);
-            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Back.Color1 = Color.FromArgb(229, 242, 240);
             ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Back.Color2 = Color.FromArgb(229, 242, 240);
@@ -267,13 +267,13 @@ namespace AE.Application
             flowLayoutPanel2.Controls.Add(btnRecords);
             flowLayoutPanel2.Controls.Add(btnTeacher);
             flowLayoutPanel2.Controls.Add(btnSettings);
-            flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(0, 0);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Padding = new Padding(4, 0, 0, 0);
             flowLayoutPanel2.Size = new Size(53, 601);
             flowLayoutPanel2.TabIndex = 2;
+            flowLayoutPanel2.Paint += flowLayoutPanel2_Paint;
             // 
             // btnLogout
             // 
@@ -374,7 +374,7 @@ namespace AE.Application
             btnMenu.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             btnMenu.Size = new Size(47, 42);
             btnMenu.StateCommon.Content.Padding = new Padding(0, 3, 3, 3);
-            btnMenu.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMenu.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMenu.TabIndex = 4;
             btnMenu.Values.DropDownArrowColor = Color.Empty;
             btnMenu.Values.Text = "";

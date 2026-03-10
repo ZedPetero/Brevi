@@ -137,5 +137,10 @@ namespace AE.Application
             btnClasses.Checked = true;
             loadForm(new UCClasses(_sectionService));
         }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
