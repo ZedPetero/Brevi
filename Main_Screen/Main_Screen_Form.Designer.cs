@@ -200,6 +200,7 @@
             pnlMainContent.Name = "pnlMainContent";
             pnlMainContent.Size = new Size(1150, 640);
             pnlMainContent.TabIndex = 3;
+            pnlMainContent.Paint += pnlMainContent_Paint;
             // 
             // sidebar
             // 
