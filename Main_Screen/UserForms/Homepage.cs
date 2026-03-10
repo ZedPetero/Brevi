@@ -20,10 +20,7 @@ namespace AE.Application
             UIHelper.RoundControl(this, 20);
         }
 
-        private void kryptonLabel2_Click(object sender, EventArgs e)
-        {
-            UIHelper.RoundControl(kryptonLabel2, 20);
-        }
+        // Removed unused handler for missing kryptonLabel2 control
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
