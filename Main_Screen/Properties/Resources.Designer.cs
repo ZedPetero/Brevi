@@ -73,9 +73,29 @@ namespace AE.Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap circle_green {
+            get {
+                object obj = ResourceManager.GetObject("circle-green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap circle_red {
             get {
                 object obj = ResourceManager.GetObject("circle-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circle_yellow {
+            get {
+                object obj = ResourceManager.GetObject("circle-yellow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
