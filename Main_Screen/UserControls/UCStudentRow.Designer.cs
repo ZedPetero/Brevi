@@ -49,9 +49,9 @@
             lblStudentName.BackColor = Color.Transparent;
             lblStudentName.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblStudentName.ForeColor = Color.FromArgb(29, 37, 48);
-            lblStudentName.Location = new Point(97, 22);
+            lblStudentName.Location = new Point(111, 29);
             lblStudentName.Name = "lblStudentName";
-            lblStudentName.Size = new Size(191, 30);
+            lblStudentName.Size = new Size(248, 39);
             lblStudentName.TabIndex = 2;
             lblStudentName.Text = "Emma Thompson";
             // 
@@ -61,9 +61,9 @@
             lblStatus.BackColor = Color.Transparent;
             lblStatus.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.FromArgb(29, 37, 48);
-            lblStatus.Location = new Point(99, 56);
+            lblStatus.Location = new Point(113, 75);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(99, 23);
+            lblStatus.Size = new Size(124, 28);
             lblStatus.TabIndex = 3;
             lblStatus.Text = "Not Marked";
             // 
@@ -78,17 +78,19 @@
             pnlContent.Controls.Add(btnPresent);
             pnlContent.Controls.Add(btnDeleteStudent);
             pnlContent.Controls.Add(lblNumber);
-            pnlContent.Location = new Point(8, 2);
+            pnlContent.Location = new Point(9, 3);
+            pnlContent.Margin = new Padding(3, 4, 3, 4);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(790, 96);
+            pnlContent.Size = new Size(903, 128);
             pnlContent.TabIndex = 8;
             // 
             // btnAbsent
             // 
             btnAbsent.Cursor = Cursors.Hand;
-            btnAbsent.Location = new Point(652, 26);
+            btnAbsent.Location = new Point(745, 35);
+            btnAbsent.Margin = new Padding(3, 4, 3, 4);
             btnAbsent.Name = "btnAbsent";
-            btnAbsent.Size = new Size(45, 45);
+            btnAbsent.Size = new Size(51, 60);
             btnAbsent.StateCheckedNormal.Back.Color1 = Color.FromArgb(223, 58, 58);
             btnAbsent.StateCheckedNormal.Back.Color2 = Color.FromArgb(223, 58, 58);
             btnAbsent.StateCheckedNormal.Back.Draw = Krypton.Toolkit.InheritBool.True;
@@ -143,9 +145,10 @@
             // btnExcused
             // 
             btnExcused.Cursor = Cursors.Hand;
-            btnExcused.Location = new Point(596, 26);
+            btnExcused.Location = new Point(681, 35);
+            btnExcused.Margin = new Padding(3, 4, 3, 4);
             btnExcused.Name = "btnExcused";
-            btnExcused.Size = new Size(45, 45);
+            btnExcused.Size = new Size(51, 60);
             btnExcused.StateCheckedNormal.Back.Color1 = Color.FromArgb(13, 162, 231);
             btnExcused.StateCheckedNormal.Back.Color2 = Color.FromArgb(13, 162, 231);
             btnExcused.StateCheckedNormal.Back.Draw = Krypton.Toolkit.InheritBool.True;
@@ -200,9 +203,10 @@
             // btnLate
             // 
             btnLate.Cursor = Cursors.Hand;
-            btnLate.Location = new Point(540, 26);
+            btnLate.Location = new Point(617, 35);
+            btnLate.Margin = new Padding(3, 4, 3, 4);
             btnLate.Name = "btnLate";
-            btnLate.Size = new Size(45, 45);
+            btnLate.Size = new Size(51, 60);
             btnLate.StateCheckedNormal.Back.Color1 = Color.FromArgb(245, 159, 10);
             btnLate.StateCheckedNormal.Back.Color2 = Color.FromArgb(245, 159, 10);
             btnLate.StateCheckedNormal.Border.Color1 = Color.FromArgb(245, 159, 10);
@@ -255,9 +259,10 @@
             // btnPresent
             // 
             btnPresent.Cursor = Cursors.Hand;
-            btnPresent.Location = new Point(484, 26);
+            btnPresent.Location = new Point(553, 35);
+            btnPresent.Margin = new Padding(3, 4, 3, 4);
             btnPresent.Name = "btnPresent";
-            btnPresent.Size = new Size(45, 45);
+            btnPresent.Size = new Size(51, 60);
             btnPresent.StateCheckedNormal.Back.Color1 = Color.FromArgb(34, 195, 93);
             btnPresent.StateCheckedNormal.Back.Color2 = Color.FromArgb(34, 195, 93);
             btnPresent.StateCheckedNormal.Back.Draw = Krypton.Toolkit.InheritBool.True;
@@ -312,9 +317,10 @@
             // btnDeleteStudent
             // 
             btnDeleteStudent.Cursor = Cursors.Hand;
-            btnDeleteStudent.Location = new Point(722, 26);
+            btnDeleteStudent.Location = new Point(825, 35);
+            btnDeleteStudent.Margin = new Padding(3, 4, 3, 4);
             btnDeleteStudent.Name = "btnDeleteStudent";
-            btnDeleteStudent.Size = new Size(45, 45);
+            btnDeleteStudent.Size = new Size(51, 60);
             btnDeleteStudent.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnDeleteStudent.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
             btnDeleteStudent.StateCommon.Border.Color1 = Color.FromArgb(224, 230, 235);
@@ -333,9 +339,10 @@
             // 
             // lblNumber
             // 
-            lblNumber.Location = new Point(13, 19);
+            lblNumber.Location = new Point(15, 25);
+            lblNumber.Margin = new Padding(3, 4, 3, 4);
             lblNumber.Name = "lblNumber";
-            lblNumber.Size = new Size(58, 58);
+            lblNumber.Size = new Size(66, 77);
             lblNumber.StateCommon.Back.Color1 = Color.FromArgb(211, 215, 222);
             lblNumber.StateCommon.Back.Color2 = Color.FromArgb(211, 215, 222);
             lblNumber.StateCommon.Border.Color1 = Color.FromArgb(211, 215, 222);
@@ -359,12 +366,13 @@
             // 
             // UCStudentRow
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(211, 215, 222);
             Controls.Add(pnlContent);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "UCStudentRow";
-            Size = new Size(800, 100);
+            Size = new Size(914, 133);
             pnlContent.ResumeLayout(false);
             pnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonCheckSet1).EndInit();
@@ -372,7 +380,6 @@
         }
 
         #endregion
-        private Label lblStudentName;
         private Label lblStatus;
         private Panel pnlContent;
         private Krypton.Toolkit.KryptonButton lblNumber;
@@ -382,5 +389,6 @@
         private Krypton.Toolkit.KryptonCheckButton btnPresent;
         private Krypton.Toolkit.KryptonButton btnDeleteStudent;
         private Krypton.Toolkit.KryptonCheckSet kryptonCheckSet1;
+        public Label lblStudentName;
     }
 }

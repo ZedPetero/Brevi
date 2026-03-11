@@ -27,7 +27,7 @@ namespace AE.Application
         private void btnGetStarted_Click(object sender, EventArgs e)
         {
             MainScreenForm mainForm = (MainScreenForm)this.FindForm();
-            if (mainForm != null) 
+            if (mainForm != null)
             {
                 mainForm.NavigateToClasses();
             }
@@ -123,6 +123,11 @@ namespace AE.Application
                 int y = kryptonPanel4.Location.Y;
                 kryptonPanel4.Location = new Point(x, y + 5);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
