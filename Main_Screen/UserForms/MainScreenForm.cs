@@ -19,14 +19,14 @@ namespace AE.Application
             _sectionService = new SectionService(db);
 
             UCHome myHome = new UCHome();
-            loadForm(myHome);
+            LoadForm(myHome);
             btnHome.Checked = true;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             UCHome myHome = new UCHome();
-            loadForm(myHome);
+            LoadForm(myHome);
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace AE.Application
             pnlMainContent.Location = new Point(left, top);
             pnlMainContent.Size = new Size(width, height);
         }
-        public void loadForm(UserControl customizedControl)
+        public void LoadForm(UserControl customizedControl)
         {
             pnlMainContent.Controls.Clear();
 
@@ -103,19 +103,19 @@ namespace AE.Application
         public void btnClasses_Click(object sender, EventArgs e)
         {
             UCClasses myClasses = new UCClasses(_sectionService);
-            loadForm(myClasses);
+            LoadForm(myClasses);
         }
 
         public void btnRecords_Click(object sender, EventArgs e)
         {
             UCRecords myRecords = new UCRecords();
-            loadForm(myRecords);
+            LoadForm(myRecords);
         }
 
         public void btnTeacher_Click(object sender, EventArgs e)
         {
             UCTeacher myTeacher = new UCTeacher();
-            loadForm(myTeacher);
+            LoadForm(myTeacher);
         }
 
         public void btnLogOut_Click(object sender, EventArgs e)
@@ -126,7 +126,7 @@ namespace AE.Application
         public void btnSettings_Click(object sender, EventArgs e)
         {
             UCSettings mySettings = new UCSettings();
-            loadForm(mySettings);
+            LoadForm(mySettings);
         }
 
         public void ShowOverlay()
@@ -156,7 +156,7 @@ namespace AE.Application
         public void NavigateToClasses()
         {
             btnClasses.Checked = true;
-            loadForm(new UCClasses(_sectionService));
+            LoadForm(new UCClasses(_sectionService));
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)

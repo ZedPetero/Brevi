@@ -79,7 +79,7 @@ namespace AE.Application
             attendanceScreen.CallerControl = this;
             attendanceScreen.SetSection(sectionId);
 
-            mainForm.loadForm(attendanceScreen);
+            mainForm.LoadForm(attendanceScreen);
         }
 
         private void btnAddClass_Click(object sender, EventArgs e)

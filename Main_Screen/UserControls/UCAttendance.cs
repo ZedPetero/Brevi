@@ -309,11 +309,11 @@ namespace AE.Application
 
             if (CallerControl != null)
             {
-                mainForm.loadForm(CallerControl);
+                mainForm.LoadForm(CallerControl);
             }
             else
             {
-                mainForm.loadForm(new UCClasses(_sectionService));
+                mainForm.LoadForm(new UCClasses(_sectionService));
             }
         }
 

@@ -13,6 +13,8 @@ namespace AE.Application
         public LoginFormUser()
         {
             InitializeComponent();
+            UCInteractionPage iPage = new UCInteractionPage();
+            LoadForm(iPage);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -24,12 +26,23 @@ namespace AE.Application
         {
             if (WindowState == FormWindowState.Maximized)
             {
-                
+                WindowState = FormWindowState.Normal;
             }
             else
             {
-                
+                WindowState = FormWindowState.Maximized;
             }
+        }
+
+        public void LoadForm(UserControl customizedControl)
+        {
+            pnlMainContent.Controls.Clear();
+
+            customizedControl.Dock = DockStyle.Fill;
+
+            pnlMainContent.Controls.Add(customizedControl);
+
+            customizedControl.Focus();
         }
     }
 }

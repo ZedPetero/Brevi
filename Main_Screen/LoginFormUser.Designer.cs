@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            kryptonButton3 = new Krypton.Toolkit.KryptonButton();
+            btnCollapse = new Krypton.Toolkit.KryptonButton();
             btnMaximize = new Krypton.Toolkit.KryptonButton();
             btnClose = new Krypton.Toolkit.KryptonButton();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
@@ -37,20 +37,16 @@
             kryptonButton6 = new Krypton.Toolkit.KryptonButton();
             kryptonButton5 = new Krypton.Toolkit.KryptonButton();
             kryptonButton4 = new Krypton.Toolkit.KryptonButton();
-            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            kryptonButton7 = new Krypton.Toolkit.KryptonButton();
-            pictureBox1 = new PictureBox();
+            pnlMainContent = new Panel();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).BeginInit();
             kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            kryptonPanel1.Controls.Add(kryptonButton3);
+            kryptonPanel1.Controls.Add(btnCollapse);
             kryptonPanel1.Controls.Add(btnMaximize);
             kryptonPanel1.Controls.Add(btnClose);
             kryptonPanel1.Dock = DockStyle.Top;
@@ -59,28 +55,30 @@
             kryptonPanel1.Size = new Size(1184, 32);
             kryptonPanel1.TabIndex = 0;
             // 
-            // kryptonButton3
+            // btnCollapse
             // 
-            kryptonButton3.Location = new Point(1091, 4);
-            kryptonButton3.Name = "kryptonButton3";
-            kryptonButton3.OverrideDefault.Back.Color1 = Color.Transparent;
-            kryptonButton3.OverrideDefault.Back.Color2 = Color.Transparent;
-            kryptonButton3.OverrideFocus.Back.Color1 = Color.Transparent;
-            kryptonButton3.OverrideFocus.Back.Color2 = Color.Transparent;
-            kryptonButton3.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton3.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton3.Size = new Size(24, 24);
-            kryptonButton3.StateCommon.Back.Color1 = Color.Transparent;
-            kryptonButton3.StateCommon.Back.Color2 = Color.Transparent;
-            kryptonButton3.StateCommon.Border.Color1 = Color.Transparent;
-            kryptonButton3.StateCommon.Border.Color2 = Color.Transparent;
-            kryptonButton3.TabIndex = 2;
-            kryptonButton3.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton3.Values.Image = Properties.Resources.green_circle;
-            kryptonButton3.Values.Text = "";
+            btnCollapse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCollapse.Location = new Point(1091, 4);
+            btnCollapse.Name = "btnCollapse";
+            btnCollapse.OverrideDefault.Back.Color1 = Color.Transparent;
+            btnCollapse.OverrideDefault.Back.Color2 = Color.Transparent;
+            btnCollapse.OverrideFocus.Back.Color1 = Color.Transparent;
+            btnCollapse.OverrideFocus.Back.Color2 = Color.Transparent;
+            btnCollapse.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnCollapse.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnCollapse.Size = new Size(24, 24);
+            btnCollapse.StateCommon.Back.Color1 = Color.Transparent;
+            btnCollapse.StateCommon.Back.Color2 = Color.Transparent;
+            btnCollapse.StateCommon.Border.Color1 = Color.Transparent;
+            btnCollapse.StateCommon.Border.Color2 = Color.Transparent;
+            btnCollapse.TabIndex = 2;
+            btnCollapse.Values.DropDownArrowColor = Color.Empty;
+            btnCollapse.Values.Image = Properties.Resources.green_circle;
+            btnCollapse.Values.Text = "";
             // 
             // btnMaximize
             // 
+            btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnMaximize.Location = new Point(1121, 4);
             btnMaximize.Name = "btnMaximize";
             btnMaximize.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -102,6 +100,7 @@
             // 
             // btnClose
             // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClose.Location = new Point(1151, 4);
             btnClose.Name = "btnClose";
             btnClose.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -145,6 +144,7 @@
             // 
             // kryptonButton6
             // 
+            kryptonButton6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             kryptonButton6.Location = new Point(811, 9);
             kryptonButton6.Name = "kryptonButton6";
             kryptonButton6.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -161,6 +161,7 @@
             // 
             // kryptonButton5
             // 
+            kryptonButton5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             kryptonButton5.Location = new Point(943, 9);
             kryptonButton5.Name = "kryptonButton5";
             kryptonButton5.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -177,6 +178,7 @@
             // 
             // kryptonButton4
             // 
+            kryptonButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             kryptonButton4.Location = new Point(1040, 9);
             kryptonButton4.Name = "kryptonButton4";
             kryptonButton4.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -198,40 +200,13 @@
             kryptonButton4.Values.ExtraText = "Sign Up";
             kryptonButton4.Values.Text = "";
             // 
-            // kryptonLabel2
+            // pnlMainContent
             // 
-            kryptonLabel2.Location = new Point(59, 245);
-            kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(204, 74);
-            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 40F, FontStyle.Bold);
-            kryptonLabel2.TabIndex = 2;
-            kryptonLabel2.Values.Text = "Korum";
-            // 
-            // kryptonLabel3
-            // 
-            kryptonLabel3.Location = new Point(65, 338);
-            kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(283, 35);
-            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter", 18F);
-            kryptonLabel3.TabIndex = 3;
-            kryptonLabel3.Values.Text = "Your Presence Matters";
-            // 
-            // kryptonButton7
-            // 
-            kryptonButton7.Location = new Point(76, 392);
-            kryptonButton7.Name = "kryptonButton7";
-            kryptonButton7.Size = new Size(100, 40);
-            kryptonButton7.TabIndex = 4;
-            kryptonButton7.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton7.Values.Text = "Start Now ->";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(592, 164);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(470, 452);
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
+            pnlMainContent.Dock = DockStyle.Fill;
+            pnlMainContent.Location = new Point(0, 82);
+            pnlMainContent.Name = "pnlMainContent";
+            pnlMainContent.Size = new Size(1184, 599);
+            pnlMainContent.TabIndex = 2;
             // 
             // LoginFormUser
             // 
@@ -239,10 +214,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1184, 681);
-            Controls.Add(pictureBox1);
-            Controls.Add(kryptonButton7);
-            Controls.Add(kryptonLabel3);
-            Controls.Add(kryptonLabel2);
+            Controls.Add(pnlMainContent);
             Controls.Add(kryptonPanel2);
             Controls.Add(kryptonPanel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -254,15 +226,13 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).EndInit();
             kryptonPanel2.ResumeLayout(false);
             kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private Krypton.Toolkit.KryptonButton kryptonButton3;
+        private Krypton.Toolkit.KryptonButton btnCollapse;
         private Krypton.Toolkit.KryptonButton btnMaximize;
         private Krypton.Toolkit.KryptonButton btnClose;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
@@ -270,9 +240,6 @@
         private Krypton.Toolkit.KryptonButton kryptonButton5;
         private Krypton.Toolkit.KryptonButton kryptonButton4;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private Krypton.Toolkit.KryptonButton kryptonButton7;
-        private PictureBox pictureBox1;
+        private Panel pnlMainContent;
     }
 }
