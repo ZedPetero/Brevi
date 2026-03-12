@@ -117,38 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="formClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
-        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
-        SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAzAQAAAJNU0Z0AUkBTAMBAQAB
-        YAEBAWABAQFAAQABQAEABP8BIQEACP8BQgFNATYHAAE2AwABKAQAAQECAAFAAwABAQEAASAHAAEB/wD/
-        AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
-        AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
-        AP8A/wD/AA4AAzkBXwNjAfYDVwGy/wD/AP8A8wADPwFsEP//AP8A/wDvABj//wD/AP8A6wADZgHgGP//
-        AP8A/wDnAAQCHP//AP8A/wDnAAMCAQMc//8A/wD/AOcAAwIBAxz//wD/AP8A5wADAgEDHP//AP8A/wDn
-        AAMCAQMc//8A/wD/AOcAAwIBAxz//wD/AP8A5wAEAhz//wD/AP8A5wAEARz//wD/AP8A5wAEARz//wD/
-        AP8ADwADMQFMA28B8/D/BAH/AP8A/wADAAMxAU38//8A/wD/AAMAA28B8/z//wD/AP8AAwADWwHA/P//
-        AP8A/wAHAPj/A0sBi/8A/wD/AN8AA04BlRj/A0wBj/8A/wD/AN8AA04Blhj/A0wBjv8A/wD/AN8AA08B
-        lxj/A0sBjf8A/wD/AN8AA1IBoBj/A0sBjP8A/wD/AN8AA1IBoRj/A0sBiv8A/wD/AN8AA1MBohj/A0oB
-        if8A/wD/AN8AA1IBoxj/A0kBiP8A/wD/AN8AA1IBpBj/A0YBf/8A/wD/AN8AA1MBpRj/A0YBfv8A/wD/
-        AN8AAz8BbRj/A0QBef8A/wD/AOMAGP8DRAF3/wD/AP8A5wADYwHfEP8DQgF0/wD/AP8A6wAEAgz/A0AB
-        bv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
-        AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
-        AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wB7AAFCAU0BPgcAAT4DAAEoBAABAQIAAUADAAEBAQABAQYAAQgW
-        AAP/AQAI/xgACP8YAAj/GAAI/xgACP8YAAj/GAAI/xgACP8YAAj/GAAI/xgACP8YAAj/GAAI/xgACP8Y
-        AAj/GAAI/xgABf8B/gE/Af8YAAX/AfwBHwH/GAAF/wH8AQ8B/xgABf8B/AEHAf8YAAX/AfwBAwH/GAAF
-        /wH+AQEB/xgABv8BAAH/GAAG/wGAAX8YAAb/AcABPxgABv8B4AEfGAAG/wHwAQ8YAAb/AfgBBxgABv8B
-        /AEDGAABgH8AAYAfAAb/Af4BARgABv8B/AEDGAAG/wH4AQcYAAb/AfABDxgABv8B4AEfGAAG/wHAAT8Y
-        AAb/AYABfxgABv8BAAH/GAAF/wH+AQEB/xgABf8B/AEDAf8YAAX/AfwBBwH/GAAF/wH8AQ8B/xgABf8B
-        /AEfAf8YAAj/GAAI/xgACP8YAAj/GAAI/xgACP8YAAj/GAAI/xgACP8YAAj/GAAI/xgACP8YAAj/GAAI
-        /xgACP8YAAj/GAAI/xgACw==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAKpJREFUOE+tktkNhDAMRLcFBBTNUQ1QFdBDdsYxAjnO4o990uTw2JZyfFKNfU9p
+        WbK4rlA2GAZEEfZEz4Dog7Yti6yaRpMziCiR4ktdp0XYyjiOZdKb9DhYcTRmVCyVG/bMiM4TDfhMnhnR
+        tv2jwXH4ZkRyBLkJY0TFUhmnqTTfxBqAlcLP4SV66nstwlbnTKQJf+wDRAy/jjPPmnSDaAW+zrrKU/G2
+        fVL6AsKrqU9ymqNdAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="BorderPalette.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>128, 17</value>
-  </metadata>
+  <data name="formCollapse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAJVJREFUOE+lkgsKgCAQRL1CVIfuc5rqVNUdbEZamT6G0nsQoe7AujqfYIXTKf9T
+        PAI66BJy784loIZa8GYFlRiQU2w20AgBPdQDOVo7IUA3Sgy1vGFdLHGHjmPSxRIX+D9g85sslRla+H2J
+        /AxQN3JkTQwgfBx64MsWGjGA5ITwxSqXAPLVzgjvPAIMTmeGHBVv+x3vDxlDqU9Ys6RBAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <data name="formMaximize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAJdJREFUOE+lkg0OgjAMRr2CUQ/tz2mAUyl3mN9jJUDTmYIveaVrtyVjO5Umb9mZ
+        5DHBBndJOZLeFqorLtIv8p7lAhUjs3j2KiuMxMPSPdbjkNnniFPkD/tG1pHINflG1oH49wafoJF1OgL4
+        RtY5lqele2RNzQweh5/U8iYrjFZkNuHFLlBx/DrOS26h2oDb6eUgRwoBpXwBZM1SxrphHGIAAAAASUVO
+        RK5CYII=
+</value>
+  </data>
 </root>
