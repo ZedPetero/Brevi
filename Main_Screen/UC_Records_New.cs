@@ -34,25 +34,30 @@ namespace AE.Application
 
                 using var db = new AE.Infrastructure.Data.AppDbContext();
 
-                    var sections = db.Sections
-                        .Where(s => !s.IsArchived)
-                        .OrderBy(s => s.SectionName)
-                        .ToList();
+                var sections = db.Sections
+                    .Where(s => !s.IsArchived)
+                    .OrderBy(s => s.SectionName)
+                    .ToList();
 
-                    foreach (var sec in sections)
-                    {
-                        var item = new UC_RecordsClass();
-                        item.SetSection(sec.Id);
-                        // make sure the control will auto size horizontally in the flow panel
-                        item.AutoSize = false;
-                        item.Width = currentclassesflowpanel.ClientSize.Width - 25;
-                        currentclassesflowpanel.Controls.Add(item);
-                    }
+                foreach (var sec in sections)
+                {
+                    var item = new UC_RecordsClass();
+                    item.SetSection(sec.Id);
+                    // make sure the control will auto size horizontally in the flow panel
+                    item.AutoSize = false;
+                    item.Width = currentclassesflowpanel.ClientSize.Width - 25;
+                    currentclassesflowpanel.Controls.Add(item);
+                }
             }
             catch
             {
                 // ignore DB errors at design time
             }
+        }
+
+        private void currentclassesflowpanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

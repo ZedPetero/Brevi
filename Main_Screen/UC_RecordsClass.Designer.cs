@@ -31,9 +31,9 @@
             ArchiveorRestorebutton = new Krypton.Toolkit.KryptonButton();
             sidebarbtn = new Krypton.Toolkit.KryptonButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            classnamelabel = new Krypton.Toolkit.KryptonLabel();
             AmountofStudentslabel = new Krypton.Toolkit.KryptonLabel();
             classinfotable = new TableLayoutPanel();
-            classnamelabel = new Krypton.Toolkit.KryptonLabel();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -80,6 +80,16 @@
             flowLayoutPanel1.TabIndex = 16;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
+            // classnamelabel
+            // 
+            classnamelabel.Location = new Point(3, 3);
+            classnamelabel.Name = "classnamelabel";
+            classnamelabel.Size = new Size(183, 37);
+            classnamelabel.StateCommon.ShortText.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            classnamelabel.StateNormal.ShortText.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            classnamelabel.TabIndex = 17;
+            classnamelabel.Values.Text = "Class Name";
+            // 
             // AmountofStudentslabel
             // 
             AmountofStudentslabel.Location = new Point(192, 3);
@@ -101,16 +111,7 @@
             classinfotable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             classinfotable.Size = new Size(573, 200);
             classinfotable.TabIndex = 17;
-            // 
-            // classnamelabel
-            // 
-            classnamelabel.Location = new Point(3, 3);
-            classnamelabel.Name = "classnamelabel";
-            classnamelabel.Size = new Size(183, 37);
-            classnamelabel.StateCommon.ShortText.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            classnamelabel.StateNormal.ShortText.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            classnamelabel.TabIndex = 17;
-            classnamelabel.Values.Text = "Class Name";
+            classinfotable.Paint += classinfotable_Paint;
             // 
             // UC_RecordsClass
             // 

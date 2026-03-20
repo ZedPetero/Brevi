@@ -29,24 +29,25 @@
         private void InitializeComponent()
         {
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             kryptonButton3 = new Krypton.Toolkit.KryptonButton();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            kryptonPanel1.Controls.Add(kryptonLabel1);
             kryptonPanel1.Controls.Add(kryptonButton2);
             kryptonPanel1.Controls.Add(kryptonButton1);
             kryptonPanel1.Controls.Add(kryptonBorderEdge1);
+            kryptonPanel1.Controls.Add(pictureBox2);
             kryptonPanel1.Dock = DockStyle.Top;
             kryptonPanel1.Location = new Point(0, 0);
             kryptonPanel1.Name = "kryptonPanel1";
@@ -55,14 +56,6 @@
             kryptonPanel1.StateNormal.Color1 = Color.FromArgb(250, 250, 250);
             kryptonPanel1.StateNormal.Color2 = Color.FromArgb(250, 250, 250);
             kryptonPanel1.TabIndex = 1;
-            // 
-            // kryptonLabel1
-            // 
-            kryptonLabel1.Location = new Point(12, 12);
-            kryptonLabel1.Name = "kryptonLabel1";
-            kryptonLabel1.Size = new Size(210, 46);
-            kryptonLabel1.TabIndex = 4;
-            kryptonLabel1.Values.Text = "Label.Exe";
             // 
             // kryptonButton2
             // 
@@ -107,7 +100,7 @@
             // 
             // kryptonLabel2
             // 
-            kryptonLabel2.Location = new Point(336, 105);
+            kryptonLabel2.Location = new Point(352, 104);
             kryptonLabel2.Name = "kryptonLabel2";
             kryptonLabel2.Size = new Size(406, 300);
             kryptonLabel2.StateCommon.Image.ImageH = Krypton.Toolkit.PaletteRelativeAlign.Center;
@@ -119,32 +112,10 @@
             kryptonLabel2.Values.Text = "";
             kryptonLabel2.Click += kryptonLabel2_Click;
             // 
-            // kryptonLabel3
-            // 
-            kryptonLabel3.Location = new Point(24, 149);
-            kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(210, 72);
-            kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonLabel3.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel3.StateCommon.ShortText.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            kryptonLabel3.TabIndex = 5;
-            kryptonLabel3.Values.Text = "Korum";
-            // 
-            // kryptonLabel4
-            // 
-            kryptonLabel4.Location = new Point(36, 213);
-            kryptonLabel4.Name = "kryptonLabel4";
-            kryptonLabel4.Size = new Size(210, 46);
-            kryptonLabel4.StateCommon.ShortText.Color1 = Color.Gray;
-            kryptonLabel4.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel4.StateCommon.ShortText.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
-            kryptonLabel4.TabIndex = 6;
-            kryptonLabel4.Values.Text = "Quote thing";
-            // 
             // kryptonButton3
             // 
             kryptonButton3.CausesValidation = false;
-            kryptonButton3.Location = new Point(36, 279);
+            kryptonButton3.Location = new Point(67, 286);
             kryptonButton3.Name = "kryptonButton3";
             kryptonButton3.Size = new Size(155, 58);
             kryptonButton3.StateCommon.Border.Rounding = 20F;
@@ -160,6 +131,27 @@
             kryptonButton3.Values.ExtraText = "";
             kryptonButton3.Values.Text = "Get Started";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.Logo_Name_with_Motto_removebg_preview;
+            pictureBox1.Location = new Point(0, 86);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(371, 239);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.Logo_Name_only;
+            pictureBox2.Location = new Point(-96, -27);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(375, 119);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
             // Homepage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -167,10 +159,9 @@
             BackColor = Color.FromArgb(249, 250, 251);
             ClientSize = new Size(784, 461);
             Controls.Add(kryptonButton3);
-            Controls.Add(kryptonLabel4);
-            Controls.Add(kryptonLabel3);
             Controls.Add(kryptonLabel2);
             Controls.Add(kryptonPanel1);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
@@ -181,6 +172,8 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,10 +184,9 @@
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
         private Krypton.Toolkit.KryptonButton kryptonButton2;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonButton kryptonButton3;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

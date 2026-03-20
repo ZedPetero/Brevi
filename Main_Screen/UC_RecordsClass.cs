@@ -114,5 +114,10 @@ namespace AE.Application
         {
             classinfotable.Visible = !classinfotable.Visible;
         }
+
+        private void classinfotable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -124,6 +124,7 @@
             currentclassesflowpanel.Name = "currentclassesflowpanel";
             currentclassesflowpanel.Size = new Size(573, 271);
             currentclassesflowpanel.TabIndex = 11;
+            currentclassesflowpanel.Paint += currentclassesflowpanel_Paint;
             // 
             // UC_Records_New
             // 
@@ -137,7 +138,7 @@
             Controls.Add(CurrentClassespanel);
             Controls.Add(label1);
             Name = "UC_Records_New";
-            Size = new Size(1133, 640);
+            Size = new Size(1116, 640);
             Load += UC_Records_New_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).EndInit();
             CurrentClassespanel.ResumeLayout(false);
