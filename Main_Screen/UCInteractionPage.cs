@@ -10,9 +10,16 @@ namespace AE.Application
 {
     public partial class UCInteractionPage : UserControl
     {
+        public event EventHandler? StartNowClicked;
+
         public UCInteractionPage()
         {
             InitializeComponent();
+        }
+
+        private void btnStartNow_Click(object sender, EventArgs e)
+        {
+            StartNowClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

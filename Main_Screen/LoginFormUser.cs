@@ -14,6 +14,7 @@ namespace AE.Application
         {
             InitializeComponent();
             UCInteractionPage iPage = new UCInteractionPage();
+            iPage.StartNowClicked += (s, e) => LoadForm(new UCSignUpPage());
             LoadForm(iPage);
         }
 
@@ -43,6 +44,16 @@ namespace AE.Application
             pnlMainContent.Controls.Add(customizedControl);
 
             customizedControl.Focus();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            LoadForm(new UCLoginPage());
+        }
+
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            LoadForm(new UCSignUpPage());
         }
     }
 }
