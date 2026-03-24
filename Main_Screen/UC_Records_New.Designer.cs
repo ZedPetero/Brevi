@@ -113,6 +113,7 @@
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.AccessibleDescription = "archivedclassesflowpanel";
+            flowLayoutPanel2.AutoScroll = true;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(573, 271);
@@ -138,7 +139,7 @@
             Controls.Add(CurrentClassespanel);
             Controls.Add(label1);
             Name = "UC_Records_New";
-            Size = new Size(1116, 640);
+            Size = new Size(1099, 640);
             Load += UC_Records_New_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).EndInit();
             CurrentClassespanel.ResumeLayout(false);

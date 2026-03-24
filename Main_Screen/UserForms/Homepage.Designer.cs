@@ -32,14 +32,14 @@
             kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            pictureBox2 = new PictureBox();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             kryptonButton3 = new Krypton.Toolkit.KryptonButton();
             pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // kryptonPanel1
@@ -87,6 +87,7 @@
             kryptonButton1.TabIndex = 2;
             kryptonButton1.Values.DropDownArrowColor = Color.Empty;
             kryptonButton1.Values.Text = "Sign Up";
+            kryptonButton1.Click += kryptonButton1_Click;
             // 
             // kryptonBorderEdge1
             // 
@@ -97,6 +98,16 @@
             kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
             kryptonBorderEdge1.StateCommon.Width = 2;
             kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.Logo_Name_only;
+            pictureBox2.Location = new Point(-96, -27);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(375, 119);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
             // 
             // kryptonLabel2
             // 
@@ -142,16 +153,6 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.Logo_Name_only;
-            pictureBox2.Location = new Point(-96, -27);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(375, 119);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
-            // 
             // Homepage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -172,8 +173,8 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

@@ -13,6 +13,7 @@ namespace AE.Application
     public partial class UC_RecordsClass : UserControl
     {
         private int _sectionId;
+        private bool _isArchived = false;
 
         public void SetSection(int sectionId)
         {
@@ -37,6 +38,9 @@ namespace AE.Application
                 {
                     classnamelabel.Values.Text = section.SectionName;
                     AmountofStudentslabel.Values.Text = $"{section.StudentCount} Students";
+
+                    // set archive button initial text
+                    ArchiveorRestorebutton.Values.Text = section.StudentCount >= 0 ? ( _isArchived ? "Restore" : "Archive") : ArchiveorRestorebutton.Values.Text;
 
                     // populate classinfotable with students and their attendance summary
                     classinfotable.Controls.Clear();
@@ -118,6 +122,63 @@ namespace AE.Application
         private void classinfotable_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void ArchiveorRestorebutton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using var db = new AE.Infrastructure.Data.AppDbContext();
+                var sec = db.Sections.Find(_sectionId);
+                if (sec == null) return;
+
+                // toggle archived state
+                sec.IsArchived = !sec.IsArchived;
+                db.Sections.Update(sec);
+                db.SaveChanges();
+
+                // update UI by asking parent control to move this control
+                var parent = this.FindForm();
+                if (parent != null)
+                {
+                    var mainControl = FindParentRecordsNew();
+                    if (mainControl != null)
+                    {
+                        if (sec.IsArchived)
+                        {
+                            mainControl.MoveToArchived(this);
+                            ArchiveorRestorebutton.Values.Text = "Restore";
+                        }
+                        else
+                        {
+                            mainControl.MoveToCurrent(this);
+                            ArchiveorRestorebutton.Values.Text = "Archive";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Archive toggle failed: " + ex.Message);
+            }
+        }
+
+        private UC_Records_New FindParentRecordsNew()
+        {
+            Control p = this.Parent;
+            while (p != null)
+            {
+                if (p is UC_Records_New rn)
+                    return rn;
+                p = p.Parent;
+            }
+            return null;
+        }
+
+        public void SetArchivedState(bool archived)
+        {
+            _isArchived = archived;
+            ArchiveorRestorebutton.Values.Text = archived ? "Restore" : "Archive";
         }
     }
 }

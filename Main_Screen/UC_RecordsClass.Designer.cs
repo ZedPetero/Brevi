@@ -51,6 +51,7 @@
             ArchiveorRestorebutton.TabIndex = 13;
             ArchiveorRestorebutton.Values.DropDownArrowColor = Color.Empty;
             ArchiveorRestorebutton.Values.Text = "Archive";
+            ArchiveorRestorebutton.Click += ArchiveorRestorebutton_Click;
             // 
             // sidebarbtn
             // 
