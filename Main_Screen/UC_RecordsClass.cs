@@ -27,7 +27,7 @@ namespace Brevi.Application
             {
                 classinfotable.Visible = false; // hide by default
 
-                using var db = new AE.Infrastructure.Data.AppDbContext();
+                using var db = new Brevi.Infrastructure.Data.AppDbContext();
                 var section = db.Sections
                     .Where(s => s.Id == _sectionId)
                     .Select(s => new { s.SectionName, StudentCount = s.Students.Count })
@@ -74,9 +74,9 @@ namespace Brevi.Application
                         AddCellToTable(row, 0, new Label { Text = $"{student.LastName}, {student.FirstName}", AutoSize = true });
 
                         // compute attendance counts for this student (simple totals)
-                        int present = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == AE.Domain.Models.AttendanceStatus.Present);
-                        int late = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == AE.Domain.Models.AttendanceStatus.Late);
-                        int absent = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == AE.Domain.Models.AttendanceStatus.Absent);
+                        int present = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Present);
+                        int late = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Late);
+                        int absent = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Absent);
 
                         AddCellToTable(row, 1, new Label { Text = present.ToString(), AutoSize = true });
                         AddCellToTable(row, 2, new Label { Text = late.ToString(), AutoSize = true });
@@ -128,7 +128,7 @@ namespace Brevi.Application
         {
             try
             {
-                using var db = new AE.Infrastructure.Data.AppDbContext();
+                using var db = new Brevi.Infrastructure.Data.AppDbContext();
                 var sec = db.Sections.Find(_sectionId);
                 if (sec == null) return;
 

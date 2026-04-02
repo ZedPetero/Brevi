@@ -33,14 +33,12 @@
             label2 = new Label();
             ArchivedClassespanel = new Krypton.Toolkit.KryptonPanel();
             label3 = new Label();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
             currentclassesflowpanel = new FlowLayoutPanel();
+            archivedClassFlowpanel = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).BeginInit();
             CurrentClassespanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ArchivedClassespanel).BeginInit();
             ArchivedClassespanel.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -61,15 +59,15 @@
             CurrentClassespanel.Location = new Point(41, 87);
             CurrentClassespanel.Name = "CurrentClassespanel";
             CurrentClassespanel.Size = new Size(573, 63);
-            CurrentClassespanel.StateCommon.Color1 = Color.White;
-            CurrentClassespanel.StateCommon.Color2 = Color.White;
+            CurrentClassespanel.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
+            CurrentClassespanel.StateCommon.Color2 = Color.FromArgb(249, 250, 251);
             CurrentClassespanel.TabIndex = 7;
             CurrentClassespanel.Paint += kryptonPanel1_Paint;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.White;
+            label2.BackColor = Color.FromArgb(249, 250, 251);
             label2.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(29, 37, 48);
             label2.Location = new Point(3, 10);
@@ -85,15 +83,15 @@
             ArchivedClassespanel.Location = new Point(44, 433);
             ArchivedClassespanel.Name = "ArchivedClassespanel";
             ArchivedClassespanel.Size = new Size(573, 63);
-            ArchivedClassespanel.StateCommon.Color1 = Color.White;
-            ArchivedClassespanel.StateCommon.Color2 = Color.White;
+            ArchivedClassespanel.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
+            ArchivedClassespanel.StateCommon.Color2 = Color.FromArgb(249, 250, 251);
             ArchivedClassespanel.TabIndex = 8;
             ArchivedClassespanel.Paint += kryptonPanel1_Paint_1;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = Color.White;
+            label3.BackColor = Color.FromArgb(249, 250, 251);
             label3.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(29, 37, 48);
             label3.Location = new Point(3, 10);
@@ -101,23 +99,6 @@
             label3.Size = new Size(236, 40);
             label3.TabIndex = 10;
             label3.Text = "Archived Classes";
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
-            flowLayoutPanel1.Location = new Point(44, 502);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(573, 271);
-            flowLayoutPanel1.TabIndex = 9;
-            // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.AccessibleDescription = "archivedclassesflowpanel";
-            flowLayoutPanel2.AutoScroll = true;
-            flowLayoutPanel2.Location = new Point(3, 3);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(573, 271);
-            flowLayoutPanel2.TabIndex = 10;
             // 
             // currentclassesflowpanel
             // 
@@ -127,19 +108,28 @@
             currentclassesflowpanel.TabIndex = 11;
             currentclassesflowpanel.Paint += currentclassesflowpanel_Paint;
             // 
+            // archivedClassFlowpanel
+            // 
+            archivedClassFlowpanel.AccessibleDescription = "archivedclassesflowpanel";
+            archivedClassFlowpanel.AutoScroll = true;
+            archivedClassFlowpanel.Location = new Point(44, 502);
+            archivedClassFlowpanel.Name = "archivedClassFlowpanel";
+            archivedClassFlowpanel.Size = new Size(573, 265);
+            archivedClassFlowpanel.TabIndex = 10;
+            // 
             // UC_Records_New
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(249, 250, 251);
+            Controls.Add(archivedClassFlowpanel);
             Controls.Add(currentclassesflowpanel);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(ArchivedClassespanel);
             Controls.Add(CurrentClassespanel);
             Controls.Add(label1);
             Name = "UC_Records_New";
-            Size = new Size(1099, 640);
+            Size = new Size(1082, 640);
             Load += UC_Records_New_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).EndInit();
             CurrentClassespanel.ResumeLayout(false);
@@ -147,7 +137,6 @@
             ((System.ComponentModel.ISupportInitialize)ArchivedClassespanel).EndInit();
             ArchivedClassespanel.ResumeLayout(false);
             ArchivedClassespanel.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -159,8 +148,7 @@
         private Label label2;
         private Krypton.Toolkit.KryptonPanel ArchivedClassespanel;
         private Label label3;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private FlowLayoutPanel flowLayoutPanel2;
         private FlowLayoutPanel currentclassesflowpanel;
+        private FlowLayoutPanel archivedClassFlowpanel;
     }
 }

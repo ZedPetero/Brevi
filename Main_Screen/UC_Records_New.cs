@@ -30,9 +30,9 @@ namespace Brevi.Application
             try
             {
                 currentclassesflowpanel.Controls.Clear();
-                flowLayoutPanel2.Controls.Clear();
+                archivedClassFlowpanel.Controls.Clear();
 
-                using var db = new AE.Infrastructure.Data.AppDbContext();
+                using var db = new Brevi.Infrastructure.Data.AppDbContext();
 
                 var sections = db.Sections
                     .OrderBy(s => s.SectionName)
@@ -49,7 +49,7 @@ namespace Brevi.Application
                     if (sec.IsArchived)
                     {
                         item.SetArchivedState(true);
-                        flowLayoutPanel2.Controls.Add(item);
+                        archivedClassFlowpanel.Controls.Add(item);
                     }
                     else
                     {
@@ -69,15 +69,15 @@ namespace Brevi.Application
             if (item == null) return;
             currentclassesflowpanel.Controls.Remove(item);
             item.AutoSize = false;
-            item.Width = flowLayoutPanel2.ClientSize.Width - 25;
-            flowLayoutPanel2.Controls.Add(item);
+            item.Width = archivedClassFlowpanel.ClientSize.Width - 25;
+            archivedClassFlowpanel.Controls.Add(item);
             item.SetArchivedState(true);
         }
 
         public void MoveToCurrent(UC_RecordsClass item)
         {
             if (item == null) return;
-            flowLayoutPanel2.Controls.Remove(item);
+            archivedClassFlowpanel.Controls.Remove(item);
             item.AutoSize = false;
             item.Width = currentclassesflowpanel.ClientSize.Width - 25;
             currentclassesflowpanel.Controls.Add(item);
