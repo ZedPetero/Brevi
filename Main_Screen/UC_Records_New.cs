@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Brevi.Application
 {
@@ -13,15 +14,9 @@ namespace Brevi.Application
         public UC_Records_New()
         {
             InitializeComponent();
-        }
 
-        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
-        {
+            // FIX #1: Round the controls here in the constructor, NOT in the Paint event!
             UIHelper.RoundControl(CurrentClassespanel, 20);
-        }
-
-        private void kryptonPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
             UIHelper.RoundControl(ArchivedClassespanel, 20);
         }
 
@@ -42,8 +37,9 @@ namespace Brevi.Application
                 {
                     var item = new UC_RecordsClass();
                     item.SetSection(sec.Id);
-                    // make sure the control will auto size horizontally in the flow panel
+
                     item.AutoSize = false;
+                    // Initial width setup
                     item.Width = currentclassesflowpanel.ClientSize.Width - 25;
 
                     if (sec.IsArchived)
@@ -58,9 +54,10 @@ namespace Brevi.Application
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // ignore DB errors at design time
+                // Better to output the error to debug rather than silently swallowing it
+                System.Diagnostics.Debug.WriteLine("Error loading sections: " + ex.Message);
             }
         }
 
@@ -84,9 +81,27 @@ namespace Brevi.Application
             item.SetArchivedState(false);
         }
 
-        private void currentclassesflowpanel_Paint(object sender, PaintEventArgs e)
+        // FIX #2: Add Resize events to keep your cards responsive when the window changes size!
+        private void currentclassesflowpanel_Resize(object sender, EventArgs e)
         {
+            foreach (Control item in currentclassesflowpanel.Controls)
+            {
+                if (item is UC_RecordsClass)
+                {
+                    item.Width = currentclassesflowpanel.ClientSize.Width - 25;
+                }
+            }
+        }
 
+        private void archivedClassFlowpanel_Resize(object sender, EventArgs e)
+        {
+            foreach (Control item in archivedClassFlowpanel.Controls)
+            {
+                if (item is UC_RecordsClass)
+                {
+                    item.Width = archivedClassFlowpanel.ClientSize.Width - 25;
+                }
+            }
         }
     }
 }

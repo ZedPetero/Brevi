@@ -62,7 +62,6 @@
             CurrentClassespanel.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
             CurrentClassespanel.StateCommon.Color2 = Color.FromArgb(249, 250, 251);
             CurrentClassespanel.TabIndex = 7;
-            CurrentClassespanel.Paint += kryptonPanel1_Paint;
             // 
             // label2
             // 
@@ -86,7 +85,6 @@
             ArchivedClassespanel.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
             ArchivedClassespanel.StateCommon.Color2 = Color.FromArgb(249, 250, 251);
             ArchivedClassespanel.TabIndex = 8;
-            ArchivedClassespanel.Paint += kryptonPanel1_Paint_1;
             // 
             // label3
             // 
@@ -104,9 +102,9 @@
             // 
             currentclassesflowpanel.Location = new Point(44, 156);
             currentclassesflowpanel.Name = "currentclassesflowpanel";
-            currentclassesflowpanel.Size = new Size(573, 271);
+            currentclassesflowpanel.Size = new Size(1001, 271);
             currentclassesflowpanel.TabIndex = 11;
-            currentclassesflowpanel.Paint += currentclassesflowpanel_Paint;
+            currentclassesflowpanel.Resize += currentclassesflowpanel_Resize;
             // 
             // archivedClassFlowpanel
             // 
@@ -114,8 +112,9 @@
             archivedClassFlowpanel.AutoScroll = true;
             archivedClassFlowpanel.Location = new Point(44, 502);
             archivedClassFlowpanel.Name = "archivedClassFlowpanel";
-            archivedClassFlowpanel.Size = new Size(573, 265);
+            archivedClassFlowpanel.Size = new Size(1001, 265);
             archivedClassFlowpanel.TabIndex = 10;
+            archivedClassFlowpanel.Resize += archivedClassFlowpanel_Resize;
             // 
             // UC_Records_New
             // 
@@ -129,7 +128,7 @@
             Controls.Add(CurrentClassespanel);
             Controls.Add(label1);
             Name = "UC_Records_New";
-            Size = new Size(1082, 640);
+            Size = new Size(1048, 640);
             Load += UC_Records_New_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).EndInit();
             CurrentClassespanel.ResumeLayout(false);

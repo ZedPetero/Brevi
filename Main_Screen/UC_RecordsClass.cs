@@ -26,6 +26,7 @@ namespace Brevi.Application
             try
             {
                 classinfotable.Visible = false; // hide by default
+                this.Height = 100;
 
                 using var db = new Brevi.Infrastructure.Data.AppDbContext();
                 var section = db.Sections
@@ -36,64 +37,94 @@ namespace Brevi.Application
 
                 if (section != null)
                 {
-                    classnamelabel.Values.Text = section.SectionName;
-                    AmountofStudentslabel.Values.Text = $"{section.StudentCount} Students";
+                    lblClassName.Values.Text = section.SectionName;
+                    lblSubject.Values.Text = $"{section.StudentCount} Students";
 
                     // set archive button initial text
-                    ArchiveorRestorebutton.Values.Text = section.StudentCount >= 0 ? ( _isArchived ? "Restore" : "Archive") : ArchiveorRestorebutton.Values.Text;
+                    ArchiveorRestorebutton.Values.Text = section.StudentCount >= 0 ? (_isArchived ? "Restore" : "Archive") : ArchiveorRestorebutton.Values.Text;
 
-                    // populate classinfotable with students and their attendance summary
+                    // 1. Setup Table Layout with 6 Columns
                     classinfotable.Controls.Clear();
-                    classinfotable.ColumnCount = 5;
+                    classinfotable.ColumnCount = 6;
                     classinfotable.ColumnStyles.Clear();
-                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F)); // name
-                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F)); // present
-                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F)); // late
-                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F)); // absent
-                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F)); // score
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F)); // name
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // present
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // late
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // absent
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // excused (NEW)
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // score
 
-                    // header row
+                    // 2. Add Header Row (Using DockStyle.Fill and TextAlign for perfect spacing)
                     classinfotable.RowCount = 1;
                     classinfotable.RowStyles.Clear();
-                    classinfotable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                    classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F)); // Fixed height for headers
 
-                    AddCellToTable(0, 0, new Label { Text = "Name", AutoSize = true, Font = new Font("Segoe UI Semibold", 9, FontStyle.Bold) });
-                    AddCellToTable(0, 1, new Label { Text = "Present", AutoSize = true });
-                    AddCellToTable(0, 2, new Label { Text = "Late", AutoSize = true });
-                    AddCellToTable(0, 3, new Label { Text = "Absent", AutoSize = true });
-                    AddCellToTable(0, 4, new Label { Text = "Score", AutoSize = true });
+                    Font headerFont = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+                    Color headerColor = Color.Gray;
+
+                    AddCellToTable(0, 0, new Label { Text = "Name", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 1, new Label { Text = "Present", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 2, new Label { Text = "Late", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 3, new Label { Text = "Absent", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 4, new Label { Text = "Excused", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 5, new Label { Text = "Score", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
 
                     var students = db.Students.Where(st => st.SectionId == _sectionId).ToList();
 
-                    int row = 1;
-                    foreach (var student in students)
+                    // 3. Handle Empty Class State
+                    if (students.Count == 0)
                     {
-                        classinfotable.RowCount = row + 1;
-                        classinfotable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                        classinfotable.RowCount = 2;
+                        classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
 
-                        AddCellToTable(row, 0, new Label { Text = $"{student.LastName}, {student.FirstName}", AutoSize = true });
+                        Label emptyStateLabel = new Label
+                        {
+                            Text = "No students enrolled in this class yet.",
+                            Dock = DockStyle.Fill,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            ForeColor = Color.DimGray
+                        };
 
-                        // compute attendance counts for this student (simple totals)
-                        int present = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Present);
-                        int late = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Late);
-                        int absent = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Absent);
+                        classinfotable.Controls.Add(emptyStateLabel, 0, 1);
+                        classinfotable.SetColumnSpan(emptyStateLabel, 6); // Spans across all 6 columns
+                    }
+                    else
+                    {
+                        // 4. Populate Student Rows
+                        int row = 1;
+                        foreach (var student in students)
+                        {
+                            classinfotable.RowCount = row + 1;
+                            classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
 
-                        AddCellToTable(row, 1, new Label { Text = present.ToString(), AutoSize = true });
-                        AddCellToTable(row, 2, new Label { Text = late.ToString(), AutoSize = true });
-                        AddCellToTable(row, 3, new Label { Text = absent.ToString(), AutoSize = true });
+                            AddCellToTable(row, 0, new Label { Text = $"{student.LastName}, {student.FirstName}", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft });
 
-                        // score: placeholder, compute as percentage present / total records
-                        int total = present + late + absent;
-                        string score = total > 0 ? $"{(present * 100.0 / total):0.0}%" : "-";
-                        AddCellToTable(row, 4, new Label { Text = score, AutoSize = true });
+                            // compute attendance counts for this student
+                            int present = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Present);
+                            int late = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Late);
+                            int absent = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Absent);
 
-                        row++;
+                            // Assuming you have Excused in your enum, add it here:
+                            int excused = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Excused);
+
+                            // Using colors similar to your reference images for better UI
+                            AddCellToTable(row, 1, new Label { Text = present.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.FromArgb(39, 165, 153) });
+                            AddCellToTable(row, 2, new Label { Text = late.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Goldenrod });
+                            AddCellToTable(row, 3, new Label { Text = absent.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.IndianRed });
+                            AddCellToTable(row, 4, new Label { Text = excused.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.CornflowerBlue });
+
+                            // score calculation
+                            int total = present + late + absent + excused;
+                            string score = total > 0 ? $"{(present * 100.0 / total):0}%" : "-";
+                            AddCellToTable(row, 5, new Label { Text = score, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Segoe UI", 9F, FontStyle.Bold) });
+
+                            row++;
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // ignore DB issues in designer
                 System.Diagnostics.Debug.WriteLine("UC_RecordsClass LoadSection error: " + ex.Message);
             }
         }
@@ -107,21 +138,38 @@ namespace Brevi.Application
         public UC_RecordsClass()
         {
             InitializeComponent();
+            UIHelper.RoundControl(lblSubject, 20);
         }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        protected override void OnResize(EventArgs e)
         {
-
+            base.OnResize(e);
+            UIHelper.RoundControl(this, 20);
         }
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
+            // Toggle the visibility of the table
             classinfotable.Visible = !classinfotable.Visible;
-        }
 
-        private void classinfotable_Paint(object sender, PaintEventArgs e)
-        {
+            if (classinfotable.Visible)
+            {
+                // EXPANDING
+                // Change the arrow icon to point UP (assuming you are using Material Symbols)
+                sidebarbtn.Values.Text = ""; // expand_less icon (replace with your specific up arrow character)
 
+                // Extend the height of the UserControl. 
+                // 350 is a good fixed expanded height. Since AutoScroll is true, long lists will scroll.
+                this.Height = 350;
+            }
+            else
+            {
+                // COLLAPSING
+                // Change the arrow icon to point DOWN
+                sidebarbtn.Values.Text = ""; // expand_more icon
+
+                // Shrink the UserControl back to just the header height
+                this.Height = 100;
+            }
         }
 
         private void ArchiveorRestorebutton_Click(object sender, EventArgs e)
@@ -179,6 +227,11 @@ namespace Brevi.Application
         {
             _isArchived = archived;
             ArchiveorRestorebutton.Values.Text = archived ? "Restore" : "Archive";
+        }
+
+        private void kryptonLabel4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

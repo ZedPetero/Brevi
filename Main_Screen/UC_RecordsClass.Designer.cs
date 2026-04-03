@@ -30,35 +30,39 @@
         {
             ArchiveorRestorebutton = new Krypton.Toolkit.KryptonButton();
             sidebarbtn = new Krypton.Toolkit.KryptonButton();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            classnamelabel = new Krypton.Toolkit.KryptonLabel();
-            AmountofStudentslabel = new Krypton.Toolkit.KryptonLabel();
-            classinfotable = new TableLayoutPanel();
-            flowLayoutPanel1.SuspendLayout();
+            lblClassName = new Krypton.Toolkit.KryptonLabel();
+            lblStudents = new Krypton.Toolkit.KryptonLabel();
+            lblSessions = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            lblAvgScore = new Krypton.Toolkit.KryptonLabel();
+            lblSubject = new Krypton.Toolkit.KryptonButton();
+            classinfotable = new Krypton.Toolkit.KryptonTableLayoutPanel();
             SuspendLayout();
             // 
             // ArchiveorRestorebutton
             // 
-            ArchiveorRestorebutton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            ArchiveorRestorebutton.Location = new Point(427, 3);
+            ArchiveorRestorebutton.Location = new Point(638, 6);
             ArchiveorRestorebutton.Name = "ArchiveorRestorebutton";
-            ArchiveorRestorebutton.Size = new Size(90, 37);
+            ArchiveorRestorebutton.Size = new Size(109, 44);
             ArchiveorRestorebutton.StateCommon.Border.Rounding = 20F;
+            ArchiveorRestorebutton.StateCommon.Content.LongText.Color1 = Color.White;
+            ArchiveorRestorebutton.StateCommon.Content.LongText.Font = new Font("Inter SemiBold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ArchiveorRestorebutton.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             ArchiveorRestorebutton.StateCommon.Content.ShortText.Color1 = Color.White;
-            ArchiveorRestorebutton.StateCommon.Content.ShortText.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ArchiveorRestorebutton.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ArchiveorRestorebutton.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
             ArchiveorRestorebutton.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
             ArchiveorRestorebutton.TabIndex = 13;
             ArchiveorRestorebutton.Values.DropDownArrowColor = Color.Empty;
-            ArchiveorRestorebutton.Values.Text = "Archive";
+            ArchiveorRestorebutton.Values.ExtraText = "Archive";
+            ArchiveorRestorebutton.Values.Text = "";
             ArchiveorRestorebutton.Click += ArchiveorRestorebutton_Click;
             // 
             // sidebarbtn
             // 
-            sidebarbtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            sidebarbtn.Location = new Point(523, 3);
+            sidebarbtn.Location = new Point(753, 10);
             sidebarbtn.Name = "sidebarbtn";
-            sidebarbtn.Size = new Size(34, 37);
+            sidebarbtn.Size = new Size(37, 34);
             sidebarbtn.StateCommon.Border.Rounding = 5F;
             sidebarbtn.StateCommon.Content.ShortText.Font = new Font("Material Symbols Sharp", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sidebarbtn.StateNormal.Back.Color1 = Color.White;
@@ -68,51 +72,120 @@
             sidebarbtn.Values.Text = "";
             sidebarbtn.Click += kryptonButton1_Click;
             // 
-            // flowLayoutPanel1
+            // lblClassName
             // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            flowLayoutPanel1.Controls.Add(classnamelabel);
-            flowLayoutPanel1.Controls.Add(AmountofStudentslabel);
-            flowLayoutPanel1.Controls.Add(ArchiveorRestorebutton);
-            flowLayoutPanel1.Controls.Add(sidebarbtn);
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(573, 40);
-            flowLayoutPanel1.TabIndex = 16;
-            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
+            lblClassName.Location = new Point(10, 11);
+            lblClassName.Margin = new Padding(0);
+            lblClassName.Name = "lblClassName";
+            lblClassName.Size = new Size(133, 37);
+            lblClassName.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lblClassName.StateCommon.ShortText.Font = new Font("Inter", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblClassName.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            lblClassName.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblClassName.StateNormal.ShortText.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblClassName.TabIndex = 17;
+            lblClassName.Values.Text = "Grade 10-A";
             // 
-            // classnamelabel
+            // lblStudents
             // 
-            classnamelabel.Location = new Point(3, 3);
-            classnamelabel.Name = "classnamelabel";
-            classnamelabel.Size = new Size(183, 37);
-            classnamelabel.StateCommon.ShortText.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            classnamelabel.StateNormal.ShortText.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            classnamelabel.TabIndex = 17;
-            classnamelabel.Values.Text = "Class Name";
+            lblStudents.Location = new Point(11, 53);
+            lblStudents.Name = "lblStudents";
+            lblStudents.Size = new Size(94, 37);
+            lblStudents.StateCommon.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            lblStudents.StateCommon.LongText.Font = new Font("Inter", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStudents.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lblStudents.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStudents.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblStudents.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblStudents.TabIndex = 18;
+            lblStudents.Values.ExtraText = "Students";
+            lblStudents.Values.Text = "";
             // 
-            // AmountofStudentslabel
+            // lblSessions
             // 
-            AmountofStudentslabel.Location = new Point(192, 3);
-            AmountofStudentslabel.Name = "AmountofStudentslabel";
-            AmountofStudentslabel.Size = new Size(229, 37);
-            AmountofStudentslabel.StateCommon.ShortText.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AmountofStudentslabel.TabIndex = 16;
-            AmountofStudentslabel.Values.Text = "Students";
+            lblSessions.Location = new Point(121, 53);
+            lblSessions.Name = "lblSessions";
+            lblSessions.Size = new Size(91, 37);
+            lblSessions.StateCommon.LongText.Font = new Font("Inter", 9.75F);
+            lblSessions.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lblSessions.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            lblSessions.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblSessions.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblSessions.StateNormal.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lblSessions.StateNormal.ShortText.Font = new Font("Inter", 11.25F);
+            lblSessions.TabIndex = 19;
+            lblSessions.Values.Text = "0 sessions";
+            // 
+            // kryptonLabel3
+            // 
+            kryptonLabel3.Location = new Point(232, 53);
+            kryptonLabel3.Name = "kryptonLabel3";
+            kryptonLabel3.Size = new Size(96, 37);
+            kryptonLabel3.StateCommon.LongText.Font = new Font("Inter", 9.75F);
+            kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter", 12F);
+            kryptonLabel3.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel3.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            kryptonLabel3.StateNormal.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel3.StateNormal.ShortText.Font = new Font("Inter", 11.25F);
+            kryptonLabel3.TabIndex = 20;
+            kryptonLabel3.Values.Text = "Avg. Score:";
+            // 
+            // lblAvgScore
+            // 
+            lblAvgScore.Location = new Point(324, 53);
+            lblAvgScore.Name = "lblAvgScore";
+            lblAvgScore.Size = new Size(31, 37);
+            lblAvgScore.StateCommon.LongText.Font = new Font("Inter", 9.75F);
+            lblAvgScore.StateCommon.Padding = new Padding(0);
+            lblAvgScore.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lblAvgScore.StateCommon.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAvgScore.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblAvgScore.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblAvgScore.StateNormal.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lblAvgScore.StateNormal.ShortText.Font = new Font("Inter SemiBold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAvgScore.TabIndex = 21;
+            lblAvgScore.Values.Text = "0%";
+            lblAvgScore.Click += kryptonLabel4_Click;
+            // 
+            // lblSubject
+            // 
+            lblSubject.Enabled = false;
+            lblSubject.Location = new Point(157, 10);
+            lblSubject.Name = "lblSubject";
+            lblSubject.Size = new Size(114, 37);
+            lblSubject.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
+            lblSubject.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
+            lblSubject.StateCommon.Border.Color1 = Color.FromArgb(249, 250, 251);
+            lblSubject.StateCommon.Border.Rounding = 20F;
+            lblSubject.StateCommon.Content.Padding = new Padding(0);
+            lblSubject.StateCommon.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lblSubject.StateCommon.Content.ShortText.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSubject.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblSubject.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            lblSubject.StateNormal.Back.Color1 = Color.FromArgb(243, 245, 247);
+            lblSubject.StateNormal.Back.Color2 = Color.FromArgb(243, 245, 247);
+            lblSubject.TabIndex = 22;
+            lblSubject.Values.DropDownArrowColor = Color.Empty;
+            lblSubject.Values.Text = "Mathematics";
             // 
             // classinfotable
             // 
-            classinfotable.ColumnCount = 2;
-            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            classinfotable.Location = new Point(0, 46);
+            classinfotable.AutoScroll = true;
+            classinfotable.ColumnCount = 7;
+            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            classinfotable.Location = new Point(11, 124);
             classinfotable.Name = "classinfotable";
-            classinfotable.RowCount = 2;
-            classinfotable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            classinfotable.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            classinfotable.Size = new Size(573, 200);
-            classinfotable.TabIndex = 17;
-            classinfotable.Paint += classinfotable_Paint;
+            classinfotable.RowCount = 1;
+            classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            classinfotable.Size = new Size(779, 211);
+            classinfotable.TabIndex = 24;
             // 
             // UC_RecordsClass
             // 
@@ -120,22 +193,30 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(classinfotable);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(lblSubject);
+            Controls.Add(lblAvgScore);
+            Controls.Add(kryptonLabel3);
+            Controls.Add(lblSessions);
+            Controls.Add(lblStudents);
+            Controls.Add(sidebarbtn);
+            Controls.Add(ArchiveorRestorebutton);
+            Controls.Add(lblClassName);
             Name = "UC_RecordsClass";
-            Size = new Size(573, 246);
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            Size = new Size(800, 350);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Krypton.Toolkit.KryptonButton ArchiveorRestorebutton;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonLabel lblStudents;
         private Krypton.Toolkit.KryptonButton sidebarbtn;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Krypton.Toolkit.KryptonLabel AmountofStudentslabel;
-        private TableLayoutPanel classinfotable;
-        private Krypton.Toolkit.KryptonLabel classnamelabel;
+        private Krypton.Toolkit.KryptonLabel lblClassName;
+        private Krypton.Toolkit.KryptonLabel lblSessions;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
+        private Krypton.Toolkit.KryptonLabel lblAvgScore;
+        private Krypton.Toolkit.KryptonButton lblSubject;
+        private Krypton.Toolkit.KryptonTableLayoutPanel classinfotable;
     }
 }
