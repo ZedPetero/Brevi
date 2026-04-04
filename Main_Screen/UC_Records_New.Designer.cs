@@ -100,20 +100,28 @@
             // 
             // currentclassesflowpanel
             // 
+            currentclassesflowpanel.AutoScroll = true;
+            currentclassesflowpanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            currentclassesflowpanel.FlowDirection = FlowDirection.TopDown;
             currentclassesflowpanel.Location = new Point(44, 156);
             currentclassesflowpanel.Name = "currentclassesflowpanel";
-            currentclassesflowpanel.Size = new Size(1001, 271);
+            currentclassesflowpanel.Size = new Size(911, 259);
             currentclassesflowpanel.TabIndex = 11;
+            currentclassesflowpanel.WrapContents = false;
+            currentclassesflowpanel.SizeChanged += currentclassesflowpanel_SizeChanged;
             currentclassesflowpanel.Resize += currentclassesflowpanel_Resize;
             // 
             // archivedClassFlowpanel
             // 
             archivedClassFlowpanel.AccessibleDescription = "archivedclassesflowpanel";
             archivedClassFlowpanel.AutoScroll = true;
+            archivedClassFlowpanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            archivedClassFlowpanel.FlowDirection = FlowDirection.TopDown;
             archivedClassFlowpanel.Location = new Point(44, 502);
             archivedClassFlowpanel.Name = "archivedClassFlowpanel";
-            archivedClassFlowpanel.Size = new Size(1001, 265);
+            archivedClassFlowpanel.Size = new Size(911, 259);
             archivedClassFlowpanel.TabIndex = 10;
+            archivedClassFlowpanel.WrapContents = false;
             archivedClassFlowpanel.Resize += archivedClassFlowpanel_Resize;
             // 
             // UC_Records_New
@@ -128,7 +136,7 @@
             Controls.Add(CurrentClassespanel);
             Controls.Add(label1);
             Name = "UC_Records_New";
-            Size = new Size(1048, 640);
+            Size = new Size(963, 747);
             Load += UC_Records_New_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).EndInit();
             CurrentClassespanel.ResumeLayout(false);

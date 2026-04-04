@@ -29,21 +29,26 @@ namespace Brevi.Application
                 this.Height = 100;
 
                 using var db = new Brevi.Infrastructure.Data.AppDbContext();
+
+                // 1. UPDATE DB QUERY: Assuming your Section model has a "Subject" or "SubjectName" property.
+                // If your property is named differently, update it here!
                 var section = db.Sections
                     .Where(s => s.Id == _sectionId)
-                    .Select(s => new { s.SectionName, StudentCount = s.Students.Count })
+                    .Select(s => new { s.SectionName, SubjectName = s.Subject.ToString() }) // Fetch the subject name!
                     .AsNoTracking()
                     .SingleOrDefault();
 
                 if (section != null)
                 {
+                    // FILL OUT INITIAL LABELS
                     lblClassName.Values.Text = section.SectionName;
-                    lblSubject.Values.Text = $"{section.StudentCount} Students";
+                    lblSubject.Values.Text = section.SubjectName ?? "Unknown Subject";
 
                     // set archive button initial text
-                    ArchiveorRestorebutton.Values.Text = section.StudentCount >= 0 ? (_isArchived ? "Restore" : "Archive") : ArchiveorRestorebutton.Values.Text;
+                    ArchiveorRestorebutton.Values.Text = _isArchived ? "" : "";
+                    ArchiveorRestorebutton.Values.ExtraText = _isArchived ? "Restore" : "Archive";
 
-                    // 1. Setup Table Layout with 6 Columns
+                    // Setup Table Layout with 6 Columns
                     classinfotable.Controls.Clear();
                     classinfotable.ColumnCount = 6;
                     classinfotable.ColumnStyles.Clear();
@@ -54,10 +59,10 @@ namespace Brevi.Application
                     classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // excused (NEW)
                     classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // score
 
-                    // 2. Add Header Row (Using DockStyle.Fill and TextAlign for perfect spacing)
+                    // Add Header Row
                     classinfotable.RowCount = 1;
                     classinfotable.RowStyles.Clear();
-                    classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F)); // Fixed height for headers
+                    classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
 
                     Font headerFont = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
                     Color headerColor = Color.Gray;
@@ -71,7 +76,7 @@ namespace Brevi.Application
 
                     var students = db.Students.Where(st => st.SectionId == _sectionId).ToList();
 
-                    // 3. Handle Empty Class State
+                    // Handle Empty Class State
                     if (students.Count == 0)
                     {
                         classinfotable.RowCount = 2;
@@ -86,12 +91,23 @@ namespace Brevi.Application
                         };
 
                         classinfotable.Controls.Add(emptyStateLabel, 0, 1);
-                        classinfotable.SetColumnSpan(emptyStateLabel, 6); // Spans across all 6 columns
+                        classinfotable.SetColumnSpan(emptyStateLabel, 6);
+
+                        // ZERO OUT THE TOP LABELS
+                        lblStudents.Values.ExtraText = "0 Students";
+                        lblSessions.Values.Text = "0 Sessions";
+                        lblAvgScore.Values.Text = "0%";
                     }
                     else
                     {
-                        // 4. Populate Student Rows
                         int row = 1;
+
+                        // TRACKERS FOR THE TOP LABELS
+                        int maxSessions = 0;
+                        double totalClassScore = 0;
+                        int studentsWithRecords = 0;
+
+                        // Populate Student Rows
                         foreach (var student in students)
                         {
                             classinfotable.RowCount = row + 1;
@@ -103,22 +119,50 @@ namespace Brevi.Application
                             int present = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Present);
                             int late = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Late);
                             int absent = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Absent);
-
-                            // Assuming you have Excused in your enum, add it here:
                             int excused = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Excused);
 
-                            // Using colors similar to your reference images for better UI
-                            AddCellToTable(row, 1, new Label { Text = present.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.FromArgb(39, 165, 153) });
-                            AddCellToTable(row, 2, new Label { Text = late.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Goldenrod });
-                            AddCellToTable(row, 3, new Label { Text = absent.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.IndianRed });
-                            AddCellToTable(row, 4, new Label { Text = excused.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.CornflowerBlue });
+                            // TRACK MAX SESSIONS FOR THE WHOLE CLASS
+                            int total = present + late + absent + excused;
+                            if (total > maxSessions) maxSessions = total;
+
+                            // APPLYING YOUR COLORS HERE (I added Bold so they are easier to read)
+                            Font statFont = new Font("Segoe UI", 9F, FontStyle.Bold);
+
+                            AddCellToTable(row, 1, new Label { Text = present.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Green, Font = statFont });
+                            // Note: Pure Color.Yellow is practically invisible on a white background, so Goldenrod is usually standard for UI warnings/late states.
+                            AddCellToTable(row, 2, new Label { Text = late.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Goldenrod, Font = statFont });
+                            AddCellToTable(row, 3, new Label { Text = absent.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Red, Font = statFont });
+                            AddCellToTable(row, 4, new Label { Text = excused.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Blue, Font = statFont });
 
                             // score calculation
-                            int total = present + late + absent + excused;
-                            string score = total > 0 ? $"{(present * 100.0 / total):0}%" : "-";
-                            AddCellToTable(row, 5, new Label { Text = score, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Segoe UI", 9F, FontStyle.Bold) });
+                            string score = "-";
+                            if (total > 0)
+                            {
+                                double studentPercentage = (present * 100.0) / total;
+                                score = $"{studentPercentage:0}%";
+
+                                // ADD TO OVERALL CLASS AVERAGE TRACKER
+                                totalClassScore += studentPercentage;
+                                studentsWithRecords++;
+                            }
+
+                            AddCellToTable(row, 5, new Label { Text = score, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = statFont });
 
                             row++;
+                        }
+
+                        // FINALLY: FILL OUT THE TOP LABELS!
+                        lblStudents.Values.ExtraText = $"{students.Count} Students";
+                        lblSessions.Values.Text = $"{maxSessions} Sessions";
+
+                        if (studentsWithRecords > 0)
+                        {
+                            double classAverage = totalClassScore / studentsWithRecords;
+                            lblAvgScore.Values.Text = $"{classAverage:0}%";
+                        }
+                        else
+                        {
+                            lblAvgScore.Values.Text = "0%";
                         }
                     }
                 }
@@ -154,22 +198,18 @@ namespace Brevi.Application
             if (classinfotable.Visible)
             {
                 // EXPANDING
-                // Change the arrow icon to point UP (assuming you are using Material Symbols)
-                sidebarbtn.Values.Text = ""; // expand_less icon (replace with your specific up arrow character)
-
-                // Extend the height of the UserControl. 
-                // 350 is a good fixed expanded height. Since AutoScroll is true, long lists will scroll.
+                sidebarbtn.Values.Text = "";
                 this.Height = 350;
             }
             else
             {
                 // COLLAPSING
-                // Change the arrow icon to point DOWN
-                sidebarbtn.Values.Text = ""; // expand_more icon
-
-                // Shrink the UserControl back to just the header height
+                sidebarbtn.Values.Text = "";
                 this.Height = 100;
             }
+
+            // ADD THIS LINE: Force the parent FlowLayoutPanel to push the items below it down!
+            this.Parent?.PerformLayout();
         }
 
         private void ArchiveorRestorebutton_Click(object sender, EventArgs e)
@@ -195,12 +235,14 @@ namespace Brevi.Application
                         if (sec.IsArchived)
                         {
                             mainControl.MoveToArchived(this);
-                            ArchiveorRestorebutton.Values.Text = "Restore";
+                            ArchiveorRestorebutton.Values.Text = "";
+                            ArchiveorRestorebutton.Values.ExtraText = "Restore";
                         }
                         else
                         {
                             mainControl.MoveToCurrent(this);
-                            ArchiveorRestorebutton.Values.Text = "Archive";
+                            ArchiveorRestorebutton.Values.Text = "";
+                            ArchiveorRestorebutton.Values.ExtraText = "Archive";
                         }
                     }
                 }
@@ -226,7 +268,13 @@ namespace Brevi.Application
         public void SetArchivedState(bool archived)
         {
             _isArchived = archived;
-            ArchiveorRestorebutton.Values.Text = archived ? "Restore" : "Archive";
+
+            // Update the text
+            ArchiveorRestorebutton.Values.ExtraText = archived ? "Restore" : "Archive";
+
+            // Update the icon! 
+            // (Note: Replace "" with whatever your actual "Restore/Unarchive" character is in your font)
+            ArchiveorRestorebutton.Values.Text = archived ? "" : "";
         }
 
         private void kryptonLabel4_Click(object sender, EventArgs e)

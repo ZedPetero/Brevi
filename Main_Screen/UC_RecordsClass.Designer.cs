@@ -41,15 +41,21 @@
             // 
             // ArchiveorRestorebutton
             // 
-            ArchiveorRestorebutton.Location = new Point(638, 6);
+            ArchiveorRestorebutton.Location = new Point(650, 6);
             ArchiveorRestorebutton.Name = "ArchiveorRestorebutton";
-            ArchiveorRestorebutton.Size = new Size(109, 44);
+            ArchiveorRestorebutton.OverrideDefault.Back.Color1 = Color.FromArgb(39, 165, 153);
+            ArchiveorRestorebutton.OverrideDefault.Back.Color2 = Color.FromArgb(39, 165, 153);
+            ArchiveorRestorebutton.OverrideFocus.Back.Color1 = Color.FromArgb(39, 165, 153);
+            ArchiveorRestorebutton.OverrideFocus.Back.Color2 = Color.FromArgb(39, 165, 153);
+            ArchiveorRestorebutton.Size = new Size(97, 44);
             ArchiveorRestorebutton.StateCommon.Border.Rounding = 20F;
             ArchiveorRestorebutton.StateCommon.Content.LongText.Color1 = Color.White;
             ArchiveorRestorebutton.StateCommon.Content.LongText.Font = new Font("Inter SemiBold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ArchiveorRestorebutton.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             ArchiveorRestorebutton.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             ArchiveorRestorebutton.StateCommon.Content.ShortText.Color1 = Color.White;
             ArchiveorRestorebutton.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ArchiveorRestorebutton.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             ArchiveorRestorebutton.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
             ArchiveorRestorebutton.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
             ArchiveorRestorebutton.TabIndex = 13;
@@ -62,6 +68,10 @@
             // 
             sidebarbtn.Location = new Point(753, 10);
             sidebarbtn.Name = "sidebarbtn";
+            sidebarbtn.OverrideDefault.Back.Color1 = Color.White;
+            sidebarbtn.OverrideDefault.Back.Color2 = Color.White;
+            sidebarbtn.OverrideFocus.Back.Color1 = Color.White;
+            sidebarbtn.OverrideFocus.Back.Color2 = Color.White;
             sidebarbtn.Size = new Size(37, 34);
             sidebarbtn.StateCommon.Border.Rounding = 5F;
             sidebarbtn.StateCommon.Content.ShortText.Font = new Font("Material Symbols Sharp", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -88,9 +98,9 @@
             // 
             // lblStudents
             // 
-            lblStudents.Location = new Point(11, 53);
+            lblStudents.Location = new Point(11, 55);
             lblStudents.Name = "lblStudents";
-            lblStudents.Size = new Size(94, 37);
+            lblStudents.Size = new Size(106, 37);
             lblStudents.StateCommon.LongText.Color1 = Color.FromArgb(29, 37, 48);
             lblStudents.StateCommon.LongText.Font = new Font("Inter", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStudents.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
@@ -98,12 +108,12 @@
             lblStudents.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             lblStudents.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             lblStudents.TabIndex = 18;
-            lblStudents.Values.ExtraText = "Students";
+            lblStudents.Values.ExtraText = "0 Students";
             lblStudents.Values.Text = "";
             // 
             // lblSessions
             // 
-            lblSessions.Location = new Point(121, 53);
+            lblSessions.Location = new Point(137, 53);
             lblSessions.Name = "lblSessions";
             lblSessions.Size = new Size(91, 37);
             lblSessions.StateCommon.LongText.Font = new Font("Inter", 9.75F);
@@ -118,7 +128,7 @@
             // 
             // kryptonLabel3
             // 
-            kryptonLabel3.Location = new Point(232, 53);
+            kryptonLabel3.Location = new Point(248, 53);
             kryptonLabel3.Name = "kryptonLabel3";
             kryptonLabel3.Size = new Size(96, 37);
             kryptonLabel3.StateCommon.LongText.Font = new Font("Inter", 9.75F);
@@ -133,7 +143,7 @@
             // 
             // lblAvgScore
             // 
-            lblAvgScore.Location = new Point(324, 53);
+            lblAvgScore.Location = new Point(340, 53);
             lblAvgScore.Name = "lblAvgScore";
             lblAvgScore.Size = new Size(31, 37);
             lblAvgScore.StateCommon.LongText.Font = new Font("Inter", 9.75F);
@@ -172,6 +182,7 @@
             // classinfotable
             // 
             classinfotable.AutoScroll = true;
+            classinfotable.AutoSize = true;
             classinfotable.ColumnCount = 7;
             classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
             classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -184,7 +195,7 @@
             classinfotable.Name = "classinfotable";
             classinfotable.RowCount = 1;
             classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            classinfotable.Size = new Size(779, 211);
+            classinfotable.Size = new Size(779, 52);
             classinfotable.TabIndex = 24;
             // 
             // UC_RecordsClass

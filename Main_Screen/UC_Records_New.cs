@@ -103,5 +103,13 @@ namespace Brevi.Application
                 }
             }
         }
+        private void currentclassesflowpanel_SizeChanged(object sender, EventArgs e)
+        {
+            // Dynamically push the "Archived Classes" header down below the current classes list
+            ArchivedClassespanel.Top = currentclassesflowpanel.Bottom + 20; // 20 is just a visual margin
+
+            // Dynamically push the archived list down below its header
+            archivedClassFlowpanel.Top = ArchivedClassespanel.Bottom + 10;
+        }
     }
 }
