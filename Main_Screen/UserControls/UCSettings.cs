@@ -36,18 +36,30 @@ namespace Brevi.Application
 
             _userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
 
-
-            UsernameChangebutton.Click += UsernameChangebutton_Click;
-            PasswordChangeButton.Click += PasswordChangeButton_Click;
         }
 
-        private async void UsernameChangebutton_Click(object? sender, EventArgs e)
+        private async void PasswordChangebutton_Click(object? sender, EventArgs e)
         {
-            var newUsername = UsernameChangetxtbox.Text?.Trim();
+            string newUsername = UsernameChangetxtbox.Text?.Trim() ?? string.Empty;
+            string currentPass = currentPasstxtbox.Text ?? string.Empty;
+            string newPass = newPassTxtBox.Text ?? string.Empty;
 
             if (string.IsNullOrEmpty(newUsername))
             {
                 MessageBox.Show("Username cannot be empty.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(currentPass))
+            {
+                MessageBox.Show("Please enter your current password to confirm changes.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool isChangingPassword = !string.IsNullOrEmpty(newPass);
+            if (isChangingPassword && !IsPasswordComplex(newPass))
+            {
+                MessageBox.Show("New password must contain at least one capital letter, one number, and one non-letter character.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -66,30 +78,56 @@ namespace Brevi.Application
                     return;
                 }
 
-                var existing = await _userManager.FindByNameAsync(newUsername);
-                if (existing != null && existing.Id != user.Id)
+                var isCurrentPassValid = await _userManager.CheckPasswordAsync(user, currentPass);
+                if (!isCurrentPassValid)
                 {
-                    MessageBox.Show("Username is already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The current password you entered is incorrect.", "Security", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
-                user.UserName = newUsername;
-                user.NormalizedUserName = _userManager.NormalizeName(newUsername);
-
-                var result = await _userManager.UpdateAsync(user);
-                if (result.Succeeded)
+                if (user.UserName != newUsername)
                 {
-                    MessageBox.Show("Username updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var existing = await _userManager.FindByNameAsync(newUsername);
+                    if (existing != null && existing.Id != user.Id)
+                    {
+                        MessageBox.Show("Username is already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    user.UserName = newUsername;
+                    var userResult = await _userManager.UpdateAsync(user);
+                    if (!userResult.Succeeded)
+                    {
+                        var errors = string.Join("\n", userResult.Errors.Select(x => x.Description));
+                        MessageBox.Show($"Failed to update username:\n{errors}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                if (isChangingPassword)
+                {
+                    var passResult = await _userManager.ChangePasswordAsync(user, currentPass, newPass);
+
+                    if (passResult.Succeeded)
+                    {
+                        MessageBox.Show("Profile and password updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        currentPasstxtbox.Clear();
+                        newPassTxtBox.Clear();
+                    }
+                    else
+                    {
+                        var errors = string.Join("\n", passResult.Errors.Select(x => x.Description));
+                        MessageBox.Show($"Failed to update password:\n{errors}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    var errors = string.Join("\n", result.Errors.Select(x => x.Description));
-                    MessageBox.Show($"Failed to update username:\n{errors}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Username updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -104,69 +142,6 @@ namespace Brevi.Application
             return hasUpper && hasDigit && hasNonLetter;
         }
 
-        private async void PasswordChangeButton_Click(object? sender, EventArgs e)
-        {
-            var newPassword = PasswordChangetxtbox.Text ?? string.Empty;
-
-            if (!IsPasswordComplex(newPassword))
-            {
-                MessageBox.Show("Password must contain at least one capital letter, one number, and one non-letter character.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (_userManager == null)
-            {
-                MessageBox.Show("User manager is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                var user = await _userManager.FindByIdAsync(UserSession.CurrentTeacherId.ToString());
-                if (user == null)
-                {
-                    MessageBox.Show("Current user not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
-
-                if (result.Succeeded)
-                {
-                    MessageBox.Show("Password updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    var errors = string.Join("\n", result.Errors.Select(x => x.Description));
-                    MessageBox.Show($"Failed to update password:\n{errors}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            UIHelper.RoundControl(AccountManagementPanel, 20);
-        }
-
-        private void kryptonLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void UC_Settings_Load(object sender, EventArgs e)
         {
 
@@ -177,22 +152,17 @@ namespace Brevi.Application
 
         }
 
-        private void kryptonPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-            UIHelper.RoundControl(kryptonPanel1, 20);
-        }
-
         private void kryptonRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void kryptonPanel2_Paint(object sender, PaintEventArgs e)
+        private void kryptonLabel4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void kryptonLabel4_Click(object sender, EventArgs e)
+        private void PasswordChangeButton_Click_1(object sender, EventArgs e)
         {
 
         }
