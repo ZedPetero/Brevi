@@ -13,13 +13,27 @@ namespace Brevi.Application
     public partial class UCLoginPage : UserControl
     {
         private readonly UserManager<Teacher> _userManager;
+        private readonly string? _prefilledUsername;
         public event EventHandler? GoToSignUpPage;
 
-        public UCLoginPage(UserManager<Teacher> userManager)
+        public UCLoginPage(UserManager<Teacher> userManager, string? username)
         {
             _userManager = userManager;
+            _prefilledUsername = username;
             InitializeComponent();
+            if (!string.IsNullOrEmpty(_prefilledUsername))
+            {
+                txtUsername.Text = _prefilledUsername;
+                welcomingLabel.Text = $"Welcome Back, {_prefilledUsername}!";
+            }
             UIHelper.RoundControl(panel1, 15);
+        }
+
+        public void UCLoginPage_Reset(object sender, EventArgs e)
+        {
+            txtUsername.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            welcomingLabel.Text = "Welcome Back!";
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)

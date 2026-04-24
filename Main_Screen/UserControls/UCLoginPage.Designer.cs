@@ -37,7 +37,7 @@
             txtUsername = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             panel1 = new Panel();
             autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            welcomingLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)txtPassword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtUsername).BeginInit();
             panel1.SuspendLayout();
@@ -99,7 +99,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(141, 32);
+            txtPassword.BeforeTouchSize = new Size(345, 32);
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
@@ -127,7 +127,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(141, 32);
+            txtUsername.BeforeTouchSize = new Size(345, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
@@ -145,7 +145,7 @@
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.White;
             panel1.Controls.Add(autoLabel5);
-            panel1.Controls.Add(autoLabel4);
+            panel1.Controls.Add(welcomingLabel);
             panel1.Controls.Add(txtUsername);
             panel1.Controls.Add(autoLabel1);
             panel1.Controls.Add(linkLabel2);
@@ -169,16 +169,18 @@
             autoLabel5.TabIndex = 21;
             autoLabel5.Text = "Sign In to your Korum Account";
             // 
-            // autoLabel4
+            // welcomingLabel
             // 
-            autoLabel4.BackColor = Color.Transparent;
-            autoLabel4.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel4.ForeColor = Color.FromArgb(29, 37, 48);
-            autoLabel4.Location = new Point(117, 23);
-            autoLabel4.Name = "autoLabel4";
-            autoLabel4.Size = new Size(189, 35);
-            autoLabel4.TabIndex = 20;
-            autoLabel4.Text = "Welcome Back";
+            welcomingLabel.AutoSize = false;
+            welcomingLabel.BackColor = Color.Transparent;
+            welcomingLabel.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            welcomingLabel.ForeColor = Color.FromArgb(29, 37, 48);
+            welcomingLabel.Location = new Point(17, 23);
+            welcomingLabel.Name = "welcomingLabel";
+            welcomingLabel.Size = new Size(389, 35);
+            welcomingLabel.TabIndex = 20;
+            welcomingLabel.Text = "Welcome Back";
+            welcomingLabel.TextAlign = ContentAlignment.TopCenter;
             // 
             // UCLoginPage
             // 
@@ -206,6 +208,6 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtUsername;
         private Panel panel1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel welcomingLabel;
     }
 }

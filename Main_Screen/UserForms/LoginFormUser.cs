@@ -1,4 +1,5 @@
 ﻿using Brevi.Domain.Models;
+using Brevi.Services.Repositories.IRepositories;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -7,20 +8,40 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Brevi.Application
 {
     public partial class LoginFormUser : Form
     {
         private readonly UserManager<Teacher> _userManager;
+        private readonly IUserService _userService;
+        private string uName;
 
-        public LoginFormUser(UserManager<Teacher> userManager)
+        public LoginFormUser(UserManager<Teacher> userManager, IUserService userService)
         {
             _userManager = userManager;
+            _userService = userService;
             InitializeComponent();
-            UCInteractionPage iPage = new UCInteractionPage();
+            UCInteractionPage iPage = new UCInteractionPage(_userService);
             iPage.StartNowClicked += (s, e) => btnSignUp_Click(s, e);
+            iPage.AccountSelected += (username) => ListForQuickLoginLoad(username);
             LoadForm(iPage);
+        }
+
+        private void ListForQuickLoginLoad(string username)
+        {
+            try
+            {
+                uName = username;
+                var loginPage = new UCLoginPage(_userManager, username);
+                loginPage.GoToSignUpPage += (s, e) => btnSignUp_Click(s, e);
+                LoadForm(loginPage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -58,8 +79,9 @@ namespace Brevi.Application
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            UCLoginPage loginPage = new UCLoginPage(_userManager);
+            UCLoginPage loginPage = new UCLoginPage(_userManager, uName);
             loginPage.GoToSignUpPage += (s, e) => btnSignUp_Click(s,e);
+            loginPage.UCLoginPage_Reset(sender, e);
             LoadForm(loginPage);
         }
 
@@ -72,8 +94,9 @@ namespace Brevi.Application
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            UCInteractionPage iPage = new UCInteractionPage();
+            UCInteractionPage iPage = new UCInteractionPage(_userService);
             iPage.StartNowClicked += (s, e) => btnSignUp_Click(s,e);
+            iPage.AccountSelected += (username) => ListForQuickLoginLoad(username);
             LoadForm(iPage);
         }
 

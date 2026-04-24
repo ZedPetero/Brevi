@@ -51,7 +51,7 @@
             lblWrapBio.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
             lblWrapBio.Location = new Point(39, 343);
             lblWrapBio.Name = "lblWrapBio";
-            lblWrapBio.Size = new Size(480, 23);
+            lblWrapBio.Size = new Size(480, 289);
             lblWrapBio.StateCommon.Font = new Font("Inter", 10F);
             lblWrapBio.StateCommon.TextColor = Color.FromArgb(29, 37, 48);
             lblWrapBio.Text = "N/A";
@@ -295,7 +295,7 @@
             Controls.Add(lblTeacherTitle);
             Controls.Add(btnProfilePic);
             Name = "UCTeacherProfile";
-            Size = new Size(550, 440);
+            Size = new Size(550, 661);
             Load += UCTeacherProfile_Load;
             ResumeLayout(false);
             PerformLayout();

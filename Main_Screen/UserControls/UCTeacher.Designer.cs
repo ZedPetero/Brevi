@@ -44,6 +44,7 @@
             // 
             // panelTeacherProfile
             // 
+            panelTeacherProfile.Anchor = AnchorStyles.Top;
             panelTeacherProfile.Location = new Point(300, 88);
             panelTeacherProfile.Name = "panelTeacherProfile";
             panelTeacherProfile.Size = new Size(550, 520);
@@ -53,6 +54,7 @@
             // 
             // kryptonLabel1
             // 
+            kryptonLabel1.Anchor = AnchorStyles.Top;
             kryptonLabel1.Location = new Point(300, 32);
             kryptonLabel1.Name = "kryptonLabel1";
             kryptonLabel1.Size = new Size(240, 50);
@@ -64,12 +66,13 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top;
             panel1.Location = new Point(634, 32);
             panel1.Name = "panel1";
             panel1.Size = new Size(215, 50);
             panel1.TabIndex = 6;
             // 
-            // UC_Teacher
+            // UCTeacher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -78,7 +81,7 @@
             Controls.Add(panel1);
             Controls.Add(kryptonLabel1);
             Controls.Add(panelTeacherProfile);
-            Name = "UC_Teacher";
+            Name = "UCTeacher";
             Size = new Size(1150, 640);
             ((System.ComponentModel.ISupportInitialize)panelTeacherProfile).EndInit();
             ResumeLayout(false);

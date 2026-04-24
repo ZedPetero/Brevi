@@ -4,6 +4,7 @@ using Brevi.Domain.Models;
 using Brevi.Domain.Repositories;
 using Brevi.Domain.Repositories.IRepositories;
 using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories.IRepositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,7 @@ internal static class Program
         services.AddIdentityCore<Teacher>()
             .AddEntityFrameworkStores<AppDbContext>();
 
+        services.AddScoped<IUserService, UserService>();
 
         var serviceProvider = services.BuildServiceProvider();
 
@@ -62,8 +64,9 @@ internal static class Program
         // ====================================== For the new login form ======================================
 
         var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
+        var userService = (IUserService)serviceProvider.GetService(typeof(IUserService));
 
-        using (var userLogin = new LoginFormUser(userManager))
+        using (var userLogin = new LoginFormUser(userManager, userService))
         {
             if (userLogin.ShowDialog() != DialogResult.OK)
                 return;

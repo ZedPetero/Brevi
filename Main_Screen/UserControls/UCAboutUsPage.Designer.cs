@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCAboutUsPage));
             kryptonWrapLabel3 = new Krypton.Toolkit.KryptonWrapLabel();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
@@ -413,10 +414,10 @@
             kryptonWrapLabel6.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
             kryptonWrapLabel6.Location = new Point(477, 705);
             kryptonWrapLabel6.Name = "kryptonWrapLabel6";
-            kryptonWrapLabel6.Size = new Size(230, 130);
+            kryptonWrapLabel6.Size = new Size(230, 240);
             kryptonWrapLabel6.StateCommon.Font = new Font("Inter", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             kryptonWrapLabel6.StateCommon.TextColor = Color.FromArgb(108, 124, 137);
-            kryptonWrapLabel6.Text = "Studying in The University of Mindanao, John aspires to create applications made easy for people.";
+            kryptonWrapLabel6.Text = resources.GetString("kryptonWrapLabel6.Text");
             kryptonWrapLabel6.TextAlign = ContentAlignment.TopCenter;
             // 
             // kryptonWrapLabel7
