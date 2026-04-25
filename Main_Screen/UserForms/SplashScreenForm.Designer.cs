@@ -55,7 +55,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg__WHITE;
-            pictureBox1.Location = new Point(101, 41);
+            pictureBox1.Location = new Point(99, 41);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(316, 166);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -161,7 +161,7 @@
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
             pictureBox6.Location = new Point(156, 213);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(214, 114);
+            pictureBox6.Size = new Size(219, 121);
             pictureBox6.TabIndex = 5;
             pictureBox6.TabStop = false;
             pictureBox6.Click += pictureBox6_Click;
