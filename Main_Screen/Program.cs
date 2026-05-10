@@ -1,20 +1,19 @@
 namespace Brevi.Application;
 
 using Brevi.Domain.Models;
-using Brevi.Domain.Repositories;
-using Brevi.Domain.Repositories.IRepositories;
 using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories; // Added this
 using Brevi.Services.Repositories.IRepositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.Logging;
 using System;
 using System.Windows.Forms;
 
-
 internal static class Program
 {
+    public static IServiceProvider ServiceProvider { get; private set; }
+
     [STAThread]
     static void Main()
     {
@@ -31,13 +30,16 @@ internal static class Program
         services.AddIdentityCore<Teacher>()
             .AddEntityFrameworkStores<AppDbContext>();
 
-        services.AddScoped<IUserSessionService, UserService>();
+        // Register your forms here so DI can build them!
+        services.AddTransient<LoginFormUser>();
+        services.AddTransient<MainScreenForm>();
 
-        var serviceProvider = services.BuildServiceProvider();
+        ServiceProvider = services.BuildServiceProvider();
 
-        using (var scope = serviceProvider.CreateScope())
+        // Run Migrations safely
+        using (var scope = ServiceProvider.CreateScope())
         {
-            var dbContext = scope.ServiceProvider.GetService(typeof(AppDbContext)) as AppDbContext;
+            var dbContext = (AppDbContext)scope.ServiceProvider.GetService(typeof(AppDbContext));
             dbContext.Database.Migrate();
         }
 
@@ -46,14 +48,12 @@ internal static class Program
             splash.ShowDialog();
         }
 
-        var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
-        var userService = (IUserSessionService)serviceProvider.GetService(typeof(IUserSessionService));
-
         bool exitClicked = false;
 
         while (!exitClicked)
         {
-            using (var userLogin = new LoginFormUser(userManager, userService))
+            // Ask the DI container to give us the Login form (it will inject UserManager automatically)
+            using (var userLogin = (LoginFormUser)ServiceProvider.GetService(typeof(LoginFormUser)))
             {
                 if (userLogin.ShowDialog() != DialogResult.OK)
                 {
@@ -61,16 +61,14 @@ internal static class Program
                 }
             }
 
-            using (var mainForm = new MainScreenForm())
+            // Ask the DI container for the Main form
+            using (var mainForm = (MainScreenForm)ServiceProvider.GetService(typeof(MainScreenForm)))
             {
-                mainForm.ExitClicked += (sender, e) => exitClicked = true;
-                mainForm.ShowDialog();
+                {
+                    mainForm.ExitClicked += (sender, e) => exitClicked = true;
+                    mainForm.ShowDialog();
+                }
             }
         }
-
-        //using (var userLogin = new UserLoginForm())
-        //{
-        //    userLogin.ShowDialog();
-        //}
     }
 }

@@ -15,15 +15,13 @@ namespace Brevi.Application
     public partial class LoginFormUser : Form
     {
         private readonly UserManager<Teacher> _userManager;
-        private readonly IUserSessionService _userService;
         private string uName;
 
-        public LoginFormUser(UserManager<Teacher> userManager, IUserSessionService userService)
+        public LoginFormUser(UserManager<Teacher> userManager)
         {
             _userManager = userManager;
-            _userService = userService;
             InitializeComponent();
-            UCInteractionPage iPage = new UCInteractionPage(_userService);
+            UCInteractionPage iPage = new UCInteractionPage(_userManager);
             iPage.StartNowClicked += (s, e) => btnSignUp_Click(s, e);
             iPage.AccountSelected += (username) => ListForQuickLoginLoad(username);
             LoadForm(iPage);
@@ -89,7 +87,7 @@ namespace Brevi.Application
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            UCInteractionPage iPage = new UCInteractionPage(_userService);
+            UCInteractionPage iPage = new UCInteractionPage(_userManager);
             iPage.StartNowClicked += (s, e) => btnSignUp_Click(s, e);
             iPage.AccountSelected += (username) => ListForQuickLoginLoad(username);
             LoadForm(iPage);

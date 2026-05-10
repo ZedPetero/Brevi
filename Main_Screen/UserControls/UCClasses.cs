@@ -1,6 +1,6 @@
 ﻿using Brevi.Application.UserControls;
 using Brevi.Domain.Models;
-using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Services.Repositories.IRepositories;
 using Brevi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -74,7 +74,7 @@ namespace Brevi.Application
         private void Card_TakeAttendanceClicked(object sender, int sectionId)
         {
             MainScreenForm mainForm = (MainScreenForm)this.FindForm();
-            UCAttendance attendanceScreen = new UCAttendance();
+            UCAttendance attendanceScreen = new UCAttendance(_sectionService);
 
             attendanceScreen.CallerControl = this;
             attendanceScreen.SetSection(sectionId);

@@ -1,5 +1,5 @@
 ﻿using Brevi.Domain.Models;
-using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Services.Repositories.IRepositories;
 using Brevi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
@@ -20,6 +20,17 @@ namespace Brevi.Application
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         public int CurrentSectionId { get; set; }
+
+        private readonly ISectionService _sectionService;
+
+        public UCAttendance(ISectionService sectionService)
+        {
+            InitializeComponent();
+            _sectionService = sectionService;
+            UpdateDateDisplay();
+            SetSection(CurrentSectionId);
+            FilterComboBox.SelectedIndexChanged += (s, ev) => LoadStudentsForDate();
+        }
         protected override CreateParams CreateParams
         {
             get
@@ -37,16 +48,6 @@ namespace Brevi.Application
         private DateTime _selectedDate = DateTime.Today;
         private enum SortMethod { Surname, FirstName }
         private SortMethod _currentSort = SortMethod.Surname;
-
-        private readonly ISectionService _sectionService;
-
-        public UCAttendance()
-        {
-            InitializeComponent();
-            UpdateDateDisplay();
-            SetSection(CurrentSectionId);
-            FilterComboBox.SelectedIndexChanged += (s, ev) => LoadStudentsForDate();
-        }
 
         public void SetSection(int sectionId)
         {

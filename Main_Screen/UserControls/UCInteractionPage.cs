@@ -15,13 +15,13 @@ namespace Brevi.Application
 {
     public partial class UCInteractionPage : UserControl
     {
-        private readonly IUserSessionService _userService;
+        private readonly UserManager<Teacher> _userManager;
         public event EventHandler? StartNowClicked;
         public event Action<string>? AccountSelected;
 
-        public UCInteractionPage(IUserSessionService userService)
+        public UCInteractionPage(UserManager<Teacher> userManager)
         {
-            _userService = userService;
+            _userManager = userManager;
             InitializeComponent();
             UIHelper.RoundControl(pictureBox1, 10);
             LoadSavedAccounts();
@@ -31,7 +31,7 @@ namespace Brevi.Application
         {
             try
             {
-                var usernames = _userService.GetAllUsernames() ?? new List<string>();
+                var usernames = _userManager.Users.Select(u => u.UserName).ToList();
                 loggedInViewPanel.Controls.Clear();
 
                 int y = 0;
