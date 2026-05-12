@@ -97,5 +97,14 @@ namespace Brevi.Services.Repositories.IRepositories
             await _context.SaveChangesAsync();
             return section.IsArchived;
         }
+        public async Task<bool> DeleteSectionAsync(int sectionId)
+        {
+            var section = await _context.Sections.FindAsync(sectionId);
+
+            if (section == null) return false;
+
+            _context.Sections.Remove(section);
+            return await _context.SaveChangesAsync() > 0;
+        }
     }
 }

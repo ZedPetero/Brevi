@@ -14,5 +14,6 @@ namespace Brevi.Services.Repositories.IRepositories
         Task<List<Student>> GetStudentsInSectionAsync(int sectionId);
         Task<AttendanceStats> GetStudentAttendanceStatsAsync(int studentId, int sectionId);
         Task<bool> ToggleArchiveStatusAsync(int sectionId);
+        Task<bool> DeleteSectionAsync(int sectionId);
     }
 }

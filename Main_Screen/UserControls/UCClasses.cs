@@ -47,7 +47,7 @@ namespace Brevi.Application
                         + " - " +
                         DateTime.Today.Add(section.EndTime).ToString("hh:mm tt");
 
-                    UCSectionCard card = new UCSectionCard();
+                    UCSectionCard card = new UCSectionCard(_sectionService);
 
                     card.SetData(
                         section.Id,

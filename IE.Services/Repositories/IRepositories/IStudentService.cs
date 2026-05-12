@@ -7,5 +7,6 @@ namespace Brevi.Services.Repositories.IRepositories
 {
     public interface IStudentService : IRepository<Student>
     {
+        Task<bool> DeleteStudentAsync(int studentId);
     }
 }

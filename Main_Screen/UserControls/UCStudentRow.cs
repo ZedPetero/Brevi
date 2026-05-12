@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Brevi.Infrastructure.Data;
 using Brevi.Domain.Models;
 using System.Diagnostics;
+using Brevi.Services.Repositories.IRepositories;
 
 namespace Brevi.Application
 {
@@ -26,9 +27,12 @@ namespace Brevi.Application
         private AttendanceStatus? _selectedStatus;
 
         public event EventHandler<int> AttendanceStatusChanged;
-
-        public UCStudentRow()
+        private readonly IAttendanceService _attendanceService;
+        private readonly IStudentService _studentService;
+        public UCStudentRow(IAttendanceService attendanceService, IStudentService studentService)
         {
+            _attendanceService = attendanceService;
+            _studentService = studentService;
             InitializeComponent();
         }
         private void RoundPanel(object sender, EventArgs e)
@@ -140,88 +144,38 @@ namespace Brevi.Application
             AttendanceStatusChanged?.Invoke(this, StudentId);
         }
 
-        private void BtnDeleteStudent_Click(object? sender, EventArgs e)
+        private async void BtnDeleteStudent_Click(object? sender, EventArgs e)
         {
-            if (StudentId == 0)
-                return;
-
-            var parentAttendance = FindParentAttendance();
-            if (MessageBox.Show($"Delete student '{StudentName}'? This will remove the student and all their attendance records.",
-                    "Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
-                return;
-
-            try
+            if (MessageBox.Show($"Delete {StudentName}?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                using var db = new AppDbContext();
-
-                var student = db.Students.SingleOrDefault(s => s.Id == StudentId);
-                if (student != null)
-                {
-                    var attendance = db.AttendanceRecords.Where(a => a.StudentId == StudentId).ToList();
-                    if (attendance.Any())
-                        db.AttendanceRecords.RemoveRange(attendance);
-
-                    db.Students.Remove(student);
-                    db.SaveChanges();
-                }
-
-                parentAttendance?.RefreshSummaryAndRoster();
-                parentAttendance?.LoadStudentsForDate();
-                MessageBox.Show("Student Successfully Deleted!");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("[UC_StudentRow] BtnDeleteStudent error: " + ex);
-                MessageBox.Show("Error deleting student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                await _studentService.DeleteStudentAsync(StudentId);
+                FindParentAttendance()?.LoadStudentsForDate();
             }
         }
 
-        private void SaveStatusAndRefresh(AttendanceStatus status)
+        private async void SaveStatusAndRefresh(AttendanceStatus status)
         {
-            if (StudentId == 0 || SectionId == 0)
-                return;
+            if (StudentId == 0 || SectionId == 0) return;
 
             try
             {
-                DateTime dateStart = AttendanceDate.Date;
-                DateTime dateEnd = dateStart.AddDays(1);
-
-                using var db = new AppDbContext();
-
-                var existing = db.AttendanceRecords
-                    .SingleOrDefault(a =>
-                        a.StudentId == StudentId &&
-                        a.SectionId == SectionId &&
-                        a.Date >= dateStart && a.Date < dateEnd);
-
-                if (existing == null)
+                var record = new Attendance
                 {
-                    var record = new Attendance
-                    {
-                        StudentId = StudentId,
-                        SectionId = SectionId,
-                        Date = dateStart,
-                        Status = status,
-                        Remarks = string.Empty
-                    };
-                    db.AttendanceRecords.Add(record);
-                }
-                else
-                {
-                    existing.Status = status;
-                }
+                    StudentId = StudentId,
+                    SectionId = SectionId,
+                    Date = AttendanceDate.Date,
+                    Status = status,
+                    Remarks = string.Empty
+                };
 
-                db.SaveChanges();
-
+                await _attendanceService.SaveAttendanceAsync(record);
                 SetSelectedStatus(status);
 
-                var parentAttendance = FindParentAttendance();
-                parentAttendance?.RefreshSummaryAndRoster();
+                FindParentAttendance()?.RefreshSummaryAndRoster();
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("[UC_StudentRow] SaveStatusAndRefresh error: " + ex);
-                MessageBox.Show("Error saving attendance: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to save: {ex.Message}");
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,10 @@ namespace Brevi.Application
         public event EventHandler<int> SectionDeleted;
         private bool isLifted = false;
         private Padding originalMargin;
-        public UCSectionCard()
+        private readonly ISectionService _sectionService;
+        public UCSectionCard(ISectionService sectionService)
         {
+            _sectionService = sectionService;
             InitializeComponent();
             UIHelper.RoundControl(panel1, 10);
             UIHelper.RoundControl(this, 16);
@@ -36,29 +39,22 @@ namespace Brevi.Application
             TakeAttendanceClicked?.Invoke(this, SectionId);
         }
 
-        private void btnDeleteSection_Click(object sender, EventArgs e)
+        private async void btnDeleteSection_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Delete this section?", "Confirm", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
             try
             {
-                using (var db = new AppDbContext())
+                bool deleted = await _sectionService.DeleteSectionAsync(SectionId);
+                if (deleted)
                 {
-                    var section = db.Sections.Where(b => b.Id == SectionId).FirstOrDefault();
-                    if (section != null)
-                    {
-                        db.Remove(section);
-                        db.SaveChanges();
-                        MessageBox.Show("Section successfully deleted!");
-                        SectionDeleted?.Invoke(this, SectionId);
-                    }
-                    else
-                    {
-                        MessageBox.Show("There is no such section!");
-                    }
+                    MessageBox.Show("Section deleted!");
+                    SectionDeleted?.Invoke(this, SectionId);
                 }
-            } 
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Error! \n" + ex.Message);
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
         private void Card_MouseEnter(object sender, EventArgs e)
