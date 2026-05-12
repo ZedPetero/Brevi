@@ -1,26 +1,31 @@
-﻿using System;
+﻿using Brevi.Domain.Models;
+using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories.IRepositories;
+using Krypton.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Brevi.Domain.Models;
-using Brevi.Infrastructure.Data;
-using Krypton.Toolkit;
 namespace Brevi.Application
 {
     public partial class FormAddStudent : Form
     {
+        private readonly IStudentService _studentService;
+        private readonly ISectionService _sectionService;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentSectionId { get; set; }
-        public FormAddStudent()
+        public FormAddStudent(IStudentService studentService, ISectionService sectionService)
         {
             InitializeComponent();
+            _studentService = studentService;
+            _sectionService = sectionService;
             UIHelper.RoundControl(this, 20);
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -29,26 +34,25 @@ namespace Brevi.Application
                     MessageBox.Show("First Name and Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                using (var _context = new AppDbContext())
+                var section = await _sectionService.GetSectionByIdAsync(this.CurrentSectionId);
+                if (section == null)
                 {
-                    bool sectionExists = _context.Sections.Any(s => s.Id == this.CurrentSectionId);
-
-                    if (!sectionExists)
-                    {
-                        MessageBox.Show($"Error: Cannot add student. Section ID {this.CurrentSectionId} does not exist in the database.");
-                        return;
-                    }
-                    var student = new Student
-                    {
-                        FirstName = txtFirstName.Text,
-                        MiddleName = txtLastName.Text,
-                        LastName = txtLastName.Text,
-                        SectionId = this.CurrentSectionId
-                    };
-                    _context.Students.Add(student);
-                    _context.SaveChanges();
+                    MessageBox.Show($"Error: Cannot add student. Section ID {this.CurrentSectionId} does not exist.");
+                    return;
                 }
+
+                var student = new Student
+                {
+                    FirstName = txtFirstName.Text,
+                    MiddleName = txtLastName.Text, // Note: You had MiddleName = txtLastName in original
+                    LastName = txtLastName.Text,
+                    SectionId = this.CurrentSectionId
+                };
+
+                await _studentService.AddAsync(student);
+
                 MessageBox.Show("Student added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (Exception ex)
@@ -73,7 +77,10 @@ namespace Brevi.Application
 
         private void FormAddStudent_KeyUp(object sender, KeyEventArgs e)
         {
-            btnSave_Click(sender, e);
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSave_Click(sender, e);
+            }
         }
     }
 }

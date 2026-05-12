@@ -25,13 +25,15 @@ namespace Brevi.Application
         private readonly IAttendanceService _attendanceService;
         private readonly IGradeService _gradeService;
         private readonly IStudentService _studentService;
-        public UCAttendance(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService)
+        private readonly IRepository<Subject> _subjectRepository;
+        public UCAttendance(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService, IRepository<Subject> subjectRepository)
         {
             InitializeComponent();
             _sectionService = sectionService;
             _attendanceService = attendanceService;
             _gradeService = gradeService;
             _studentService = studentService;
+            _subjectRepository = subjectRepository;
             UpdateDateDisplay();
             SetSection(CurrentSectionId);
             FilterComboBox.SelectedIndexChanged += async (s, ev) => await LoadStudentsForDateAsync();
@@ -72,7 +74,7 @@ namespace Brevi.Application
 
         private async void btnAddStudent_Click(object sender, EventArgs e)
         {
-            using (FormAddStudent popup = new FormAddStudent())
+            using (FormAddStudent popup = new FormAddStudent(_studentService, _sectionService))
             {
                 MainScreenForm mainForm = (MainScreenForm)this.FindForm();
                 mainForm.ShowOverlay();
@@ -355,7 +357,7 @@ namespace Brevi.Application
             }
             else
             {
-                mainForm.LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService));
+                mainForm.LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository));
             }
         }
 

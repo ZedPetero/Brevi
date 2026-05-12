@@ -1,5 +1,6 @@
 ﻿using Brevi.Domain.Models;
 using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,38 +14,35 @@ namespace Brevi.Application
 {
     public partial class AddSectionForm : Form
     {
+        private readonly ISectionService _sectionService;
+        private readonly IRepository<Subject> _subjectRepository;
 
-
-        public AddSectionForm()
+        public AddSectionForm(ISectionService sectionService, IRepository<Subject> subjectRepository)
         {
             InitializeComponent();
+            _sectionService = sectionService;
+            _subjectRepository = subjectRepository;
             UIHelper.RoundControl(this, 20);
             UIHelper.RoundControl(comboSubject, 10);
             UIHelper.RoundControl(txtName, 10);
             UIHelper.RoundControl(dateTimeStarting, 10);
             UIHelper.RoundControl(dateTimeEnding, 10);
-
-            LoadExistingSubjects();
         }
-        private void LoadExistingSubjects()
+        private async Task LoadExistingSubjectsAsync()
         {
             try
             {
-                using (var db = new AppDbContext())
-                {
-                    var allSubjects = db.Subjects.ToList();
-
-                    comboSubject.DataSource = allSubjects;
-                    comboSubject.DisplayMember = "Name";
-                    comboSubject.ValueMember = "Id";
-                }
+                var allSubjects = await _subjectRepository.GetAllAsync();
+                comboSubject.DataSource = allSubjects;
+                comboSubject.DisplayMember = "Name";
+                comboSubject.ValueMember = "Id";
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Could not load subjects: " + ex.Message);
             }
         }
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -55,34 +53,29 @@ namespace Brevi.Application
                 }
 
                 string selectedSubjectName = comboSubject.Text.Trim();
-                using (var db = new AppDbContext())
+                var subjects = await _subjectRepository.GetAllAsync();
+                var existingSubject = subjects.FirstOrDefault(s => s.Name.Equals(selectedSubjectName, StringComparison.OrdinalIgnoreCase));
+                int subjectIdToLink;
+
+                if (existingSubject != null)
                 {
-                    int subjectIdToLink;
-                    var existingSubject = db.Subjects.FirstOrDefault(s => s.Name.ToLower() == selectedSubjectName.ToLower());
-
-                    if (existingSubject != null)
-                    {
-                        subjectIdToLink = existingSubject.Id;
-                    }
-                    else
-                    {
-                        var newSubject = new Subject { Name = selectedSubjectName };
-                        db.Subjects.Add(newSubject);
-                        db.SaveChanges();
-                        subjectIdToLink = newSubject.Id;
-                    }
-                    var section = new Section
-                    {
-                        SectionName = txtName.Text,
-                        TeacherId = UserSession.CurrentTeacherId,
-                        SubjectId = subjectIdToLink,
-                        StartTimeSchedule = dateTimeStarting.Value.TimeOfDay,
-                        EndTimeSchedule = dateTimeEnding.Value.TimeOfDay
-                    };
-
-                    db.Sections.Add(section);
-                    db.SaveChanges();
+                    subjectIdToLink = existingSubject.Id;
                 }
+                else
+                {
+                    var newSubject = new Subject { Name = selectedSubjectName };
+                    await _subjectRepository.AddAsync(newSubject);
+                    subjectIdToLink = newSubject.Id;
+                }
+                var section = new Section
+                {
+                    SectionName = txtName.Text,
+                    TeacherId = UserSession.CurrentTeacherId,
+                    SubjectId = subjectIdToLink,
+                    StartTimeSchedule = dateTimeStarting.Value.TimeOfDay,
+                    EndTimeSchedule = dateTimeEnding.Value.TimeOfDay
+                };
+                await _sectionService.AddAsync(section);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -99,16 +92,16 @@ namespace Brevi.Application
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-
             this.Close();
         }
 
-        private void AddSectionForm_Load(object sender, EventArgs e)
+        private async void AddSectionForm_Load(object sender, EventArgs e)
         {
             if (this.FindForm() != null)
             {
                 this.FindForm().AcceptButton = btnSaveClass;
             }
+            await LoadExistingSubjectsAsync();
         }
     }
 }

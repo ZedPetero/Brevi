@@ -22,13 +22,15 @@ namespace Brevi.Application
         private readonly IAttendanceService _attendanceService;
         private readonly IGradeService _gradeService;
         private readonly IStudentService _studentService;
-        public UCClasses(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService)
+        private readonly IRepository<Subject> _subjectRepository;
+        public UCClasses(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService, IRepository<Subject> subjectRepository)
         {
             InitializeComponent();
             _sectionService = sectionService;
             _attendanceService = attendanceService;
             _gradeService = gradeService;
             _studentService = studentService;
+            _subjectRepository = subjectRepository;
             lblTeacher.Text = $"Welcome, {UserSession.CurrentTeacherName}!";
         }
         protected override void OnLoad(EventArgs e)
@@ -77,10 +79,10 @@ namespace Brevi.Application
                 MessageBox.Show("An error occurred while loading sections. Please try again later.\n\n" + ex.Message);
             }
         }
-        private void Card_TakeAttendanceClicked(object sender, int sectionId)
+        private void Card_TakeAttendanceClicked(object sender, int sectionId)   
         {
             MainScreenForm mainForm = (MainScreenForm)this.FindForm();
-            UCAttendance attendanceScreen = new UCAttendance(_sectionService, _attendanceService, _gradeService, _studentService);
+            UCAttendance attendanceScreen = new UCAttendance(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository);
 
             attendanceScreen.CallerControl = this;
             attendanceScreen.SetSection(sectionId);
@@ -96,7 +98,7 @@ namespace Brevi.Application
 
                 mainForm.ShowOverlay();
 
-                AddSectionForm form = new AddSectionForm();
+                AddSectionForm form = new AddSectionForm(_sectionService, _subjectRepository);
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {

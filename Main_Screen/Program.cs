@@ -39,6 +39,7 @@ internal static class Program
         services.AddTransient<IAttendanceService, AttendanceService>();
         services.AddTransient<IGradeService, GradeService>();
         services.AddTransient<IAttendanceWeightsService, AttendanceWeightsService>();
+        services.AddTransient<IRepository<Subject>, Repository<Subject>>();
         ServiceProvider = services.BuildServiceProvider();
 
         // Run Migrations safely

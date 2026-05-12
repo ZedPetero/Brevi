@@ -15,11 +15,12 @@ namespace Brevi.Application
         private readonly IStudentService _studentService;
         private readonly IAttendanceService _attendanceService;
         private readonly IGradeService _gradeService;
+        private readonly IRepository<Subject> _subjectRepository;
         private readonly UserManager<Teacher> _userManager;
         private readonly IAttendanceWeightsService _attendanceWeightsService; 
         public event EventHandler? ExitClicked;
 
-        public MainScreenForm(ISectionService sectionService, ITeacherService teacherService, IStudentService studentService, IAttendanceService attendanceService, IGradeService gradeService, UserManager<Teacher> userManager, IAttendanceWeightsService attendanceWeightsService)
+        public MainScreenForm(ISectionService sectionService, ITeacherService teacherService, IStudentService studentService, IAttendanceService attendanceService, IGradeService gradeService, UserManager<Teacher> userManager, IAttendanceWeightsService attendanceWeightsService, IRepository<Subject> subjectRepository)
         {
             InitializeComponent();
             UpdateMainContentBounds();
@@ -30,6 +31,7 @@ namespace Brevi.Application
             _gradeService = gradeService;
             _userManager = userManager;
             _attendanceWeightsService = attendanceWeightsService;
+            _subjectRepository = subjectRepository;
             UCHome myHome = new UCHome(_sectionService);
             LoadForm(myHome);
             btnHome.Checked = true;
@@ -111,7 +113,7 @@ namespace Brevi.Application
 
         public void btnClasses_Click(object sender, EventArgs e)
         {
-            UCClasses myClasses = new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService);
+            UCClasses myClasses = new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository);
             LoadForm(myClasses);
         }
 
@@ -173,7 +175,7 @@ namespace Brevi.Application
         public void NavigateToClasses()
         {
             btnClasses.Checked = true;
-            LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService));
+            LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository));
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
