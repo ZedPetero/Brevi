@@ -263,14 +263,14 @@ namespace Brevi.Application
             sidebar.Location = new Point(0, 60);
             sidebar.Name = "sidebar";
             sidebar.Size = new Size(55, 630);
-            sidebar.StateCommon.Color1 = Color.FromArgb(250, 250, 250);
-            sidebar.StateCommon.Color2 = Color.FromArgb(250, 250, 250);
+            sidebar.StateCommon.Color1 = SystemColors.Control;
+            sidebar.StateCommon.Color2 = SystemColors.Control;
             sidebar.StateCommon.Draw = Krypton.Toolkit.InheritBool.True;
             sidebar.TabIndex = 0;
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.BackColor = Color.Transparent;
+            flowLayoutPanel2.BackColor = SystemColors.Control;
             flowLayoutPanel2.Controls.Add(btnHome);
             flowLayoutPanel2.Controls.Add(btnClasses);
             flowLayoutPanel2.Controls.Add(btnRecords);
@@ -278,6 +278,7 @@ namespace Brevi.Application
             flowLayoutPanel2.Controls.Add(btnSettings);
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel2.ForeColor = SystemColors.Control;
             flowLayoutPanel2.Location = new Point(0, 0);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Padding = new Padding(4, 0, 0, 0);
@@ -325,7 +326,7 @@ namespace Brevi.Application
             kryptonBorderEdge2.Location = new Point(53, 0);
             kryptonBorderEdge2.Name = "kryptonBorderEdge2";
             kryptonBorderEdge2.Size = new Size(2, 630);
-            kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
             kryptonBorderEdge2.StateCommon.Width = 2;
             kryptonBorderEdge2.Text = "kryptonBorderEdge2";
             // 
@@ -341,7 +342,7 @@ namespace Brevi.Application
             kryptonPanel1.Location = new Point(0, 0);
             kryptonPanel1.Name = "kryptonPanel1";
             kryptonPanel1.Size = new Size(1200, 60);
-            kryptonPanel1.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
+            kryptonPanel1.StateCommon.Color1 = Color.LightGray;
             kryptonPanel1.TabIndex = 0;
             // 
             // btnCollapse
@@ -430,7 +431,7 @@ namespace Brevi.Application
             kryptonBorderEdge1.Location = new Point(0, 58);
             kryptonBorderEdge1.Name = "kryptonBorderEdge1";
             kryptonBorderEdge1.Size = new Size(1200, 2);
-            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
             kryptonBorderEdge1.StateCommon.Width = 2;
             kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 

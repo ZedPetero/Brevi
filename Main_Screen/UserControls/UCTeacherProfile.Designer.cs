@@ -43,6 +43,10 @@
             lblSubjectTitle = new Krypton.Toolkit.KryptonLabel();
             lblTeacherTitle = new Krypton.Toolkit.KryptonLabel();
             btnProfilePic = new Krypton.Toolkit.KryptonButton();
+            kryptonBorderEdge4 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge3 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge2 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             SuspendLayout();
             // 
             // lblWrapBio
@@ -274,11 +278,51 @@
             btnProfilePic.Values.DropDownArrowColor = Color.Empty;
             btnProfilePic.Values.Text = "";
             // 
+            // kryptonBorderEdge4
+            // 
+            kryptonBorderEdge4.Dock = DockStyle.Left;
+            kryptonBorderEdge4.Location = new Point(0, 0);
+            kryptonBorderEdge4.Name = "kryptonBorderEdge4";
+            kryptonBorderEdge4.Size = new Size(1, 660);
+            kryptonBorderEdge4.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge4.Text = "kryptonBorderEdge4";
+            // 
+            // kryptonBorderEdge3
+            // 
+            kryptonBorderEdge3.Dock = DockStyle.Bottom;
+            kryptonBorderEdge3.Location = new Point(0, 660);
+            kryptonBorderEdge3.Name = "kryptonBorderEdge3";
+            kryptonBorderEdge3.Size = new Size(550, 1);
+            kryptonBorderEdge3.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge3.Text = "kryptonBorderEdge3";
+            // 
+            // kryptonBorderEdge2
+            // 
+            kryptonBorderEdge2.Dock = DockStyle.Right;
+            kryptonBorderEdge2.Location = new Point(549, 1);
+            kryptonBorderEdge2.Name = "kryptonBorderEdge2";
+            kryptonBorderEdge2.Size = new Size(1, 659);
+            kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge2.Text = "kryptonBorderEdge2";
+            // 
+            // kryptonBorderEdge1
+            // 
+            kryptonBorderEdge1.Dock = DockStyle.Top;
+            kryptonBorderEdge1.Location = new Point(1, 0);
+            kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            kryptonBorderEdge1.Size = new Size(549, 1);
+            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
             // UCTeacherProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(kryptonBorderEdge2);
+            Controls.Add(kryptonBorderEdge1);
+            Controls.Add(kryptonBorderEdge4);
+            Controls.Add(kryptonBorderEdge3);
             Controls.Add(lblWrapBio);
             Controls.Add(kryptonLabel5);
             Controls.Add(lblSubject);
@@ -318,5 +362,9 @@
         private Krypton.Toolkit.KryptonLabel lblSubjectTitle;
         private Krypton.Toolkit.KryptonLabel lblTeacherTitle;
         private Krypton.Toolkit.KryptonButton btnProfilePic;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge4;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge3;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge2;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
     }
 }

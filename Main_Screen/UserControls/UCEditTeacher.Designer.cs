@@ -48,6 +48,10 @@
             kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
             cmbSubject = new Krypton.Toolkit.KryptonComboBox();
             datePickerDate = new DateTimePicker();
+            kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge2 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge3 = new Krypton.Toolkit.KryptonBorderEdge();
+            kryptonBorderEdge4 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)cmbSubject).BeginInit();
             SuspendLayout();
             // 
@@ -334,11 +338,51 @@
             datePickerDate.Size = new Size(214, 23);
             datePickerDate.TabIndex = 4;
             // 
+            // kryptonBorderEdge1
+            // 
+            kryptonBorderEdge1.Dock = DockStyle.Top;
+            kryptonBorderEdge1.Location = new Point(0, 0);
+            kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            kryptonBorderEdge1.Size = new Size(550, 1);
+            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // kryptonBorderEdge2
+            // 
+            kryptonBorderEdge2.Dock = DockStyle.Right;
+            kryptonBorderEdge2.Location = new Point(549, 1);
+            kryptonBorderEdge2.Name = "kryptonBorderEdge2";
+            kryptonBorderEdge2.Size = new Size(1, 519);
+            kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge2.Text = "kryptonBorderEdge2";
+            // 
+            // kryptonBorderEdge3
+            // 
+            kryptonBorderEdge3.Dock = DockStyle.Bottom;
+            kryptonBorderEdge3.Location = new Point(0, 519);
+            kryptonBorderEdge3.Name = "kryptonBorderEdge3";
+            kryptonBorderEdge3.Size = new Size(549, 1);
+            kryptonBorderEdge3.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge3.Text = "kryptonBorderEdge3";
+            // 
+            // kryptonBorderEdge4
+            // 
+            kryptonBorderEdge4.Dock = DockStyle.Left;
+            kryptonBorderEdge4.Location = new Point(0, 1);
+            kryptonBorderEdge4.Name = "kryptonBorderEdge4";
+            kryptonBorderEdge4.Size = new Size(1, 518);
+            kryptonBorderEdge4.StateCommon.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonBorderEdge4.Text = "kryptonBorderEdge4";
+            // 
             // UCEditTeacher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(kryptonBorderEdge4);
+            Controls.Add(kryptonBorderEdge3);
+            Controls.Add(kryptonBorderEdge2);
+            Controls.Add(kryptonBorderEdge1);
             Controls.Add(datePickerDate);
             Controls.Add(cmbSubject);
             Controls.Add(txtLastName);
@@ -388,5 +432,9 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel10;
         private Krypton.Toolkit.KryptonComboBox cmbSubject;
         private DateTimePicker datePickerDate;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge2;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge3;
+        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge4;
     }
 }
