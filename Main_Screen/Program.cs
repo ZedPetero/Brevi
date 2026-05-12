@@ -37,6 +37,7 @@ internal static class Program
         services.AddTransient<ITeacherService, TeacherService>();
         services.AddTransient<IStudentService, StudentService>();
         services.AddTransient<IAttendanceService, AttendanceService>();
+        services.AddTransient<IGradeService, GradeService>();
         services.AddTransient<IAttendanceWeightsService, AttendanceWeightsService>();
         ServiceProvider = services.BuildServiceProvider();
 

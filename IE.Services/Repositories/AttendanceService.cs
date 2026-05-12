@@ -33,5 +33,41 @@ namespace Brevi.Services.Repositories
 
             await _context.SaveChangesAsync();
         }
+        public async Task MarkAllPresentAsync(int sectionId, DateTime date)
+        {
+            var students = await _context.Students.Where(s => s.SectionId == sectionId).ToListAsync();
+            var dayStart = date.Date;
+            var dayEnd = dayStart.AddDays(1);
+
+            foreach (var student in students)
+            {
+                var existing = await _context.AttendanceRecords
+                    .FirstOrDefaultAsync(a => a.StudentId == student.Id && a.SectionId == sectionId && a.Date >= dayStart && a.Date < dayEnd);
+
+                if (existing == null)
+                {
+                    _context.AttendanceRecords.Add(new Attendance
+                    {
+                        StudentId = student.Id,
+                        SectionId = sectionId,
+                        Date = dayStart,
+                        Status = AttendanceStatus.Present,
+                        Remarks = string.Empty
+                    });
+                }
+                else { existing.Status = AttendanceStatus.Present; }
+            }
+            await _context.SaveChangesAsync();
+        }
+        public async Task ResetAttendanceAsync(int sectionId, DateTime date)
+        {
+            var dayStart = date.Date;
+            var dayEnd = dayStart.AddDays(1);
+            var recordsToRemove = await _context.AttendanceRecords
+                .Where(a => a.SectionId == sectionId && a.Date >= dayStart && a.Date < dayEnd)
+                .ToListAsync();
+            _context.AttendanceRecords.RemoveRange(recordsToRemove);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -9,5 +9,7 @@ namespace Brevi.Services.Repositories.IRepositories
     {
         Task<Attendance> GetSpecificRecordAsync(int studentId, int sectionId, DateTime date);
         Task SaveAttendanceAsync(Attendance record);
+        Task MarkAllPresentAsync(int sectionId, DateTime date);
+        Task ResetAttendanceAsync(int sectionId, DateTime date);
     }
 }

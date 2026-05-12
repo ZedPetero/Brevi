@@ -7,5 +7,6 @@ namespace Brevi.Services.Repositories.IRepositories
 {
     public interface IGradeService : IRepository<Grade>
     {
+        Task RecalculateGradeAsync(int studentId, int sectionId);
     }
 }

@@ -149,7 +149,7 @@ namespace Brevi.Application
             if (MessageBox.Show($"Delete {StudentName}?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 await _studentService.DeleteStudentAsync(StudentId);
-                FindParentAttendance()?.LoadStudentsForDate();
+                await FindParentAttendance()?.LoadStudentsForDateAsync();
             }
         }
 

@@ -19,10 +19,16 @@ namespace Brevi.Application
     public partial class UCClasses : UserControl
     {
         private readonly ISectionService _sectionService;
-        public UCClasses(ISectionService sectionService)
+        private readonly IAttendanceService _attendanceService;
+        private readonly IGradeService _gradeService;
+        private readonly IStudentService _studentService;
+        public UCClasses(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService)
         {
             InitializeComponent();
             _sectionService = sectionService;
+            _attendanceService = attendanceService;
+            _gradeService = gradeService;
+            _studentService = studentService;
             lblTeacher.Text = $"Welcome, {UserSession.CurrentTeacherName}!";
         }
         protected override void OnLoad(EventArgs e)
@@ -74,7 +80,7 @@ namespace Brevi.Application
         private void Card_TakeAttendanceClicked(object sender, int sectionId)
         {
             MainScreenForm mainForm = (MainScreenForm)this.FindForm();
-            UCAttendance attendanceScreen = new UCAttendance(_sectionService);
+            UCAttendance attendanceScreen = new UCAttendance(_sectionService, _attendanceService, _gradeService, _studentService);
 
             attendanceScreen.CallerControl = this;
             attendanceScreen.SetSection(sectionId);

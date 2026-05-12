@@ -22,14 +22,19 @@ namespace Brevi.Application
         public int CurrentSectionId { get; set; }
 
         private readonly ISectionService _sectionService;
-
-        public UCAttendance(ISectionService sectionService)
+        private readonly IAttendanceService _attendanceService;
+        private readonly IGradeService _gradeService;
+        private readonly IStudentService _studentService;
+        public UCAttendance(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService)
         {
             InitializeComponent();
             _sectionService = sectionService;
+            _attendanceService = attendanceService;
+            _gradeService = gradeService;
+            _studentService = studentService;
             UpdateDateDisplay();
             SetSection(CurrentSectionId);
-            FilterComboBox.SelectedIndexChanged += (s, ev) => LoadStudentsForDate();
+            FilterComboBox.SelectedIndexChanged += async (s, ev) => await LoadStudentsForDateAsync();
         }
         protected override CreateParams CreateParams
         {
@@ -49,12 +54,12 @@ namespace Brevi.Application
         private enum SortMethod { Surname, FirstName }
         private SortMethod _currentSort = SortMethod.Surname;
 
-        public void SetSection(int sectionId)
+        public async void SetSection(int sectionId)
         {
             CurrentSectionId = sectionId;
-            LoadSectionInfo();
-            LoadStudentsForDate();
-            SetSummaryCards();
+            await LoadSectionInfoAsync();
+            await LoadStudentsForDateAsync();
+            await SetSummaryCardsAsync();
         }
 
         private void RoundPanel(object sender, EventArgs e)
@@ -65,7 +70,7 @@ namespace Brevi.Application
             }
         }
 
-        private void btnAddStudent_Click(object sender, EventArgs e)
+        private async void btnAddStudent_Click(object sender, EventArgs e)
         {
             using (FormAddStudent popup = new FormAddStudent())
             {
@@ -74,12 +79,12 @@ namespace Brevi.Application
                 popup.CurrentSectionId = CurrentSectionId;
                 var result = popup.ShowDialog();
                 mainForm.HideOverlay();
-                LoadStudentsForDate();
-                SetSummaryCards();
+                await LoadStudentsForDateAsync();
+                await SetSummaryCardsAsync();
             }
         }
 
-        private void SetSummaryCards()
+        private async Task SetSummaryCardsAsync()
         {
             try
             {
@@ -130,15 +135,15 @@ namespace Brevi.Application
 
                 using var _context = new AppDbContext();
 
-                int total = _context.Students.Count(s => s.SectionId == CurrentSectionId);
+                int total = await _context.Students.CountAsync(s => s.SectionId == CurrentSectionId);
 
                 DateTime dateStart = _selectedDate.Date;
                 DateTime dateEnd = dateStart.AddDays(1);
 
-                var attendance = _context.AttendanceRecords
+                var attendance = await _context.AttendanceRecords
                     .Where(a => a.SectionId == CurrentSectionId && a.Date >= dateStart && a.Date < dateEnd)
                     .AsNoTracking()
-                    .ToList();
+                    .ToListAsync();
 
                 int present = attendance.Count(a => a.Status == AttendanceStatus.Present);
                 int late = attendance.Count(a => a.Status == AttendanceStatus.Late);
@@ -182,7 +187,7 @@ namespace Brevi.Application
             }
         }
 
-        private void LoadSectionInfo()
+        private async Task LoadSectionInfoAsync()
         {
             lblSectionName.Text = "Loading...";
             lblSubjectName.Text = string.Empty;
@@ -196,15 +201,7 @@ namespace Brevi.Application
 
             try
             {
-                using var _context = new AppDbContext();
-
-                var section = _context.Sections
-                    .Include(s => s.Subject)
-                    .AsNoTracking()
-                    .Where(s => s.Id == CurrentSectionId)
-                    .Select(s => new { s.SectionName, s.Subject })
-                    .SingleOrDefault();
-
+                var section = await _sectionService.GetSectionByIdAsync(CurrentSectionId);
                 if (section != null)
                 {
                     lblSectionName.Text = section.SectionName;
@@ -225,7 +222,7 @@ namespace Brevi.Application
             }
         }
 
-        public void LoadStudentsForDate()
+        public async Task LoadStudentsForDateAsync()
         {
             if (CurrentSectionId == 0)
             {
@@ -239,8 +236,8 @@ namespace Brevi.Application
             layoutStudents.Controls.Clear();
             layoutStudents.FlowDirection = FlowDirection.TopDown;
             layoutStudents.WrapContents = false;
-
             layoutStudents.AutoScrollPosition = new Point(0, 0);
+
             using (var _context = new AppDbContext())
             {
                 var studentsQuery = _context.Students.Where(s => s.SectionId == this.CurrentSectionId);
@@ -254,35 +251,29 @@ namespace Brevi.Application
                     studentsQuery = studentsQuery.OrderBy(s => s.FirstName).ThenBy(s => s.LastName);
                 }
 
-                var students = studentsQuery.ToList();
+                var students = await studentsQuery.ToListAsync();
 
                 DateTime dateStart = _selectedDate.Date;
                 DateTime dateEnd = dateStart.AddDays(1);
 
-                var attendanceForDay = _context.AttendanceRecords
-                    .Where(a => a.SectionId == this.CurrentSectionId
-                                && a.Date >= dateStart && a.Date < dateEnd)
+                var attendanceRecords = await _context.AttendanceRecords
+                    .Where(a => a.SectionId == this.CurrentSectionId && a.Date >= dateStart && a.Date < dateEnd)
                     .AsNoTracking()
-                    .ToList()
-                    .ToDictionary(a => a.StudentId, a => a.Status);
+                    .ToListAsync();
+                var attendanceForDay = attendanceRecords.ToDictionary(a => a.StudentId, a => a.Status);
 
                 string selectedFilter = FilterComboBox.SelectedItem?.ToString() ?? "All";
-                List<Student> filteredStudents = students.Where(student =>
+                var filteredStudents = students.Where(student =>
                 {
                     if (attendanceForDay.TryGetValue(student.Id, out var status))
-                    {
                         return selectedFilter == "All" || status.ToString() == selectedFilter;
-                    }
-                    else
-                    {
-                        return selectedFilter == "All";
-                    }
+                    return selectedFilter == "All";
                 }).ToList();
 
                 int count = 1;
                 foreach (var student in filteredStudents)
                 {
-                    UCStudentRow studentRow = new UCStudentRow();
+                    UCStudentRow studentRow = new UCStudentRow(_attendanceService, _studentService);
 
                     studentRow.StudentId = student.Id;
                     studentRow.SectionId = this.CurrentSectionId;
@@ -308,7 +299,7 @@ namespace Brevi.Application
                         studentRow.SetSelectedStatus(null);
                     }
                     studentRow.Width1 = layoutStudents.ClientSize.Width - 10;
-                    studentRow.AttendanceStatusChanged += StudentRow_AttendanceStatusChanged;
+                    studentRow.AttendanceStatusChanged += async (s, id) => await StudentRow_AttendanceStatusChangedAsync(s, id);
                     layoutStudents.Controls.Add(studentRow);
                     count++;
                 }
@@ -320,21 +311,22 @@ namespace Brevi.Application
 
             layoutStudents.AutoScrollPosition = new Point(Math.Abs(scrollPos.X), Math.Abs(scrollPos.Y));
 
-            SetSummaryCards();
+            SetSummaryCardsAsync();
         }
-        private void StudentRow_AttendanceStatusChanged(object sender, int studentId)
+        private async Task StudentRow_AttendanceStatusChangedAsync(object sender, int studentId)
         {
-            RecalculateSingleStudentGrade(studentId, CurrentSectionId);
+            await RecalculateSingleStudentGradeAsync(studentId, CurrentSectionId);
+            await SetSummaryCardsAsync();
         }
 
-        private void UC_Attendance_Load(object sender, EventArgs e)
+        private async void UC_Attendance_Load(object sender, EventArgs e)
         {
             UpdateDateDisplay();
 
             if (CurrentSectionId != 0)
             {
-                LoadSectionInfo();
-                LoadStudentsForDate();
+                await LoadSectionInfoAsync();
+                await LoadStudentsForDateAsync();
             }
 
             RoundPanel(pnlTotalStudents, EventArgs.Empty);
@@ -363,7 +355,7 @@ namespace Brevi.Application
             }
             else
             {
-                mainForm.LoadForm(new UCClasses(_sectionService));
+                mainForm.LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService));
             }
         }
 
@@ -382,7 +374,7 @@ namespace Brevi.Application
             ShowCalendarPicker();
         }
 
-        private void btnNextDate_Click(object? sender, EventArgs e)
+        private async void btnNextDate_Click(object? sender, EventArgs e)
         {
             if (_selectedDate >= DateTime.Today)
             {
@@ -391,14 +383,14 @@ namespace Brevi.Application
             }
             _selectedDate = _selectedDate.AddDays(1);
             UpdateDateDisplay();
-            LoadStudentsForDate();
+            await LoadStudentsForDateAsync();
         }
 
-        private void btnPreviousDate_Click(object? sender, EventArgs e)
+        private async void btnPreviousDate_Click(object? sender, EventArgs e)
         {
             _selectedDate = _selectedDate.AddDays(-1);
             UpdateDateDisplay();
-            LoadStudentsForDate();
+            await LoadStudentsForDateAsync();
         }
 
         private void ShowCalendarPicker()
@@ -472,13 +464,13 @@ namespace Brevi.Application
                 isNavigating = false;
             };
 
-            cal.DateChanged += (s, e) =>
+            cal.DateChanged += async (s, e) =>
             {
                 if (isNavigating) return;
 
                 _selectedDate = cal.SelectionStart.Date;
                 UpdateDateDisplay();
-                LoadStudentsForDate();
+                await LoadStudentsForDateAsync();
                 dropDown.Close();
             };
 
@@ -488,7 +480,7 @@ namespace Brevi.Application
             dropDown.Show(lblDateNow, new Point(offsetX, offsetY));
         }
 
-        private void btnMarkAllPresent_Click(object? sender, EventArgs e)
+        private async void btnMarkAllPresent_Click(object? sender, EventArgs e)
         {
             if (CurrentSectionId == 0) return;
 
@@ -499,7 +491,7 @@ namespace Brevi.Application
 
                 using var _context = new AppDbContext();
 
-                var students = _context.Students.Where(s => s.SectionId == CurrentSectionId).ToList();
+                var students = await _context.Students.Where(s => s.SectionId == CurrentSectionId).ToListAsync();
 
                 foreach (var student in students)
                 {
@@ -527,7 +519,7 @@ namespace Brevi.Application
 
                 _context.SaveChanges();
 
-                RecalculateClassGrades(_context, CurrentSectionId);
+                await RecalculateClassGradesAsync(_context, CurrentSectionId);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -542,10 +534,10 @@ namespace Brevi.Application
                     studentRow.SetSelectedStatus(AttendanceStatus.Present);
                 }
             }
-            SetSummaryCards();
+            await SetSummaryCardsAsync();
         }
 
-        private void btnReset_Click(object? sender, EventArgs e)
+        private async void btnReset_Click(object? sender, EventArgs e)
         {
             if (CurrentSectionId == 0) return;
 
@@ -560,17 +552,17 @@ namespace Brevi.Application
 
                 using var _context = new AppDbContext();
 
-                var toRemove = _context.AttendanceRecords
-                    .Where(a => a.SectionId == CurrentSectionId && a.Date >= dateStart && a.Date < dateEnd)
-                    .ToList();
+                var toRemove = await _context.AttendanceRecords
+                    .Where(a => a.SectionId == CurrentSectionId && a.Date == dateStart)
+                    .ToListAsync();
 
                 if (toRemove.Any())
                 {
                     _context.AttendanceRecords.RemoveRange(toRemove);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
 
-                    RecalculateClassGrades(_context, CurrentSectionId);
-                    _context.SaveChanges();
+                    await RecalculateClassGradesAsync(_context, CurrentSectionId);
+                    await _context.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
@@ -585,12 +577,12 @@ namespace Brevi.Application
                     studentRow.SetSelectedStatus(null);
                 }
             }
-            SetSummaryCards();
+            await SetSummaryCardsAsync();
         }
 
-        public void RefreshSummaryAndRoster()
+        public async void RefreshSummaryAndRoster()
         {
-            SetSummaryCards();
+            await SetSummaryCardsAsync();
         }
 
         private void btnExportSummary_Click(object sender, EventArgs e)
@@ -610,27 +602,27 @@ namespace Brevi.Application
             }
         }
 
-        private void btnSortSurname_Click(object sender, EventArgs e)
+        private async void btnSortSurname_Click(object sender, EventArgs e)
         {
             _currentSort = SortMethod.Surname;
-            LoadStudentsForDate();
+            await LoadStudentsForDateAsync();
         }
 
-        private void btnSortFirstname_Click(object sender, EventArgs e)
+        private async void btnSortFirstname_Click(object sender, EventArgs e)
         {
             _currentSort = SortMethod.FirstName;
-            LoadStudentsForDate();
+            await LoadStudentsForDateAsync();
         }
-        public void RecalculateSingleStudentGrade(int studentId, int sectionId)
+        public async Task RecalculateSingleStudentGradeAsync(int studentId, int sectionId)
         {
             using (var db = new AppDbContext())
             {
-                var section = db.Sections.Include(s => s.Subject).FirstOrDefault(s => s.Id == sectionId);
+                var section = await db.Sections.Include(s => s.Subject).FirstOrDefaultAsync(s => s.Id == sectionId);
                 if (section == null) return;
 
-                var records = db.AttendanceRecords
+                var records = await db.AttendanceRecords
                                 .Where(a => a.StudentId == studentId && a.SectionId == sectionId)
-                                .ToList();
+                                .ToListAsync();
 
                 int total = records.Count;
                 int p = records.Count(r => r.Status == AttendanceStatus.Present);
@@ -661,14 +653,14 @@ namespace Brevi.Application
                 db.SaveChanges();
             }
         }
-        public void RecalculateClassGrades(AppDbContext db, int sectionId)
+        public async Task RecalculateClassGradesAsync(AppDbContext db, int sectionId)
         {
-            var section = db.Sections.Include(s => s.Subject).FirstOrDefault(s => s.Id == sectionId);
+            var section = await db.Sections.Include(s => s.Subject).FirstOrDefaultAsync(s => s.Id == sectionId);
             if (section == null) return;
 
-            var studentIds = db.Students.Where(s => s.SectionId == sectionId).Select(s => s.Id).ToList();
-            var allAttendance = db.AttendanceRecords.Where(a => a.SectionId == sectionId).ToList();
-            var allGrades = db.Grades.Where(g => g.SectionId == sectionId).ToList();
+            var studentIds = await db.Students.Where(s => s.SectionId == sectionId).Select(s => s.Id).ToListAsync();
+            var allAttendance = await db.AttendanceRecords.Where(a => a.SectionId == sectionId).ToListAsync();
+            var allGrades = await db.Grades.Where(g => g.SectionId == sectionId).ToListAsync();
 
             foreach (var sId in studentIds)
             {
