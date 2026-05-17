@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            visibilityBtn = new Krypton.Toolkit.KryptonButton();
             txtEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             txtPhoneNumber = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             txtUsername = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -62,6 +63,7 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(visibilityBtn);
             panel1.Controls.Add(txtEmail);
             panel1.Controls.Add(txtPhoneNumber);
             panel1.Controls.Add(txtUsername);
@@ -86,6 +88,38 @@
             panel1.Size = new Size(521, 525);
             panel1.TabIndex = 0;
             // 
+            // visibilityBtn
+            // 
+            visibilityBtn.Location = new Point(455, 376);
+            visibilityBtn.Name = "visibilityBtn";
+            visibilityBtn.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            visibilityBtn.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            visibilityBtn.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            visibilityBtn.OverrideFocus.Border.Color1 = Color.DarkGray;
+            visibilityBtn.OverrideFocus.Border.Color2 = Color.DarkGray;
+            visibilityBtn.OverrideFocus.Content.LongText.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Content.ShortText.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.Size = new Size(32, 32);
+            visibilityBtn.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.StateCommon.Border.Color1 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.StateCommon.Border.Color2 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.StateCommon.Border.Rounding = 5F;
+            visibilityBtn.StateCommon.Content.LongText.Color1 = Color.White;
+            visibilityBtn.StateCommon.Content.LongText.Color2 = Color.White;
+            visibilityBtn.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            visibilityBtn.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            visibilityBtn.StatePressed.Border.Color1 = Color.DarkGray;
+            visibilityBtn.StatePressed.Border.Color2 = Color.DarkGray;
+            visibilityBtn.TabIndex = 41;
+            visibilityBtn.TabStop = false;
+            visibilityBtn.Values.DropDownArrowColor = Color.Empty;
+            visibilityBtn.Values.Image = Properties.Resources.visibility_off;
+            visibilityBtn.Values.Text = "";
+            visibilityBtn.Click += visibilityBtn_Click;
+            // 
             // txtEmail
             // 
             txtEmail.BeforeTouchSize = new Size(141, 32);
@@ -93,6 +127,7 @@
             txtEmail.BorderColor = Color.DimGray;
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.CornerRadius = 5;
+            txtEmail.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtEmail.Font = new Font("Segoe UI", 14F);
             txtEmail.Location = new Point(34, 184);
             txtEmail.MaximumSize = new Size(9999, 9999);
@@ -108,6 +143,7 @@
             txtPhoneNumber.BorderColor = Color.DimGray;
             txtPhoneNumber.BorderStyle = BorderStyle.FixedSingle;
             txtPhoneNumber.CornerRadius = 5;
+            txtPhoneNumber.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtPhoneNumber.Font = new Font("Segoe UI", 14F);
             txtPhoneNumber.Location = new Point(34, 248);
             txtPhoneNumber.MaximumSize = new Size(9999, 9999);
@@ -123,6 +159,7 @@
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
             txtUsername.CornerRadius = 5;
+            txtUsername.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtUsername.Font = new Font("Segoe UI", 14F);
             txtUsername.Location = new Point(34, 312);
             txtUsername.MaximumSize = new Size(9999, 9999);
@@ -138,13 +175,16 @@
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
+            txtPassword.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtPassword.Font = new Font("Segoe UI", 14F);
             txtPassword.Location = new Point(34, 376);
             txtPassword.MaximumSize = new Size(9999, 9999);
             txtPassword.MinimumSize = new Size(34, 30);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(453, 32);
+            txtPassword.PasswordChar = '●';
+            txtPassword.Size = new Size(415, 32);
             txtPassword.TabIndex = 7;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // autoLabel10
             // 
@@ -197,6 +237,7 @@
             txtMiddleName.BorderColor = Color.DimGray;
             txtMiddleName.BorderStyle = BorderStyle.FixedSingle;
             txtMiddleName.CornerRadius = 5;
+            txtMiddleName.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtMiddleName.Font = new Font("Segoe UI", 14F);
             txtMiddleName.Location = new Point(190, 120);
             txtMiddleName.MaximumSize = new Size(9999, 9999);
@@ -223,6 +264,7 @@
             txtLastName.BorderColor = Color.DimGray;
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
             txtLastName.CornerRadius = 5;
+            txtLastName.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtLastName.Font = new Font("Segoe UI", 14F);
             txtLastName.Location = new Point(346, 120);
             txtLastName.MaximumSize = new Size(9999, 9999);
@@ -273,6 +315,7 @@
             txtFirstName.BorderColor = Color.DimGray;
             txtFirstName.BorderStyle = BorderStyle.FixedSingle;
             txtFirstName.CornerRadius = 5;
+            txtFirstName.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtFirstName.Font = new Font("Segoe UI", 14F);
             txtFirstName.Location = new Point(34, 120);
             txtFirstName.MaximumSize = new Size(9999, 9999);
@@ -378,5 +421,6 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPhoneNumber;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtUsername;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPassword;
+        private Krypton.Toolkit.KryptonButton visibilityBtn;
     }
 }

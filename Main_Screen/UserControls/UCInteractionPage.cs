@@ -23,7 +23,6 @@ namespace Brevi.Application
         {
             _userManager = userManager;
             InitializeComponent();
-            UIHelper.RoundControl(pictureBox1, 10);
             LoadSavedAccounts();
         }
 
@@ -45,7 +44,7 @@ namespace Brevi.Application
                     LabelProperties(lbl, username, y);
 
                     lbl.DoubleClick += Label_DoubleClick;
-                    lbl.Click += Label_Click; 
+                    lbl.Click += Label_Click;
                     loggedInViewPanel.Controls.Add(lbl);
 
                     y += lbl.Height + spacing;
@@ -79,12 +78,12 @@ namespace Brevi.Application
             {
                 if (sender is Label lbl)
                 {
-                    var selected = lbl.BackColor == SystemColors.Highlight;
-                    lbl.BackColor = selected ? SystemColors.Window : SystemColors.Highlight;
-                    lbl.ForeColor = selected ? SystemColors.ControlText : SystemColors.HighlightText;
+                    var selected = lbl.BackColor == Color.FromArgb(39, 165, 153);
+                    lbl.BackColor = selected ? SystemColors.Window : Color.FromArgb(39, 165, 153);
+                    lbl.ForeColor = selected ? SystemColors.ControlText : Color.White;
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
@@ -111,6 +110,5 @@ namespace Brevi.Application
         {
             StartNowClicked?.Invoke(this, EventArgs.Empty);
         }
-
     }
 }

@@ -36,6 +36,7 @@
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtUsername = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             panel1 = new Panel();
+            visibilityBtn = new Krypton.Toolkit.KryptonButton();
             autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             welcomingLabel = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)txtPassword).BeginInit();
@@ -104,13 +105,14 @@
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
+            txtPassword.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtPassword.Font = new Font("Segoe UI", 14F);
             txtPassword.Location = new Point(39, 222);
             txtPassword.MaximumSize = new Size(9999, 9999);
             txtPassword.MinimumSize = new Size(34, 30);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '●';
-            txtPassword.Size = new Size(345, 32);
+            txtPassword.Size = new Size(307, 32);
             txtPassword.TabIndex = 1;
             txtPassword.Tag = "";
             txtPassword.UseSystemPasswordChar = true;
@@ -133,6 +135,7 @@
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
             txtUsername.CornerRadius = 5;
+            txtUsername.FocusBorderColor = Color.FromArgb(40, 164, 153);
             txtUsername.Font = new Font("Segoe UI", 14F);
             txtUsername.Location = new Point(39, 138);
             txtUsername.MaximumSize = new Size(9999, 9999);
@@ -145,6 +148,7 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(visibilityBtn);
             panel1.Controls.Add(autoLabel5);
             panel1.Controls.Add(welcomingLabel);
             panel1.Controls.Add(txtUsername);
@@ -158,6 +162,38 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(422, 383);
             panel1.TabIndex = 22;
+            // 
+            // visibilityBtn
+            // 
+            visibilityBtn.Location = new Point(352, 222);
+            visibilityBtn.Name = "visibilityBtn";
+            visibilityBtn.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            visibilityBtn.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            visibilityBtn.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            visibilityBtn.OverrideFocus.Border.Color1 = Color.DarkGray;
+            visibilityBtn.OverrideFocus.Border.Color2 = Color.DarkGray;
+            visibilityBtn.OverrideFocus.Content.LongText.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Content.ShortText.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.Size = new Size(32, 32);
+            visibilityBtn.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.StateCommon.Border.Color1 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.StateCommon.Border.Color2 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.StateCommon.Border.Rounding = 5F;
+            visibilityBtn.StateCommon.Content.LongText.Color1 = Color.White;
+            visibilityBtn.StateCommon.Content.LongText.Color2 = Color.White;
+            visibilityBtn.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            visibilityBtn.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            visibilityBtn.StatePressed.Border.Color1 = Color.DarkGray;
+            visibilityBtn.StatePressed.Border.Color2 = Color.DarkGray;
+            visibilityBtn.TabIndex = 22;
+            visibilityBtn.TabStop = false;
+            visibilityBtn.Values.DropDownArrowColor = Color.Empty;
+            visibilityBtn.Values.Image = Properties.Resources.visibility_off;
+            visibilityBtn.Values.Text = "";
+            visibilityBtn.Click += visibilityBtn_Click;
             // 
             // autoLabel5
             // 
@@ -211,5 +247,6 @@
         private Panel panel1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
         private Syncfusion.Windows.Forms.Tools.AutoLabel welcomingLabel;
+        private Krypton.Toolkit.KryptonButton visibilityBtn;
     }
 }

@@ -16,6 +16,8 @@ namespace Brevi.Application
         private readonly string? _prefilledUsername;
         public event EventHandler? GoToSignUpPage;
 
+        bool _visibility = false;
+
         public UCLoginPage(UserManager<Teacher> userManager, string? username)
         {
             _userManager = userManager;
@@ -79,5 +81,23 @@ namespace Brevi.Application
                 this.FindForm().AcceptButton = btnLogin;
             }
         }
+
+        private void visibilityBtn_Click(object sender, EventArgs e)
+        {
+            if (_visibility)
+            {
+                txtPassword.UseSystemPasswordChar = true;
+                _visibility = false;
+                visibilityBtn.Values.Image = Properties.Resources.visibility_off;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = false;
+                _visibility = true;
+                visibilityBtn.Values.Image = Properties.Resources.visibility;
+            }
+        }
     }
+
+
 }

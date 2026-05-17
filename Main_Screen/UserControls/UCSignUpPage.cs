@@ -13,6 +13,8 @@ namespace Brevi.Application
     public partial class UCSignUpPage : UserControl
     {
         private readonly UserManager<Teacher> _userManager;
+        private bool _visibility = false;
+
         public event EventHandler? ToLoginPage;
 
         public UCSignUpPage(UserManager<Teacher> userManager)
@@ -64,6 +66,28 @@ namespace Brevi.Application
             if (this.FindForm() != null)
             {
                 this.FindForm().AcceptButton = btnSignUp;
+            }
+        }
+
+        private void visibilityBtn_Click(object sender, EventArgs e)
+        {
+            // Toggle flag
+            _visibility = !_visibility;
+
+            if (_visibility)
+            {
+                // Show plain text: disable system password char and clear any PasswordChar
+                txtPassword.UseSystemPasswordChar = false;
+                txtPassword.PasswordChar = '\0';
+                visibilityBtn.Values.Image = Properties.Resources.visibility_off;
+            }
+            else
+            {
+                // Hide password: enable system password char (fallback will be used by the control)
+                txtPassword.UseSystemPasswordChar = true;
+                // Clear explicit PasswordChar so the system char is used consistently
+                txtPassword.PasswordChar = '\0';
+                visibilityBtn.Values.Image = Properties.Resources.visibility;
             }
         }
     }

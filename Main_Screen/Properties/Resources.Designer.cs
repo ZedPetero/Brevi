@@ -63,6 +63,16 @@ namespace Brevi.Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _531a8a2e_da7c_451a_871e_bfb845496f96_removalai_preview {
+            get {
+                object obj = ResourceManager.GetObject("531a8a2e-da7c-451a-871e-bfb845496f96_removalai_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap balansag {
             get {
                 object obj = ResourceManager.GetObject("balansag", resourceCulture);
@@ -536,6 +546,26 @@ namespace Brevi.Application.Properties {
         internal static System.Drawing.Bitmap trashbin_red {
             get {
                 object obj = ResourceManager.GetObject("trashbin red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap visibility {
+            get {
+                object obj = ResourceManager.GetObject("visibility", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap visibility_off {
+            get {
+                object obj = ResourceManager.GetObject("visibility_off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
