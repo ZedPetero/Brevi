@@ -29,8 +29,8 @@ namespace Brevi.Application
                 archivedClassFlowpanel.Controls.Clear();
 
                 var sections = await _sectionService.GetTeacherSectionsAsync(UserSession.CurrentTeacherId, true);
-
-                foreach (var sec in sections)
+                var sortedSections = sections.OrderBy(s => s.SectionName).ToList();
+                foreach (var sec in sortedSections)
                 {
                     var item = new UC_RecordsClass(_sectionService);
                     await item.SetSectionAsync(sec.Id);
@@ -64,6 +64,7 @@ namespace Brevi.Application
             item.Width = archivedClassFlowpanel.ClientSize.Width - 25;
             archivedClassFlowpanel.Controls.Add(item);
             item.SetArchivedState(true);
+            SortFlowPanel(archivedClassFlowpanel);
         }
 
         public void MoveToCurrent(UC_RecordsClass item)
@@ -74,10 +75,12 @@ namespace Brevi.Application
             item.Width = currentclassesflowpanel.ClientSize.Width - 25;
             currentclassesflowpanel.Controls.Add(item);
             item.SetArchivedState(false);
+            SortFlowPanel(currentclassesflowpanel);
         }
 
         private void currentclassesflowpanel_Resize(object sender, EventArgs e)
         {
+            currentclassesflowpanel.SuspendLayout();
             foreach (Control item in currentclassesflowpanel.Controls)
             {
                 if (item is UC_RecordsClass)
@@ -85,6 +88,7 @@ namespace Brevi.Application
                     item.Width = currentclassesflowpanel.ClientSize.Width - 25;
                 }
             }
+            currentclassesflowpanel.ResumeLayout();
         }
 
         private void archivedClassFlowpanel_Resize(object sender, EventArgs e)
@@ -102,6 +106,18 @@ namespace Brevi.Application
             ArchivedClassespanel.Top = currentclassesflowpanel.Bottom + 20; 
 
             archivedClassFlowpanel.Top = ArchivedClassespanel.Bottom + 10;
+        }
+        private void SortFlowPanel(FlowLayoutPanel panel)
+        {
+            var sortedControls = panel.Controls.Cast<UC_RecordsClass>()
+                                      .OrderBy(c => c.SectionName)
+                                      .ToList();
+            panel.SuspendLayout();
+            for (int i = 0; i < sortedControls.Count; i++)
+            {
+                panel.Controls.SetChildIndex(sortedControls[i], i);
+            }
+            panel.ResumeLayout();
         }
     }
 }

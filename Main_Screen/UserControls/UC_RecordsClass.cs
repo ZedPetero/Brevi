@@ -16,12 +16,18 @@ namespace Brevi.Application
         private readonly ISectionService _sectionService;
         private int _sectionId;
         private bool _isArchived = false;
-
+        public string SectionName => lblClassName.Values.Text;
         public UC_RecordsClass(ISectionService sectionService)
         {
             InitializeComponent();
             _sectionService = sectionService;
             UIHelper.RoundControl(lblSubject, 20);
+        }
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            UIHelper.RoundControl(this, 20);
+            UIHelper.RoundControl(panel1, 18);
         }
         public async Task SetSectionAsync(int sectionId)
         {
@@ -54,6 +60,8 @@ namespace Brevi.Application
 
                     classinfotable.Controls.Clear();
                     classinfotable.ColumnCount = 6;
+                    classinfotable.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single; 
+                    classinfotable.Padding = new Padding(0, 0, 0, 2); 
                     classinfotable.ColumnStyles.Clear();
                     classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F)); // name
                     classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // present
@@ -81,14 +89,16 @@ namespace Brevi.Application
                     if (students.Count == 0)
                     {
                         classinfotable.RowCount = 2;
-                        classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-
+                        classinfotable.RowStyles.Clear();
+                        classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+                        classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); 
                         Label emptyStateLabel = new Label
                         {
                             Text = "No students enrolled in this class yet.",
                             Dock = DockStyle.Fill,
                             TextAlign = ContentAlignment.MiddleCenter,
-                            ForeColor = Color.DimGray
+                            ForeColor = Color.DimGray,
+                            Margin = new Padding(0, 0, 0, 5)
                         };
 
                         classinfotable.Controls.Add(emptyStateLabel, 0, 1);
@@ -169,11 +179,6 @@ namespace Brevi.Application
             ctrl.Margin = new Padding(3);
             classinfotable.Controls.Add(ctrl, col, row);
         }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            UIHelper.RoundControl(this, 20);
-        }
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
@@ -182,7 +187,8 @@ namespace Brevi.Application
             if (classinfotable.Visible)
             {
                 sidebarbtn.Values.Text = "";
-                this.Height = 350;
+                int preferredHeight = classinfotable.GetPreferredSize(new Size(classinfotable.Width, 0)).Height;
+                this.Height = classinfotable.Top + preferredHeight + 20;
             }
             else
             {
@@ -243,11 +249,6 @@ namespace Brevi.Application
 
             ArchiveorRestorebutton.Values.ExtraText = archived ? "Restore" : "Archive";
             ArchiveorRestorebutton.Values.Text = archived ? "" : "";
-        }
-
-        private void kryptonLabel4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
