@@ -76,8 +76,8 @@
             // 
             // EditBtnTeacher
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(btnEditProfile);
             Name = "EditBtnTeacher";
             Size = new Size(215, 50);

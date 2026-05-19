@@ -435,8 +435,8 @@
             // 
             // UCAboutUsPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             AutoScroll = true;
             BackColor = Color.White;
             Controls.Add(kryptonWrapLabel7);

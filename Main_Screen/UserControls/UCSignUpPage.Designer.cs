@@ -133,7 +133,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.BeforeTouchSize = new Size(345, 32);
+            txtEmail.BeforeTouchSize = new Size(141, 32);
             txtEmail.Border3DStyle = Border3DStyle.SunkenOuter;
             txtEmail.BorderColor = Color.DimGray;
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
@@ -149,7 +149,7 @@
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.BeforeTouchSize = new Size(345, 32);
+            txtPhoneNumber.BeforeTouchSize = new Size(141, 32);
             txtPhoneNumber.Border3DStyle = Border3DStyle.SunkenOuter;
             txtPhoneNumber.BorderColor = Color.DimGray;
             txtPhoneNumber.BorderStyle = BorderStyle.FixedSingle;
@@ -165,7 +165,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(345, 32);
+            txtUsername.BeforeTouchSize = new Size(141, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
@@ -181,7 +181,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(345, 32);
+            txtPassword.BeforeTouchSize = new Size(141, 32);
             txtPassword.Border3DStyle = Border3DStyle.SunkenOuter;
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
@@ -243,7 +243,7 @@
             // 
             // txtMiddleName
             // 
-            txtMiddleName.BeforeTouchSize = new Size(345, 32);
+            txtMiddleName.BeforeTouchSize = new Size(141, 32);
             txtMiddleName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtMiddleName.BorderColor = Color.DimGray;
             txtMiddleName.BorderStyle = BorderStyle.FixedSingle;
@@ -270,7 +270,7 @@
             // 
             // txtLastName
             // 
-            txtLastName.BeforeTouchSize = new Size(345, 32);
+            txtLastName.BeforeTouchSize = new Size(141, 32);
             txtLastName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtLastName.BorderColor = Color.DimGray;
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
@@ -321,7 +321,7 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.BeforeTouchSize = new Size(345, 32);
+            txtFirstName.BeforeTouchSize = new Size(141, 32);
             txtFirstName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtFirstName.BorderColor = Color.DimGray;
             txtFirstName.BorderStyle = BorderStyle.FixedSingle;
@@ -392,8 +392,8 @@
             // 
             // UCSignUpPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(panel1);
             Name = "UCSignUpPage";
             Size = new Size(1184, 599);

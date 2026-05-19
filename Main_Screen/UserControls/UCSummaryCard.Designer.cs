@@ -63,14 +63,14 @@
             lblPercentage.TabIndex = 2;
             lblPercentage.Text = "0.0%";
             // 
-            // UC_SummaryCard
+            // UCSummaryCard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(lblPercentage);
             Controls.Add(lblInteger);
             Controls.Add(lblTitle);
-            Name = "UC_SummaryCard";
+            Name = "UCSummaryCard";
             Size = new Size(227, 134);
             ResumeLayout(false);
             PerformLayout();

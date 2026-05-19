@@ -17,6 +17,7 @@ internal static class Program
     [STAThread]
     static void Main()
     {
+        Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
         FontEngine.LoadFonts();
         Application.SetDefaultFont(FontEngine.InterBase);
         Application.EnableVisualStyles();

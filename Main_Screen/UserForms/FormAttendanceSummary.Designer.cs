@@ -211,14 +211,15 @@
             // 
             // FormAttendanceSummary
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(811, 450);
             ControlBox = false;
             Controls.Add(pnlContent);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
+            Name = "FormAttendanceSummary";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Load += Form_AttendanceSummary_Load;
